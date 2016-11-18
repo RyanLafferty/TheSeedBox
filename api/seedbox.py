@@ -44,7 +44,7 @@ class Computer(db.Model):
 
 
 
-
+"""
 class Users(db.Model):
     __tablename__ = 'Users'
     id = db.Column(db.Integer, primary_key=True)
@@ -76,9 +76,9 @@ class PodOrderForms(Base):
     __tablename__ = 'PodOrderForms'
     id = Column('id', Integer, primary_key=True)
 
+"""
 
-
-"""class Users(db.Model):
+class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     fname = db.Column(db.Unicode(256))
     lname = db.Column(db.Unicode(256))
@@ -95,8 +95,7 @@ class Retailers(db.Model):
     name = db.Column(db.Unicode(256))
     quantity = db.Column(db.Integer)
     id = db.Column(db.date)
-
-
+    #TODO
     source = db.Column(db.Unicode(2048))
 
 
@@ -106,7 +105,7 @@ class GardenFreshBoxes(db.Model):
 
 class PodOrderForms(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-"""
+
 
 # Set up corresponding RESTful API
 # ==========================================================================================
