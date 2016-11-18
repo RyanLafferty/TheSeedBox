@@ -11,8 +11,8 @@ import flask_restless
 application = Flask(__name__)
 
 application.config['SQLALCHEMY_TRACK_NOTIFICATIONS'] = True
-#application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/TheSeedSA'
-application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/TheSeed'
+application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/TheSeedSA'
+#application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/TheSeed'
 
 db = flask_sqlalchemy.SQLAlchemy(application)
 
