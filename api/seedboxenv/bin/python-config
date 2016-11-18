@@ -1,4 +1,4 @@
-#!/home/ubuntu/seedbox/seedboxenv/bin/python
+#!/home/ubuntu/TheSeedBox/api/seedboxenv/bin/python
 
 import sys
 import getopt
