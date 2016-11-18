@@ -11,7 +11,8 @@ import flask_restless
 application = Flask(__name__)
 
 application.config['SQLALCHEMY_TRACK_NOTIFICATIONS'] = True
-application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/TheSeedSA'
+#application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/TheSeedSA'
+application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/TheSeed'
 
 db = flask_sqlalchemy.SQLAlchemy(application)
 
@@ -80,16 +81,16 @@ class PodOrderForms(db.Model):
 # Set up corresponding RESTful API
 # ==========================================================================================
 # Create the database tables.
-db.create_all()
+#db.create_all()
 
 # Create the Flask-Restless API manager.
 manager = flask_restless.APIManager(application, flask_sqlalchemy_db=db)
 
 # Create API endpoints, which will be available at /api/<tablename> by
 # default. Allowed HTTP methods can be specified as well.
-manager.create_api(User, methods=['GET', 'POST', 'DELETE'])
+#manager.create_api(User, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
-manager.create_api(Computer, methods=['GET'])
+#manager.create_api(Computer, methods=['GET'])
 
 
 # Misc. routes
