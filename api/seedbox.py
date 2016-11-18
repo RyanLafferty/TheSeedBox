@@ -44,9 +44,39 @@ class Computer(db.Model):
 
 
 
+
+class Users(db.Model):
+    __tablename__ = 'Users'
+    id = db.Column(db.Integer, primary_key=True)
+    fname = db.Column(db.Unicode(256))
+    lname = db.Column(db.Unicode(256))
+    email = db.Column(db.Unicode(256))
+    password = db.Column(db.Unicode(256))
+
+class Retailers(db.Model):
+    __tablename__ = 'Retailers'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Unicode(256), unique=True)
+    url = db.Column(db.Unicode(256))
+
+class Products(db.Model):
+    __tablename__ = 'Products'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Unicode(256))
+    quantity = db.Column(db.Integer)
+    id = db.Column(db.date)
+    #TODO add remaining columns
+    source = db.Column(db.Unicode(2048))
+
 class GardenFreshBoxes(Base):
     __tablename__ = 'GardenFreshBoxes'
     id = Column('id', Integer, primary_key=True)
+
+class PodOrderForms(Base):
+    __tablename__ = 'PodOrderForms'
+    id = Column('id', Integer, primary_key=True)
+
+
 
 """class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
