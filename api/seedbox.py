@@ -30,7 +30,6 @@ class User(db.Model):
     name = db.Column(db.Unicode(128), unique=True)
     birth_date = db.Column(db.Date)
 
-
 class Computer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Unicode(128), unique=True)
@@ -39,6 +38,44 @@ class Computer(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     owner = db.relationship('User', backref=db.backref('computers',
                                                          lazy='dynamic'))
+
+
+
+
+
+class GardenFreshBoxes(Base):
+    __tablename__ = 'GardenFreshBoxes'
+    id = Column('id', Integer, primary_key=True)
+
+"""class Users(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    fname = db.Column(db.Unicode(256))
+    lname = db.Column(db.Unicode(256))
+    email = db.Column(db.Unicode(256))
+    password = db.Column(db.Unicode(256))
+
+class Retailers(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Unicode(256), unique=True)
+    url = db.Column(db.Unicode(256))
+
+class Retailers(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Unicode(256))
+    quantity = db.Column(db.Integer)
+    id = db.Column(db.date)
+
+
+    source = db.Column(db.Unicode(2048))
+
+
+
+class GardenFreshBoxes(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+
+class PodOrderForms(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+"""
 
 # Set up corresponding RESTful API
 # ==========================================================================================
@@ -51,6 +88,7 @@ manager = flask_restless.APIManager(application, flask_sqlalchemy_db=db)
 # Create API endpoints, which will be available at /api/<tablename> by
 # default. Allowed HTTP methods can be specified as well.
 manager.create_api(User, methods=['GET', 'POST', 'DELETE'])
+manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(Computer, methods=['GET'])
 
 
@@ -64,6 +102,3 @@ manager.create_api(Computer, methods=['GET'])
 # ==========================================================================================
 if __name__ == "__main__":
     application.run(host='0.0.0.0')
-
-
-
