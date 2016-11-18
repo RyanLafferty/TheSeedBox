@@ -110,7 +110,7 @@ class PodOrderForms(db.Model):
 # Set up corresponding RESTful API
 # ==========================================================================================
 # Create the database tables.
-#db.create_all()
+db.create_all()
 
 # Create the Flask-Restless API manager.
 manager = flask_restless.APIManager(application, flask_sqlalchemy_db=db)
