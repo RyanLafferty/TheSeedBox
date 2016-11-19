@@ -26,6 +26,7 @@ db = flask_sqlalchemy.SQLAlchemy(application)
 #   2. They must have an __init__ method which accepts keyword arguments for
 #      all columns (the constructor in flask.ext.sqlalchemy.SQLAlchemy.Model
 #      supplies such a method, so you don't need to declare a new one).
+"""
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Unicode(128), unique=True)
@@ -39,7 +40,7 @@ class Computer(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     owner = db.relationship('User', backref=db.backref('computers',
                                                          lazy='dynamic'))
-
+"""
 
 
 
@@ -128,12 +129,13 @@ manager = flask_restless.APIManager(application, flask_sqlalchemy_db=db)
 
 # Create API endpoints, which will be available at /api/<tablename> by
 # default. Allowed HTTP methods can be specified as well.
-manager.create_api(User, methods=['GET', 'POST', 'DELETE'])
-manager.create_api(Computer, methods=['GET'])
+#manager.create_api(User, methods=['GET', 'POST', 'DELETE'])
+#manager.create_api(Computer, methods=['GET'])
 
 manager.create_api(Users, methods=['GET', 'POST', 'DELETE'])
 
 manager.create_api(Retailers, methods=['GET', 'POST', 'DELETE'])
+#TODO
 #manager.create_api(Products, methods=['GET', 'POST', 'DELETE'])
 
 manager.create_api(PodOrderForms, methods=['GET', 'POST', 'DELETE'])
