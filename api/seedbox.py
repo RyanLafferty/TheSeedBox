@@ -78,13 +78,13 @@ class PodOrderForms(Base):
 
 """
 
-"""class Users(db.Model):
+class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     fname = db.Column(db.Unicode(256))
     lname = db.Column(db.Unicode(256))
     email = db.Column(db.Unicode(256))
     password = db.Column(db.Unicode(256))
-
+"""
 class Retailers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Unicode(256), unique=True)
@@ -117,8 +117,9 @@ manager = flask_restless.APIManager(application, flask_sqlalchemy_db=db)
 # default. Allowed HTTP methods can be specified as well.
 manager.create_api(User, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(Computer, methods=['GET'])
-"""
+
 manager.create_api(Users, methods=['GET', 'POST', 'DELETE'])
+"""
 manager.create_api(Retailers, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(Products, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(PodOrderForms, methods=['GET', 'POST', 'DELETE'])
