@@ -94,6 +94,7 @@ class Retailers(db.Model):
     name = db.Column(db.Unicode(256), unique=True),
     url = db.Column(db.Unicode(256))
 
+"""
 class Products(db.Model):
     __tablename__ = 'Products'
     id = db.Column(db.Integer, primary_key=True),
