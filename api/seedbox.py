@@ -102,6 +102,7 @@ class Products(db.Model):
 ##
 """
 class GardenFreshBoxes(db.Model):
+    __tablename__ = 'GardenFreshBoxes'
     id = db.Column(db.Integer, primary_key=True)
 
 class PodOrderForms(db.Model):
