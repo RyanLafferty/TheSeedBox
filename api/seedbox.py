@@ -87,22 +87,24 @@ class Users(db.Model):
     password = db.Column(db.Unicode(256))
 
 
+
 #error with these
 class Retailers(db.Model):
     __tablename__ = 'Retailers'
-    id = db.Column(db.Integer, primary_key=True),
-    name = db.Column(db.Unicode(256), unique=True),
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Unicode(256), unique=True)
     url = db.Column(db.Unicode(256))
 
 """
 class Products(db.Model):
     __tablename__ = 'Products'
-    id = db.Column(db.Integer, primary_key=True),
-    name = db.Column(db.Unicode(256)),
-    quantity = db.Column(db.Integer),
-    id = db.Column(db.String(80)),
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Unicode(256))
+    quantity = db.Column(db.Integer)
+    id = db.Column(db.String(80))
     #TODO
     source = db.Column(db.Unicode(2048))
+
 ##
 """
 
