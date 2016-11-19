@@ -90,15 +90,13 @@ class Retailers(db.Model):
     name = db.Column(db.Unicode(256), unique=True)
     url = db.Column(db.Unicode(256))
 
-class Retailers(db.Model):
+class Products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Unicode(256))
     quantity = db.Column(db.Integer)
     id = db.Column(db.String(80))
     #TODO
     source = db.Column(db.Unicode(2048))
-
-
 
 class GardenFreshBoxes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
