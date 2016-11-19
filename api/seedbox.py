@@ -89,11 +89,13 @@ class Users(db.Model):
 """
 #error with these
 class Retailers(db.Model):
+    __tablename__ = 'Retailers'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Unicode(256), unique=True)
     url = db.Column(db.Unicode(256))
-
+"""
 class Products(db.Model):
+    __tablename__ = 'Products'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Unicode(256))
     quantity = db.Column(db.Integer)
@@ -101,7 +103,7 @@ class Products(db.Model):
     #TODO
     source = db.Column(db.Unicode(2048))
 ##
-"""
+
 class GardenFreshBoxes(db.Model):
     __tablename__ = 'GardenFreshBoxes'
     id = db.Column(db.Integer, primary_key=True)
@@ -126,7 +128,7 @@ manager.create_api(Computer, methods=['GET'])
 
 manager.create_api(Users, methods=['GET', 'POST', 'DELETE'])
 
-#manager.create_api(Retailers, methods=['GET', 'POST', 'DELETE'])
+manager.create_api(Retailers, methods=['GET', 'POST', 'DELETE'])
 #manager.create_api(Products, methods=['GET', 'POST', 'DELETE'])
 
 manager.create_api(PodOrderForms, methods=['GET', 'POST', 'DELETE'])
