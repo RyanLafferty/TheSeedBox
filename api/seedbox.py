@@ -84,7 +84,7 @@ class Users(db.Model):
     lname = db.Column(db.Unicode(256))
     email = db.Column(db.Unicode(256))
     password = db.Column(db.Unicode(256))
-"""
+
 class Retailers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Unicode(256), unique=True)
@@ -97,7 +97,7 @@ class Products(db.Model):
     id = db.Column(db.String(80))
     #TODO
     source = db.Column(db.Unicode(2048))
-
+"""
 class GardenFreshBoxes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
@@ -119,9 +119,10 @@ manager.create_api(User, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(Computer, methods=['GET'])
 
 manager.create_api(Users, methods=['GET', 'POST', 'DELETE'])
-"""
+
 manager.create_api(Retailers, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(Products, methods=['GET', 'POST', 'DELETE'])
+"""
 manager.create_api(PodOrderForms, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
 """
