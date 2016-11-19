@@ -78,7 +78,7 @@ class PodOrderForms(Base):
 
 """
 
-class Users(db.Model):
+"""class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     fname = db.Column(db.Unicode(256))
     lname = db.Column(db.Unicode(256))
@@ -102,7 +102,7 @@ class GardenFreshBoxes(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
 class PodOrderForms(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)"""
 
 
 # Set up corresponding RESTful API
@@ -116,13 +116,14 @@ manager = flask_restless.APIManager(application, flask_sqlalchemy_db=db)
 # Create API endpoints, which will be available at /api/<tablename> by
 # default. Allowed HTTP methods can be specified as well.
 manager.create_api(User, methods=['GET', 'POST', 'DELETE'])
+manager.create_api(Computer, methods=['GET'])
+"""
 manager.create_api(Users, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(Retailers, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(Products, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(PodOrderForms, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
-manager.create_api(Computer, methods=['GET'])
-
+"""
 
 # Misc. routes
 # ==========================================================================================
