@@ -3,7 +3,7 @@
 #
 # Script to update the server whenever a git change is made
 #
-#       sudo nohup ./gitpull.bash >/dev/null 2>&1 &
+#       sudo nohup ./pull.bash >/dev/null 2>&1 &
 #
 # Author: Jake, please don't hate me, this is scrappy
 #
