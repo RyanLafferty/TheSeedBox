@@ -45,24 +45,14 @@ class Retailers(db.Model):
     url = db.Column(db.Unicode(256))
 
 class Products(db.Model):
-    '''
-    columns should be:
-    id
-    name (ex. Carrots ONT)
-    quantity
-    date created
-    date scraped nullable for competitor and supplier sources
-    price
-    source
-    '''
     __tablename__ = 'Products'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Unicode(256))
     quantity = db.Column(db.Integer)
-    #TODO add remaining columns
+    dateCreated = db.Column(db.DateTime);
+    dateScraped = db.Column(db.DateTime);
+    price = db.Column(db.Float);
     source = db.Column(db.Unicode(2048))
-
-
 
 class GardenFreshBoxes(db.Model):
     __tablename__ = 'GardenFreshBoxes'
@@ -71,32 +61,6 @@ class GardenFreshBoxes(db.Model):
 class PodOrderForms(db.Model):
     __tablename__ = 'PodOrderForms'
     id = db.Column('id', db.Integer, primary_key=True)
-
-
-
-
-"""
-#error with these
-class Retailers(db.Model):
-    __tablename__ = 'Retailers'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Unicode(256), unique=True)
-    url = db.Column(db.Unicode(256))
-
-TODO
-class Products(db.Model):
-    __tablename__ = 'Products'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Unicode(256))
-    quantity = db.Column(db.Integer)
-    id = db.Column(db.String(80))
-    #TODO
-    source = db.Column(db.Unicode(2048))
-
-##
-"""
-
-
 
 # Set up corresponding RESTful API
 # ==========================================================================================
@@ -108,9 +72,6 @@ manager = flask_restless.APIManager(application, flask_sqlalchemy_db=db)
 
 # Create API endpoints, which will be available at /api/<tablename> by
 # default. Allowed HTTP methods can be specified as well.
-#manager.create_api(User, methods=['GET', 'POST', 'DELETE'])
-#manager.create_api(Computer, methods=['GET'])
-
 manager.create_api(Users, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(Retailers, methods=['GET', 'POST', 'DELETE'])
 #TODO
