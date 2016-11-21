@@ -74,9 +74,7 @@ manager = flask_restless.APIManager(application, flask_sqlalchemy_db=db)
 # default. Allowed HTTP methods can be specified as well.
 manager.create_api(Users, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(Retailers, methods=['GET', 'POST', 'DELETE'])
-#TODO
-#manager.create_api(Products, methods=['GET', 'POST', 'DELETE'])
-
+manager.create_api(Products, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(PodOrderForms, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
 
