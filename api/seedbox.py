@@ -26,26 +26,8 @@ db = flask_sqlalchemy.SQLAlchemy(application)
 #   2. They must have an __init__ method which accepts keyword arguments for
 #      all columns (the constructor in flask.ext.sqlalchemy.SQLAlchemy.Model
 #      supplies such a method, so you don't need to declare a new one).
-"""
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Unicode(128), unique=True)
-    birth_date = db.Column(db.Date)
-
-class Computer(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Unicode(128), unique=True)
-    vendor = db.Column(db.Unicode(128))
-    purchase_time = db.Column(db.DateTime)
-    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    owner = db.relationship('User', backref=db.backref('computers',
-                                                         lazy='dynamic'))
-"""
 
 
-
-
-"""
 class Users(db.Model):
     __tablename__ = 'Users'
     id = db.Column(db.Integer, primary_key=True)
@@ -53,6 +35,8 @@ class Users(db.Model):
     lname = db.Column(db.Unicode(256))
     email = db.Column(db.Unicode(256))
     password = db.Column(db.Unicode(256))
+
+
 
 class Retailers(db.Model):
     __tablename__ = 'Retailers'
@@ -61,34 +45,37 @@ class Retailers(db.Model):
     url = db.Column(db.Unicode(256))
 
 class Products(db.Model):
+    '''
+    columns should be:
+    id
+    name (ex. Carrots ONT)
+    quantity
+    date created
+    date scraped nullable for competitor and supplier sources
+    price
+    source
+    '''
     __tablename__ = 'Products'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Unicode(256))
     quantity = db.Column(db.Integer)
-    id = db.Column(db.String(80))
     #TODO add remaining columns
     source = db.Column(db.Unicode(2048))
 
-class GardenFreshBoxes(Base):
-    __tablename__ = 'GardenFreshBoxes'
-    id = Column('id', Integer, primary_key=True)
 
-class PodOrderForms(Base):
+
+class GardenFreshBoxes(db.Model):
+    __tablename__ = 'GardenFreshBoxes'
+    id = db.Column('id', db.Integer, primary_key=True)
+
+class PodOrderForms(db.Model):
     __tablename__ = 'PodOrderForms'
-    id = Column('id', Integer, primary_key=True)
+    id = db.Column('id', db.Integer, primary_key=True)
+
+
+
 
 """
-
-class Users(db.Model):
-    __tablename__ = 'Users'
-    id = db.Column(db.Integer, primary_key=True)
-    fname = db.Column(db.Unicode(256))
-    lname = db.Column(db.Unicode(256))
-    email = db.Column(db.Unicode(256))
-    password = db.Column(db.Unicode(256))
-
-
-
 #error with these
 class Retailers(db.Model):
     __tablename__ = 'Retailers'
@@ -96,7 +83,6 @@ class Retailers(db.Model):
     name = db.Column(db.Unicode(256), unique=True)
     url = db.Column(db.Unicode(256))
 
-"""
 TODO
 class Products(db.Model):
     __tablename__ = 'Products'
@@ -110,13 +96,6 @@ class Products(db.Model):
 ##
 """
 
-class GardenFreshBoxes(db.Model):
-    __tablename__ = 'GardenFreshBoxes'
-    id = db.Column(db.Integer, primary_key=True)
-
-class PodOrderForms(db.Model):
-    __tablename__ = 'PodOrderForms'
-    id = db.Column(db.Integer, primary_key=True)
 
 
 # Set up corresponding RESTful API
@@ -133,7 +112,6 @@ manager = flask_restless.APIManager(application, flask_sqlalchemy_db=db)
 #manager.create_api(Computer, methods=['GET'])
 
 manager.create_api(Users, methods=['GET', 'POST', 'DELETE'])
-
 manager.create_api(Retailers, methods=['GET', 'POST', 'DELETE'])
 #TODO
 #manager.create_api(Products, methods=['GET', 'POST', 'DELETE'])
@@ -147,6 +125,13 @@ manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
 #@application.route("/api/")
 #def hello():
 #    return "<h1 style='color:blue'>SEEDBOX API</h1>"
+
+
+@application.before_request
+def basic_authorize():
+    print "hello"
+
+
 
 
 # ==========================================================================================
