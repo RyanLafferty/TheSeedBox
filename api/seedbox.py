@@ -84,12 +84,6 @@ manager.create_api(PodOrderForms, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
 #manager.create_api(abc, methods=['GET'])
 
-
-
-#implementation of the api's
-#api.add_resource(Todo, '/todos/<todo_id>')
-
-
 # Misc. routes
 # ==========================================================================================
 #@application.route("/api/")

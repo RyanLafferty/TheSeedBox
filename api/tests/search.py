@@ -9,5 +9,4 @@ params = dict(q=json.dumps(dict(filters=filters)))
 print params
 
 response = requests.get(url, params=params, headers=headers)
-assert response.status_code == 200
 print(response.json())
