@@ -95,10 +95,12 @@ manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
 def basic_authorize():
     print "hello"
 
-
+"""
 @application.route('/Test', methods = ['GET'])
     def index():
         return jsonify({'Users': Users.query.all()})
+"""
+
 """
 @app.route('/Test', methods = ['POST'])
 def Test():
