@@ -4,6 +4,7 @@ from logging import FileHandler
 from flask import Flask
 import flask_sqlalchemy
 import flask_restless
+from flask_restful import reqparse, abort, Api, Resource
 
 
 # Set up application
@@ -15,6 +16,7 @@ application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/TheSeed
 #application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/TheSeed'
 
 db = flask_sqlalchemy.SQLAlchemy(application)
+api = Api(application)
 
 
 # Set up models
@@ -35,8 +37,6 @@ class Users(db.Model):
     lname = db.Column(db.Unicode(256))
     email = db.Column(db.Unicode(256))
     password = db.Column(db.Unicode(256))
-
-
 
 class Retailers(db.Model):
     __tablename__ = 'Retailers'
@@ -62,6 +62,17 @@ class PodOrderForms(db.Model):
     __tablename__ = 'PodOrderForms'
     id = db.Column('id', db.Integer, primary_key=True)
 
+
+parser = reqparse.RequestParser()
+parser.add_argument('id')
+
+class TestIns(Resource):
+    def put(self, id):
+        args = parser.parse_args()
+        num = {'id': args['id']}
+        TODOS[id] = num
+        return num, 201
+
 # Set up corresponding RESTful API
 # ==========================================================================================
 # Create the database tables.
@@ -77,6 +88,10 @@ manager.create_api(Retailers, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(Products, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(PodOrderForms, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
+
+
+#implementation of the api's
+api.add_resource(Todo, '/todos/<todo_id>')
 
 
 # Misc. routes
