@@ -1,0 +1,5 @@
+curl \
+  -G \
+  -H "Content-type: application/json" \
+  -d "q={\"filters\":[{\"fname\":\"Test\"}]}" \
+  https://seedbox.tk/api/Users
