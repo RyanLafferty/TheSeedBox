@@ -62,14 +62,6 @@ class PodOrderForms(db.Model):
     __tablename__ = 'PodOrderForms'
     id = db.Column('id', db.Integer, primary_key=True)
 
-@app.route('/Test', methods = ['POST'])
-def Test():
-   if request.method == 'POST':
-      if not request.form['fname']:
-         flash('Please enter all the fields', 'error')
-      else:
-         return redirect('https://seedbox.tk/api/Users')
-
 
 # Set up corresponding RESTful API
 # ==========================================================================================
@@ -103,6 +95,13 @@ manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
 def basic_authorize():
     print "hello"
 
+@app.route('/Test', methods = ['POST'])
+def Test():
+   if request.method == 'POST':
+      if not request.form['fname']:
+         flash('Please enter all the fields', 'error')
+      else:
+         return redirect('https://seedbox.tk/api/Users')
 
 
 
