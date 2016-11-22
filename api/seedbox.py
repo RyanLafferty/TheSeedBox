@@ -38,6 +38,9 @@ class Users(db.Model):
     email = db.Column(db.Unicode(256))
     password = db.Column(db.Unicode(256))
 
+    def Test():
+        return jsonify({'Users': Users.query.all()})
+
 class Retailers(db.Model):
     __tablename__ = 'Retailers'
     id = db.Column(db.Integer, primary_key=True)
@@ -73,11 +76,12 @@ manager = flask_restless.APIManager(application, flask_sqlalchemy_db=db)
 
 # Create API endpoints, which will be available at /api/<tablename> by
 # default. Allowed HTTP methods can be specified as well.
-manager.create_api(Users, methods=['GET', 'POST', 'DELETE'])
+manager.create_api(Users, methods=['GET', 'POST', 'DELETE', 'Test'])
 manager.create_api(Retailers, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(Products, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(PodOrderForms, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
+
 
 
 #implementation of the api's
