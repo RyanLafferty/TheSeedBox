@@ -96,7 +96,7 @@ def basic_authorize():
     print "hello"
 
 
-@app.route('/Test', methods = ['GET'])
+@application.route('/Test', methods = ['GET'])
     def index():
         return jsonify({'Users': Users.query.all()})
 """
