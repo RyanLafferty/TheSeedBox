@@ -39,7 +39,7 @@ class Users(db.Model):
     password = db.Column(db.Unicode(256))
 
     def Test():
-        return jsonify({'Users': Users.query.all()})
+        return jsonify({'Users': 'Test'})
 
 class Retailers(db.Model):
     __tablename__ = 'Retailers'
