@@ -3,7 +3,7 @@ from logging import FileHandler
 
 from flask import Flask, request, flash, url_for, redirect, render_template, jsonify, abort, request
 import flask_sqlalchemy
-#import flask_restless
+import flask_restless
 #from flask_restful import reqparse, abort, Api, Resource
 
 
@@ -73,15 +73,15 @@ class abc():
 db.create_all()
 
 # Create the Flask-Restless API manager.
-#manager = flask_restless.APIManager(application, flask_sqlalchemy_db=db)
+manager = flask_restless.APIManager(application, flask_sqlalchemy_db=db)
 
 # Create API endpoints, which will be available at /api/<tablename> by
 # default. Allowed HTTP methods can be specified as well.
-#manager.create_api(Users, methods=['GET', 'POST', 'DELETE'])
-#manager.create_api(Retailers, methods=['GET', 'POST', 'DELETE'])
-#manager.create_api(Products, methods=['GET', 'POST', 'DELETE'])
-#manager.create_api(PodOrderForms, methods=['GET', 'POST', 'DELETE'])
-#manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
+manager.create_api(Users, methods=['GET', 'POST', 'DELETE'])
+manager.create_api(Retailers, methods=['GET', 'POST', 'DELETE'])
+manager.create_api(Products, methods=['GET', 'POST', 'DELETE'])
+manager.create_api(PodOrderForms, methods=['GET', 'POST', 'DELETE'])
+manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
 #manager.create_api(abc, methods=['GET'])
 
 
@@ -101,11 +101,11 @@ db.create_all()
 def basic_authorize():
     print "hello"
 
-
+"""
 @application.route('/Test')
     def index():
         return jsonify({'Users': Users.query.all()})
-
+"""
 
 """
 @application.route('/Test', methods = ['POST'])
