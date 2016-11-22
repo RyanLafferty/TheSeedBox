@@ -72,9 +72,10 @@ class TestIns(Resource):
         num = {'id': args['id']}
         TODOS[id] = num
         return num, 201
-        """
+"""
 
-api = Api(app)
+
+
 
 TODOS = {
     'todo1': {'task': 'build an API'},
@@ -93,6 +94,7 @@ parser.add_argument('task')
 
 # Todo
 # shows a single todo item and lets you delete a todo item
+
 class Todo(Resource):
     def get(self, todo_id):
         abort_if_todo_doesnt_exist(todo_id)
@@ -108,6 +110,7 @@ class Todo(Resource):
         task = {'task': args['task']}
         TODOS[todo_id] = task
         return task, 201
+        
 
 # Set up corresponding RESTful API
 # ==========================================================================================
@@ -127,7 +130,7 @@ manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
 
 
 #implementation of the api's
-api.add_resource(Todo, '/todos/<todo_id>')
+#api.add_resource(Todo, '/todos/<todo_id>')
 
 
 # Misc. routes
