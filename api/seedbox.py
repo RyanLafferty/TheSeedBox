@@ -82,7 +82,7 @@ manager.create_api(Retailers, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(Products, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(PodOrderForms, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
-manager.create_api(abc, methods=['GET'])
+#manager.create_api(abc, methods=['GET'])
 
 
 
