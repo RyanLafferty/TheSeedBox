@@ -16,7 +16,7 @@ application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/TheSeed
 #application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/TheSeed'
 
 db = flask_sqlalchemy.SQLAlchemy(application)
-api = Api(application)
+#api = Api(application)
 
 
 # Set up models
