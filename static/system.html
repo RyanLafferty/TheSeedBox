@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <link rel="stylesheet" type="text/css" href="style2.css">
+      <script src="js/jquery-3.1.1.min.js"></script>
+      <script src="js/indexJS.js"></script>
+  </head>
+  <body>
+    <div id="menu-placeholder"></div>
+    <center>
+    <h1>System Settings</h1>
+    <p>Here you can change the system settings. <br>Click on the "Interval" drop down menu to select an interval for the web scraper.</p>
+    <br>
+    <br>
+    Interval: 
+    <select>
+      <option value ="none">None</option>
+      <option value ="daily">Daily</option>
+      <option value ="weekly" selected>Weekly</option>
+      <option value ="monthly">Monthly</option>
+      <option value ="yearly">Yearly</option>
+    </select>
+    <br>
+    Store: 
+    <select>
+      <option value ="all">All</option>
+      <option value ="zehrs">Zehrs</option>
+      <option value ="walmart">Walmart</option>
+      <option value ="nofrills">Nofrills</option>
+      <option value ="metro">Metro</option>
+      <option value ="costco">Costco</option>
+    </select>
+    Disabled: <input type="checkbox">
+    <button title="Disable the web scrapper for selected store" class="info-button btn-sm">
+        <span href="#" data-toggle="tooltip" class="glyphicon glyphicon-question-sign" style="color: #77A538;"></span>
+    </button>
+    <br>
+    Date: <input type="date" placeholder="dd/mm/yy">
+    <br>
+    Time: <input type="time" placeholder="hh/mm">
+    <br>
+    <br>
+    <button onClick="location.href = 'settings.html'">Cancel</button>
+    <button onClick="location.href = 'settings.html'">Save</button>
+    </center>
+    <script>
+        $.get("menu_admin.html", function(data){
+            $("#menu-placeholder").replaceWith(data);
+        });
+    </script>
+  </body>
+</html>

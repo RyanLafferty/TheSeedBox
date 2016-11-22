@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <link rel="stylesheet" type="text/css" href="style2.css">
+      <script src="js/jquery-3.1.1.min.js"></script>
+      <script src="js/indexJS.js"></script>
+  </head>
+  <body>
+    <div id="menu-placeholder"></div>
+    <center>
+      <h1>Create User</h1>
+      <p>Enter the desired new User's credentials</p>
+    <br>
+    <br>
+    * Required Fields
+    <br>
+    <table id="form-table">
+      <tr id="form-tr">
+        <td id="form-td">Username:</td>
+        <td id="form-td"><input type="text" value="User1" placeholder="Username" required>*</td>
+      </tr>
+      <tr id="form-tr">
+        <td id="form-td">Password:</td>
+        <td id="form-td">
+            <input type="password" placeholder="Password" required>*
+            <button title="Minimum of 6 characters required" class="info-button btn-sm">
+                <span href="#" data-toggle="tooltip" class="glyphicon glyphicon-question-sign" style="color: #77A538;"></span>
+            </button>
+        </td>
+        
+      </tr>
+      <tr id="form-tr">
+        <td id="form-td">Confirm Password:</td>
+        <td id="form-td"><input type="password" placeholder="Confirm Password" required>*</td>
+      </tr>
+      <tr id="form-tr">
+        <td id="form-td">
+            <button title="User: Able to run the system and update database 
+Admin: Same abilities of user and can create and delete accounts" class="info-button btn-sm">
+                <span href="#" data-toggle="tooltip" class="glyphicon glyphicon-question-sign" style="color: #77A538;"></span>
+            </button>
+            User Type: 
+        </td>
+        <td id="form-td"></td>
+      </tr>
+      <tr id="form-tr">
+        <td id="form-td">
+            <div align="right">
+                <input type="radio" name="user_type" value="user" checked>
+            </div>
+        </td>
+        </td>
+        
+        <td id="form-td">User</td>
+      </tr>
+      <tr id="form-tr">
+        <td id="form-td">
+            <div align="right">
+                <input type="radio" name="user_type" value="admin">
+            </div>
+        </td>
+        </td>
+        
+        <td id="form-td">Admin</td>
+      </tr>
+    </table>
+ 
+    <br>
+    <br>
+    <button onClick="location.href = 'users.html'">Cancel</button>
+    <button onClick="location.href = 'users.html'">Save</button>
+    </center>
+    <script>
+        $.get("menu_admin.html", function(data){
+            $("#menu-placeholder").replaceWith(data);
+        });
+    </script>
+  </body>
+</html>

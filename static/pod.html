@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <link rel="stylesheet" type="text/css" href="style2.css">
+      <script src="js/jquery-3.1.1.min.js"></script>
+      <script src="js/indexJS.js"></script>
+  </head>
+  <body>
+    <div id="menu-placeholder"></div>
+    <center>
+    <h1>POD</h1>
+    <p>Here you can import POD supplied spreadsheet file and view the data.<br>Click on "Import" to select a file to import, or click "Export" to export the current data in the dable</p>
+    </center>
+    <div align="right">
+      <input type="submit" value="Import">
+      <input type="submit" value="Export">
+    </div>
+    Search: <input type="text" placeholder="Item">
+    <center>
+      <br>
+      <div class="scrollbar">
+        <table id="pod_table">
+          <thead>
+          <tr>
+            <th>Item</th>
+            <th>Location</th>
+            <th>Amount</th>
+            <th>Price</th>
+          </tr>
+          </thead>
+        </table>
+      </div>
+    </center>
+    <script>
+        var oldTable = document.getElementById('pod_table');
+        var tableBody = document.createElement('tbody');
+        var i;
+        
+        for (i = 0; i < 60; i++)
+        {
+
+            var newRow = document.createElement('tr');
+           
+            var num           
+            var fruits = ['Banana', 'Tomato', 'Potato', 'Anise', 'Carrot', 'Rutabaga', 'Apple', 'Turnip', 'Peppers', 'Celery', 'Basil', 'Thyme', 'Parsley', 'Asparagus', 'Dill', 'Beet']  
+            var locations = ['Guelph', 'Kitchener', 'Waterloo', 'Toronto', 'Milton', 'Mississauga', 'Brampton']
+
+            num = Math.floor(Math.random() * fruits.length);
+            var newCell = document.createElement('td');
+            var info = document.createTextNode(fruits[num]);
+            newCell.appendChild(info);
+            newRow.appendChild(newCell);
+            
+            num = Math.floor(Math.random() * locations.length);
+           
+            newCell = document.createElement('td');
+            info = document.createTextNode(locations[num]);
+            newCell.appendChild(info);
+            newRow.appendChild(newCell);
+            
+            num = Math.floor(Math.random() * (50-1) + 1)
+    
+            newCell = document.createElement('td');
+            info = document.createTextNode(num + 'kg');
+            newCell.appendChild(info);
+            newRow.appendChild(newCell);
+            
+            num = Math.random() * 5.00
+            num = num.toFixed(2)
+            newCell = document.createElement('td');
+            info = document.createTextNode('$' + num);
+            newCell.appendChild(info);
+            newRow.appendChild(newCell);
+            
+            tableBody.appendChild(newRow);
+        }
+        oldTable.appendChild(tableBody);
+    </script>
+    <div align="center">
+    Year: <input type="text" placeholder="Year">
+    <input type="submit" value="History">
+    </div>
+    <script>
+        $.get("menu_admin.html", function(data){
+            $("#menu-placeholder").replaceWith(data);
+        });
+    </script>
+  </body>
+</html>

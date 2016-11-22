@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <link rel="stylesheet" type="text/css" href="style2.css">
+      <script src="js/jquery-3.1.1.min.js"></script>
+      <script src="js/indexJS.js"></script>
+    <script>
+      function checkAll()
+      {
+        var newValue = document.getElementById('master_cb').checked;
+        var i;
+        
+        for (i = 0; i < 60; i++)
+        {
+          document.getElementById('user' + i).checked = newValue;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="menu-placeholder"></div>
+    <center>
+      <h1>Users</h1>
+      <p>Here you can manage all of the system's users. <br>Click "Create User" to create a new user. <br>Click on the check box beside any user in the list then click "Delete Selected Users" to delete them.</p>
+    
+    <br>
+    <br>
+    <button onClick="location.href='create_user.html'">Create User</button>
+    <button>Delete Selected Users</button>
+    </center>
+    <br>
+    <br>
+    <center>
+      <div class="scrollbar">
+        <table id="user_table">
+          <thead>
+          <tr>
+            <th><input type="checkbox" onChange="checkAll()" id="master_cb"></th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Last Logged In</th>
+          </tr>
+          </thead>
+        </table>
+      </div>
+    </center>
+    <script>
+      var oldTable = document.getElementById('user_table');
+      var tableBody = document.createElement('tbody');
+      var i;
+      
+      function convertMinutes(mins){
+      	var hours
+      	var mins
+      	var days
+      	var weeks
+      	var remainder
+
+      	if (mins < 60){
+      		return mins + ' minutes ago.'
+      	}
+      	else if (mins < 1440){//less than a day
+      		hours = mins/60
+      		mins = mins%60
+
+
+      		return Math.floor(hours) + ' hours ' + mins + ' minutes ago.'
+      	}
+      	else{//less than a week
+      		days = mins/1440
+      		remainder = mins%1440
+      		hours = remainder/60
+      		mins = remainder%60
+
+
+
+      		return Math.floor(days) + ' days ago.'
+      	}
+
+
+      }
+      for (i = 0; i < 20; i++)
+      {
+      	var accType = ['User', 'Admin']
+      	var accName = ['JimBob', 'JoeStevens', 'ConorMcgregor', 'EddieAlvarez', 'JonaldDrump', 
+      					'KenMasters', 'JasperSmith', 'EricLong', 'NathanWilliams', 'GeorgesPierre', 
+      					'JohnCena', 'RobRobertson', 'ThomasRobinson', 'MaxCrompton', 'JoshDonaldson', 
+      					'AjeeshS', 'BenMuus', 'AndyBurke', 'ConnerKeating', 'SlawomirGawron']
+      	var num = Math.floor(Math.random() * 2)
+
+        var newRow = document.createElement('tr');
+        
+        var newCell = document.createElement('td');
+        newCell.width = '10px';
+        var checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = 'user' + i;
+        newCell.appendChild(checkbox);
+        newRow.appendChild(newCell);
+        
+        newCell = document.createElement('td');
+        var info = document.createTextNode(accName[i]);
+        newCell.appendChild(info);
+        newRow.appendChild(newCell);
+        
+        newCell = document.createElement('td');
+        info = document.createTextNode(accType[num]);
+        newCell.appendChild(info);
+        newRow.appendChild(newCell);
+        
+        var mins = Math.floor(Math.random() * 5000)
+        newCell = document.createElement('td');
+        info = document.createTextNode(convertMinutes(mins));
+        newCell.appendChild(info);
+        newRow.appendChild(newCell);
+        
+        tableBody.appendChild(newRow);
+      }
+      oldTable.appendChild(tableBody);
+    </script>
+    <br>
+    <center>Search Users: <input type="text"></center>
+    <script>
+        $.get("menu_admin.html", function(data){
+            $("#menu-placeholder").replaceWith(data);
+        });
+    </script>
+  </body>
+</html>

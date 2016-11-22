@@ -1,60 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- generic meta -->
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- favicon -->
-    <!-- link rel="apple-touch-icon" href="" -->
-    <!-- link rel="icon" href="" -->
-    <!-- unique meta -->
-    <meta name="description" content="wow this page sure is dank">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-    <title>The Seed Wireframe</title>
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/fontawesome.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
-</head>
-<body>
-    <!-- Navbar starts -->
-    <nav class="navbar navbar-dark navbar-fixed-top bg-inverse">
-      <a class="navbar-brand" href="#">The Seed Price Management System</a>
-    </nav>
-  <div class="container">
-    <div class="login">
-        <img src="./res/images/TheSeed-tagline_long-padding.png" alt="HTML5 Icon" style="width:256px;height:128px;">
-        <form action="home.html" method="post" class="lead">
-            <input type="hidden" value="login" name="type" id="type">
-            <div class="form-group">
-                <label class="required-asterisk" for="username">Email Address</label>
-                <input type="text" autofocus="" required="" minlength="1" maxlength="255" name="username" id="username" class="form-control">
-            </div>
-            <div class="form-group">
-                <label class="required-asterisk" for="password">Password</label>
-                <input type="password" required="" maxlength="255" minlength="1" id="password" name="password" class="form-control">
-            </div>
-            <div class="form-group">
-                <small class="text-muted"><a href="" class="link-green">Forgot your password?</a></small>
-            </div>
-            <button type="submit" class="btn btn-success submit-green" id="login-register-button" type="button">Sign In</button>
-        </form>
-    </div>
-  </div>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- At the bottom for speed, dont argue with THE_JAKE -->
+<html>
+  <head>
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery.min.js"></script>
-    <script src="js/tether.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script async src="js/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script async src="js/ie10-viewport-bug-workaround.js"></script>
-    <script async src="js/minimal.js"></script>
-</body>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style2.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/indexJS.js"></script>
+    <title>The Seed</title>
+  </head>
+  <body>
+    <center>
+      <img src="seed_logo.png">
+      <br>
+      <br>
+      <table id="form-table">
+        <tr id="form-tr">
+          <td id="form-td"><div align="right"><label>Username:</label></div></td>
+          <td id="form-td"><input type="text" id="username" placeholder="Username" required>
+            <button title="Please enter your Seed login ID" class="info-button btn-sm">
+              <span href="#" data-toggle="tooltip" class="glyphicon glyphicon-question-sign" style="color: #77A538;"></span>
+            </button></td>
+        </tr>
+        <tr id="form-tr">
+          <td id="form-td"><label>Current Password:</label></td>
+          <td id="form-td"><input type="password" id="password" placeholder="Password" required></td>
+        </tr>
+      </table>
+      <br>
+      <button onClick="location.href = 'home.html';"> &nbsp; &nbsp; &nbsp; &nbsp; Login &nbsp; &nbsp; &nbsp; &nbsp; </button>
+      <br>
+      <a href="user_reset.html">Forgot Password</a>
+    </center>
+  </body>
 </html>

@@ -12,19 +12,11 @@
   <body>
     <div id="menu-placeholder"></div>
     <center>
-      <h1>Home</h1>
-      <p>Welcome to The Seed's Analytic website. Click on POD to import supplier data. Click on GFB to manipulate Garden Fresh Box Data, Once you are ready, click "execute" at the bottom.</p>
-      <hr>
-      <br>
-      <p2> POD csv file last updated: Wednesday, October 27th, 2016<br>
-      Web Scraper last ran: Tuesday, October 26th, 2016</p2>
-      <br>
-      <br>
-      <hr>
-      <br>
-      <br>
-      <br>
-      <button onClick="location.href='pricing.html'">Execute</button>
+    <h1>Settings</h1>
+    <br>
+    <form action="account.html"><input type="submit" value="Account Settings"></form>
+    <br>
+    <form action="system.html"><input type="submit" value="System Settings"></form>
     </center>
     <script>
         $.get("menu_admin.html", function(data){

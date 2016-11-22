@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <link rel="stylesheet" type="text/css" href="style2.css">
+      <script src="js/jquery-3.1.1.min.js"></script>
+      <script src="js/indexJS.js"></script>
+  </head>
+  <body>
+    <div id="menu-placeholder"></div>
+    <center>
+      <h1>Suppliers vs Competitor Pricing</h1>
+      <p>Compare the prices of supplier to competitors.</p>
+    </center>
+    <div align="right">
+      <button>Export</button>
+      <button>Graphs</button>
+    </div>
+    <center>
+      <br>
+      <div class="scrollbar">
+        <table id="pricing_table">
+          <thead>
+          <tr>
+            <th>Item</th>
+            <th>Suppliers <br> Quantity</th>
+            <th>Suppliers <br> Unit Cost</th>
+            <th>Suppliers <br> Total</th>
+            <th>Competitors <br> Quantity</th>
+            <th>Competitors <br> Unit Cost</th>
+            <th>Competitors <br> Total</th>
+            <th>Savings</th>
+          </tr>
+          </thead>
+        </table>
+        </div>
+      <script>
+        var oldTable = document.getElementById('pricing_table');
+        var tableBody = document.createElement('tbody');
+        var i;
+        var totalSupCost = 0;
+        var totalComCost = 0;
+        
+        for (i = 0; i < 60; i++)
+        {
+          var num;
+          var size;
+          var fruits = ['Banana', 'Tomato', 'Potato', 'Anise', 'Carrot', 'Rutabaga', 'Apple', 'Turnip', 'Peppers', 'Celery', 'Basil', 'Thyme', 'Parsley', 'Asparagus', 'Dill', 'Beet'];
+          var newRow = document.createElement('tr');
+          
+          num = Math.floor(Math.random() * fruits.length);
+          size = Math.floor(Math.random() * (20-1) + 1);
+          var newCell = document.createElement('td');
+          var info = document.createTextNode(fruits[num] + ' (' + size + ' kg)');
+          newCell.appendChild(info);
+          newRow.appendChild(newCell);
+          
+          var quantity = Math.floor(Math.random() * 49) + 1;
+          newCell = document.createElement('td');
+          info = document.createTextNode(quantity);
+          newCell.appendChild(info);
+          newRow.appendChild(newCell);
+          
+          var supPrice = Math.random() * (5.00 - 0.01) + 0.01;
+          totalSupCost += quantity * supPrice;
+          newCell = document.createElement('td');
+          info = document.createTextNode('$' + supPrice.toFixed(2));
+          newCell.appendChild(info);
+          newRow.appendChild(newCell);
+          
+          newCell = document.createElement('td');
+          info = document.createTextNode('$' + (quantity * supPrice).toFixed(2));
+          newCell.appendChild(info);
+          newRow.appendChild(newCell);
+          
+          newCell = document.createElement('td');
+          info = document.createTextNode(quantity);
+          newCell.appendChild(info);
+          newRow.appendChild(newCell);
+          
+          var comPrice = Math.random() * (5.00 - supPrice) + supPrice;
+          totalComCost += quantity * comPrice;
+          newCell = document.createElement('td');
+          info = document.createTextNode('$' + comPrice.toFixed(2));
+          newCell.appendChild(info);
+          newRow.appendChild(newCell);
+          
+          newCell = document.createElement('td');
+          info = document.createTextNode('$' + (quantity * comPrice).toFixed(2));
+          newCell.appendChild(info);
+          newRow.appendChild(newCell);
+          
+          var savings = Math.floor((comPrice / supPrice - 1) * 100);
+          newCell = document.createElement('td');
+          info = document.createTextNode(savings + '%');
+          newCell.appendChild(info);
+          newRow.appendChild(newCell);
+          
+          tableBody.appendChild(newRow);
+        }
+        oldTable.appendChild(tableBody);
+      </script>
+      <br>
+      Total Suppliers Cost: <input type="text" id="tSupCost" readonly>
+      Total Competitors Cost: <input type="text" id="tComCost" readonly>
+      Total Savings: <input type="text" id="tSavings" readonly>
+      <script>
+        document.getElementById('tSupCost').value = '$' + totalSupCost.toFixed(2);
+        document.getElementById('tComCost').value = '$' + totalComCost.toFixed(2);
+        document.getElementById('tSavings').value = Math.floor((totalComCost / totalSupCost - 1) * 100) + '%';
+      </script>
+    </center>
+    <script>
+        $.get("menu_admin.html", function(data){
+            $("#menu-placeholder").replaceWith(data);
+        });
+    </script>
+  </body>
+</html>
