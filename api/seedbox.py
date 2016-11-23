@@ -100,15 +100,14 @@ def upload_file():
             flash('No file part')
             return "<h1 style='color:blue'>ERROR: NO FILE</h1>"
         file = request.files['file']
+        return "<h1 style='color:blue'>SUCCESS</h1>"
+
         # if user does not select file
         if file.filename == '':
             flash('No selected file')
             return "<h1 style='color:blue'>ERROR NO SELECTED FILE</h1>"
         if file and allowed_file(file.filename):
-            return "<h1 style='color:blue'>SUCCESS</h1>"
-
             filename = secure_filename(file.filename)
-            return "<h1 style='color:blue'>SUCCESS</h1>"
             file.save(os.path.join(application.config['UPLOAD_FOLDER'], filename))
             return "<h1 style='color:blue'>SUCCESS</h1>"
 
