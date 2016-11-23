@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 #from flask_restful import reqparse, abort, Api, Resource
 
 #Set up upload folder
-UPLOAD_FOLDER = '/uploads'
+UPLOAD_FOLDER = '~/uploads'
 ALLOWED_EXTENSIONS = set(['csv'])
 
 # Set up application
@@ -114,8 +114,8 @@ def upload_file():
             flash('No selected file')
             return "<h1 style='color:blue'>ERROR NO SELECTED FILE</h1>"
         if file and allowed_file(file.filename):
-            file = request.files['file']
-            return "<h1 style='color:blue'>"+ file.filename + "</h1>"
+            #file = request.files['file']
+            #return "<h1 style='color:blue'>"+ file.filename + "</h1>"
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return "<h1 style='color:blue'>SUCCESS</h1>"
