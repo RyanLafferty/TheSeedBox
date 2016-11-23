@@ -20,13 +20,21 @@ uwsgi service configuration: `sudo vim /etc/init/seedbox.conf`
 
 ###Operator List
 ==, eq, equals, equals_to
+
 !=, neq, does_not_equal, not_equal_to
+
 \>, gt, <, lt
+
 \>=, ge, gte, geq, <=, le, lte, leq
+
 in, not_in
+
 is_null, is_not_null
+
 like
+
 has
+
 any
 
 
