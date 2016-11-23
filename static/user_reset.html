@@ -2,25 +2,28 @@
 <html>
   <head>
       <link rel="stylesheet" href="css/bootstrap.min.css">
-      <script src="js/jquery.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
       <link rel="stylesheet" type="text/css" href="css/style.css">
       <title>Forgot Password</title>
   </head>
   <body>
-    <center>
-      <img src="seed_logo.png">
-      <br>
-      * Required Field
-      <br>
-      <br>
-      <label>Username: </label><input type="text" placeholder="Username" required>* 
-        <button title="Please enter your Seed login ID" class="info-button btn-sm">
-            <span href="#" data-toggle="tooltip" class="glyphicon glyphicon-question-sign" style="color: #77A538;"></span>
-        </button>
-      <br>
-      <button onClick="location.href = 'index.html'">Cancel</button>
-      <button onClick="location.href = 'security_questions.html'">Submit</button>
+  <div class="container">
+      <div class="login">
+          <img src="images/TheSeed-tagline_long-padding.png" alt="HTML5 Icon" style="width:256px;height:128px;">
+          <form action="security_questions.html" method="post" class="lead">
+              <input type="hidden" value="login" name="type" id="type">
+              <div class="form-group">
+                  <label class="required-asterisk" for="username">Username</label>
+                  <input type="text" autofocus="" required="" minlength="1" maxlength="255" name="username" id="username" class="form-control">
+              </div>
+              <button onClick="location.href = 'index.html'" class="btn btn-success"  id="login-register-button" type="button">Cancel </button>
+              <button type="submit"  class="btn btn-success submit-green" id="login-register-button" type="button">Continue</button>
+          </form>
+
+      </div>
+    </div>
+  <!-- Bootstrap js -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
     </center>
   </body>
 </html>
