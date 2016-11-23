@@ -97,6 +97,7 @@ def hello():
 
 @application.route("/api/upload/<filename>")
 def uploaded_file(filename):
+    return "<h1 style='color:blue'>SEEDBOX API</h1>"
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
 @application.before_request
