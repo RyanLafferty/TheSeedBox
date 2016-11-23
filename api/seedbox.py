@@ -65,11 +65,6 @@ class GardenFreshBoxes(db.Model):
 class PodOrderForms(db.Model):
     __tablename__ = 'PodOrderForms'
     id = db.Column('id', db.Integer, primary_key=True)
-"""
-class abc():
-    def Test():
-        return jsonify(message="Address book created successfully")
-"""
 
 # Set up corresponding RESTful API
 # ==========================================================================================
@@ -86,7 +81,6 @@ manager.create_api(Retailers, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(Products, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(PodOrderForms, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
-#manager.create_api(abc, methods=['GET'])
 
 # Misc. routes
 # ==========================================================================================
