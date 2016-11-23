@@ -12,40 +12,43 @@
   <body>
     <div id="menu-placeholder"></div>
     <center>
-    <h1>System Settings</h1>
-    <p>Here you can change the system settings. <br>Click on the "Interval" drop down menu to select an interval for the web scraper.</p>
-    <br>
-    <br>
-    Interval: 
-    <select>
-      <option value ="none">None</option>
-      <option value ="daily">Daily</option>
-      <option value ="weekly" selected>Weekly</option>
-      <option value ="monthly">Monthly</option>
-      <option value ="yearly">Yearly</option>
-    </select>
-    <br>
-    Store: 
-    <select>
-      <option value ="all">All</option>
-      <option value ="zehrs">Zehrs</option>
-      <option value ="walmart">Walmart</option>
-      <option value ="nofrills">Nofrills</option>
-      <option value ="metro">Metro</option>
-      <option value ="costco">Costco</option>
-    </select>
-    Disabled: <input type="checkbox">
-    <button title="Disable the web scrapper for selected store" class="info-button btn-sm">
-        <span href="#" data-toggle="tooltip" class="glyphicon glyphicon-question-sign" style="color: #77A538;"></span>
-    </button>
-    <br>
-    Date: <input type="date" placeholder="dd/mm/yy">
-    <br>
-    Time: <input type="time" placeholder="hh/mm">
-    <br>
-    <br>
-    <button onClick="location.href = 'settings.html'">Cancel</button>
-    <button onClick="location.href = 'settings.html'">Save</button>
+      <h1>System Settings</h1>
+      <p>Here you can change the system settings or you can manually execute the web scraper. </p>
+      <p>Click on the "Interval" drop down menu to select an interval for the web scraper.</p>
+      <br>
+      <br>
+      Interval:
+      <select>
+        <option value ="none">None</option>
+        <option value ="daily">Daily</option>
+        <option value ="weekly" selected>Weekly</option>
+        <option value ="monthly">Monthly</option>
+        <option value ="yearly">Yearly</option>
+      </select>
+      <br>
+      Store:
+      <select>
+        <option value ="all">All</option>
+        <option value ="zehrs">Zehrs</option>
+        <option value ="walmart">Walmart</option>
+        <option value ="nofrills">Nofrills</option>
+        <option value ="metro">Metro</option>
+        <option value ="costco">Costco</option>
+      </select>
+      Disabled: <input type="checkbox">
+      <button title="Disable the web scrapper for selected store" class="info-button btn-sm">
+          <span href="#" data-toggle="tooltip" class="glyphicon glyphicon-question-sign" style="color: #77A538;"></span>
+      </button>
+      <br>
+      Date: <input type="date" placeholder="dd/mm/yy">
+      <br>
+      Time: <input type="time" placeholder="hh/mm" style="width: 5.25cm;">
+      <br>
+      <br>
+      <button onClick="location.href = 'settings.html'" style="margin-left:37px;width: 2.5cm;">Cancel</button>
+      <button onClick="location.href = 'settings.html'" style="width: 2.7cm;">Save</button>
+        <br>
+        <button onClick="location.href='pricing.html'" style="margin-left:37px;width: 5.25cm;">Execute</button>
     </center>
     <script>
         $.get("menu_admin.html", function(data){
