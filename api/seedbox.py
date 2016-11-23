@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 #from flask_restful import reqparse, abort, Api, Resource
 
 #Set up upload folder
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = '/uploads'
 ALLOWED_EXTENSIONS = set(['csv'])
 
 # Set up application
