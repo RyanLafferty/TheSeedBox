@@ -18,7 +18,7 @@
     <table id="form-table">
       <tr id="form-tr">
         <td id="form-td">Username:</td>
-        <td id="form-td"><input type="text" value="User1" placeholder="Username" required>*</td>
+        <td id="form-td"><input type="text" value="Username" placeholder="Username" required readonly>*</td>
       </tr>
       <tr id="form-tr">
         <td id="form-td">Current Password:</td>
@@ -49,8 +49,8 @@
     Question 2: <input type="text" placeholder="Question" required>*   Answer: <input type="text" placeholder="Answer" required>*
     <br>
     <br>
-    <button onClick="location.href = 'settings.html'">Cancel</button>
-    <button onClick="location.href = 'settings.html'">Save</button>
+    <button onClick="location.href = 'home.html'" class="btn btn-success" >Cancel</button>
+    <button onClick="location.href = 'home.html'" class="btn btn-success">Save</button>
     </center>
     <script>
         $.get("menu_admin.html", function(data){
