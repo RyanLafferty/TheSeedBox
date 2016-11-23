@@ -117,8 +117,6 @@ def upload_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return "<h1 style='color:blue'>SUCCESS</h1>"
-            return redirect(url_for('uploaded_file',
-                                    filename=filename))
 
 @application.route("/api/download")
 def download_file():
