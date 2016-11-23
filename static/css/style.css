@@ -271,3 +271,69 @@ td
 .menu-black-bg-color {
     background-color: #000000;
 }
+
+.info-button {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    border: 0;
+    background: transparent;
+}
+
+.glyphicon {
+    font-size: 20px;
+}
+
+.seed-green {
+	color: #77A538;
+}
+
+.font-size {
+	font-size: 12px;
+}
+
+.navbar-custom {
+    background-color: #77A538;
+    border-color: #000000;
+	/* font-family: 'helvet', 'Kaushan Script', 'Freckle Face', 'Knewave', cursive; */
+	text-align:center;
+}
+
+.navbar-nav {
+    display:inline-block;
+    float:none;
+}
+
+.margin-li {
+	margin-right: 5px;
+	margin-left: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.margin-header-li {
+	margin-right: 5px;
+	margin-left: 10px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+	color: #709636;
+	background: #709636;
+}
+
+.navbar-default .navbar-toggle:focus {
+    background-color: #709636;
+}
+
+.navbar-default .navbar-toggle:hover {
+    background-color: #709636;
+}
+
+.navbar-default .navbar-toggle:hover .icon-bar {
+    background-color: #000000;
+}
