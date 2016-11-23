@@ -100,7 +100,7 @@ def upload_file():
     return "<h1 style='color:blue'>UPLOAD API</h1>"
 
 @application.route("/api/download")
-def upload_file():
+def download_file():
     return "<h1 style='color:blue'>Download API</h1>"
 
 @application.before_request
