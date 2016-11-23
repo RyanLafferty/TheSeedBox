@@ -4,12 +4,17 @@ from logging import FileHandler
 from flask import Flask, request, flash, url_for, redirect, render_template, jsonify, abort, request
 import flask_sqlalchemy
 import flask_restless
+from werkzeug.utils import secure_filename
 #from flask_restful import reqparse, abort, Api, Resource
 
+#Set up upload folder
+UPLOAD_FOLDER = '/uploads'
+ALLOWED_EXTENSIONS = set(['csv'])
 
 # Set up application
 # ==========================================================================================
 application = Flask(__name__)
+appplication.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 application.config['SQLALCHEMY_TRACK_NOTIFICATIONS'] = True
 application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/TheSeedSA'
@@ -17,7 +22,6 @@ application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/TheSeed
 
 db = flask_sqlalchemy.SQLAlchemy(application)
 #api = Api(application)
-
 
 # Set up models
 # ==========================================================================================
