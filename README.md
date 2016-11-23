@@ -18,7 +18,7 @@ uwsgi service configuration: `sudo vim /etc/init/seedbox.conf`
 
 ## Database
 
-###Operator List
+###OPERATOR List
 ==, eq, equals, equals_to
 
 !=, neq, does_not_equal, not_equal_to
