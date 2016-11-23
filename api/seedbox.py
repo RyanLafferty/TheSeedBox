@@ -96,6 +96,8 @@ def allowed_file(filename):
 def upload_file():
     if request.method == 'POST':
         # check if the post request has the file part
+        return "<h1 style='color:blue'>SUCCESS</h1>"
+
         if 'file' not in request.files:
             flash('No file part')
             return "<h1 style='color:blue'>ERROR: NO FILE</h1>"
