@@ -4,7 +4,7 @@ from logging import FileHandler
 from flask import Flask, request, flash, url_for, redirect, render_template, jsonify, abort, request
 import flask_sqlalchemy
 import flask_restless
-from werkzeug.utils import secure_filename
+#from werkzeug.utils import secure_filename
 #from flask_restful import reqparse, abort, Api, Resource
 
 #Set up upload folder
