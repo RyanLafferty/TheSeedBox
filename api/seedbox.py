@@ -86,9 +86,9 @@ manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
 
 # Misc. routes
 # ==========================================================================================
-#@application.route("/api/")
-#def hello():
-#    return "<h1 style='color:blue'>SEEDBOX API</h1>"
+@application.route("/api/")
+def hello():
+    return "<h1 style='color:blue'>SEEDBOX API</h1>"
 
 
 @application.before_request
