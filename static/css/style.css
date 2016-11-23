@@ -353,3 +353,8 @@ td
 .login-btn {
     margin-top: 10px;
 }
+
+.required-asterisk:after {
+  content:" *";
+  color:red;
+}
