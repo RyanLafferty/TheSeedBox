@@ -19,16 +19,9 @@
     Search: <input type="text" placeholder="Item">
     <center>
       <div class="scrollbar">
-        <table id="gfb_table">
-          <thead>
-          <tr>
-            <th>Item</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Total</th>
-            <th>Savings</th>
-          </tr>
-          </thead>
+        <table>
+          <thead id="table-header"></thead>
+          <tbody id="table-body"></tbody>
         </table>
         </div>
       </center>
@@ -93,9 +86,74 @@
     Savings: <input type="text" value="50%" readonly>
     </center>
     <script>
+    function makeDropDown() {
+        var newCell = document.createElement('td');
+        newCell.width = '25px';
+        var dropDown = document.createElement('select');
+        for (j = 0; j < 21; j++)
+        {
+          var opt = document.createElement('option');
+          opt.text = j;
+          opt.value = j;
+          dropDown.appendChild(opt);
+        }
+        newCell.appendChild(dropDown);
+        return newCell;
+    }
+    function fillTable(data) {
+        var i;
+        var j;
+        var tableData = data.tableName;
+        var dataElement = tableData.columnNames;
+        
+        var tableElement = document.getElementById("table-header");
+        var newRow = document.createElement('tr');
+        for (var i = 0; i < dataElement.length; i++) {
+            var newCell = document.createElement('th');
+            var info = document.createTextNode(dataElement[i]);
+            newCell.appendChild(info);
+            newRow.appendChild(newCell);
+            if (i == 0) {
+                var newCell = document.createElement('th');
+                var info = document.createTextNode("Quantity");
+                newCell.appendChild(info);
+                newRow.appendChild(newCell);
+            }
+        }
+        tableElement.appendChild(newRow);
+        
+        dataElement = tableData.rows;
+        tableElement = document.getElementById('table-body');
+        for (var i = 0; i < dataElement.length; i++) {
+            newRow = document.createElement('tr');
+            for (var j = 0; j < dataElement[i].length; j++) {
+                var newCell = document.createElement('td');
+                var info = document.createTextNode(dataElement[i][j]);
+                newCell.appendChild(info);
+                newRow.appendChild(newCell);
+                if (j == 0) {
+                    newRow.appendChild(makeDropDown());
+                    continue;
+                }
+            }
+            tableElement.appendChild(newRow);
+        }
+    }
+    </script>
+    <script>
         $.get("menu_admin.html", function(data){
             $("#menu-placeholder").replaceWith(data);
         });
+        
+        var data = {"tableName" : {"columnNames" : ["col1", "col2", "col3"],
+        "rows" : [
+     ["col1_val1","col2_val1","col3_val1"],
+     ["col1_val2","col2_val2","col3_val2"],
+     ["col1_val3","col2_val3","col3_val3"],
+     ["col1_val4","col2_val4","col3_val4"]
+    ]}};
+        
+        fillTable(data);
     </script>
   </body>
 </html>
