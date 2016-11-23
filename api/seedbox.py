@@ -109,7 +109,7 @@ def upload_file():
             file.save(os.path.join(application.config['UPLOAD_FOLDER'], filename))
             return "<h1 style='color:blue'>SUCCESS</h1>"
 
-@application.route('/api/download/<filename>', methods=['GET', 'POST'])
+@application.route('/api/download/<filename>', methods=['GET'])
 def download(filename):
     return send_from_directory(directory=application.config['UPLOAD_FOLDER'], filename=filename)
 
