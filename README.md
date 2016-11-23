@@ -79,7 +79,7 @@ TYPE: DELETE
 Response: HTTP/1.1 204 No Content
 
 
-###Update -> NOT implemented TIDI
+###Update -> NOT implemented TODO
 URL: https://seedbox.tk/api/TABLENAME/ID
 
 Type: PUT
