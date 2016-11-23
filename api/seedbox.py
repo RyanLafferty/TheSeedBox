@@ -115,7 +115,6 @@ def upload_file():
             return "<h1 style='color:blue'>ERROR NO SELECTED FILE</h1>"
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            return "<h1 style='color:blue'>"+application.config['UPLOAD_FOLDER']+"</h1>"
             #cannot save file for some reason application.config['UPLOAD_FOLDER']
             file.save(os.path.join(application.config['UPLOAD_FOLDER'], filename))
             return "<h1 style='color:blue'>SUCCESS</h1>"
