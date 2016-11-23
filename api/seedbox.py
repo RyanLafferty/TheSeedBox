@@ -1,7 +1,7 @@
 import os, logging
 from logging import FileHandler
 
-from flask import Flask, request, flash, url_for, redirect, render_template, jsonify, abort, request
+from flask import Flask, request, flash, url_for, redirect, render_template, jsonify, abort, request, send_from_directory
 import flask_sqlalchemy
 import flask_restless
 from werkzeug.utils import secure_filename
@@ -95,6 +95,10 @@ def hello():
     return "<h1 style='color:blue'>SEEDBOX API</h1>"
 
 
+@application.route("/api/upload/<filename>")
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'],
+                               filename)
 @application.before_request
 def basic_authorize():
     print "hello"
