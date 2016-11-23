@@ -94,12 +94,10 @@ manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
 def hello():
     return "<h1 style='color:blue'>SEEDBOX API</h1>"
 
-
 def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-#for uploading a file  $ curl -X POST -d @myfilename URL
 @application.route("/api/upload", methods=['POST'])
 def upload_file():
     if request.method == 'POST':
@@ -115,7 +113,6 @@ def upload_file():
             return "<h1 style='color:blue'>ERROR NO SELECTED FILE</h1>"
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            #TODO cannot save file for some reason application.config['UPLOAD_FOLDER']
             file.save(os.path.join(application.config['UPLOAD_FOLDER'], filename))
             return "<h1 style='color:blue'>SUCCESS</h1>"
 
