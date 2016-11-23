@@ -44,49 +44,29 @@ any
 
 ###Get Entire Table
 URL: https://seedbox.tk/api/TABLENAME
+
 TYPE: GET
+
 Parameters:
+
 Return: JSON
-Example:
 
+Example: See Example 1
 
-{
-  "num_results": 1,
-  "objects": [
-    {
-      "email": "test@seedbox.tk",
-      "fname": "Test",
-      "id": 1,
-      "lname": "User",
-      "password": "pass123"
-    }
-  ],
-  "page": 1,
-  "total_pages": 1
-}
 
 
 ###Select
 URL: https://seedbox.tk/api/TABLENAME
+
 TYPE: GET
+
 Parameters: JSON
+
 {'q': '{"filters": [{"name": "COLUMN_NAME", "val": "COLUMN_VALUE", "op": "OPERATOR"}]}'}
+
 Return: JSON
-Example:
-{
-  "num_results": 1,
-  "objects": [
-    {
-      "email": "test@seedbox.tk",
-      "fname": "Test",
-      "id": 1,
-      "lname": "User",
-      "password": "pass123"
-    }
-  ],
-  "page": 1,
-  "total_pages": 1
-}
+
+Example: See Example 1
 
 
 
@@ -106,20 +86,7 @@ Parameters: JSON
 Return: JSON
 Example:
 HTTP/1.1 200 OK
-{
-  "num_results": 1,
-  "objects": [
-    {
-      "email": "test@seedbox.tk",
-      "fname": "Test",
-      "id": 1,
-      "lname": "User",
-      "password": "pass123"
-    }
-  ],
-  "page": 1,
-  "total_pages": 1
-}
+See Example 1
 
 
 ###Insert
@@ -130,6 +97,9 @@ Parameters: JSON
 Return: JSON
 Example:
 HTTP/1.1 201 Created
+See Example 1
+
+###Example 1:
 {
   "num_results": 1,
   "objects": [
@@ -144,8 +114,6 @@ HTTP/1.1 201 Created
   "page": 1,
   "total_pages": 1
 }
-
-
 
 
 ## Routes
