@@ -95,11 +95,14 @@ def hello():
     return "<h1 style='color:blue'>SEEDBOX API</h1>"
 
 
-@application.route("/api/upload/<filename>")
-def uploaded_file(filename):
-    #return "<h1 style='color:blue'>SEEDBOX API</h1>"
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
+@application.route("/api/upload")
+def upload_file():
+    return "<h1 style='color:blue'>UPLOAD API</h1>"
+
+@application.route("/api/download")
+def upload_file():
+    return "<h1 style='color:blue'>Download API</h1>"
+
 @application.before_request
 def basic_authorize():
     print "hello"
