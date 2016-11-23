@@ -25,59 +25,6 @@
         </table>
         </div>
       </center>
-      <script>
-        var oldTable = document.getElementById('gfb_table');
-        var tableBody = document.createElement('tbody');
-        var i;
-        
-        for (i = 0; i < 60; i++)
-        {
-          var num;
-          var size;
-          var fruits = ['Banana', 'Tomato', 'Potato', 'Anise', 'Carrot', 'Rutabaga', 'Apple', 'Turnip', 'Peppers', 'Celery', 'Basil', 'Thyme', 'Parsley', 'Asparagus', 'Dill', 'Beet']	
-          var newRow = document.createElement('tr');
-          
-          num = Math.floor(Math.random() * fruits.length);
-          size = Math.floor(Math.random() * (20-1) + 1)
-          var newCell = document.createElement('td');
-          var info = document.createTextNode(fruits[num] + ' (' + size + ' kg)');
-          newCell.appendChild(info);
-          newRow.appendChild(newCell);
-          
-          newCell = document.createElement('td');
-          newCell.width = '25px';
-          var dropDown = document.createElement('select');
-          for (j = 0; j < 21; j++)
-          {
-            var opt = document.createElement('option');
-            opt.text = j;
-            opt.value = j;
-            dropDown.appendChild(opt);
-          }
-          newCell.appendChild(dropDown);
-          newRow.appendChild(newCell);
-          
-          var price = Math.random() * (5.00 - 0.01) + 0.01
-          price = price.toFixed(2)
-          newCell = document.createElement('td');
-          info = document.createTextNode('$' + price);
-          newCell.appendChild(info);
-          newRow.appendChild(newCell);
-          
-          newCell = document.createElement('td');
-          info = document.createTextNode('$0.00');
-          newCell.appendChild(info);
-          newRow.appendChild(newCell);
-          
-          newCell = document.createElement('td');
-          info = document.createTextNode('50%');
-          newCell.appendChild(info);
-          newRow.appendChild(newCell);
-          
-          tableBody.appendChild(newRow);
-        }
-        oldTable.appendChild(tableBody);
-      </script>
     </center>
     <br>
     <br>
