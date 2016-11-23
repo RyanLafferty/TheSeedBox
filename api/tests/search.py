@@ -6,6 +6,7 @@ headers = {'Content-Type': 'application/json'}
 
 filters = [dict(name='fname', op='like', val='Test')]
 params = dict(q=json.dumps(dict(filters=filters)))
+print params
 
 response = requests.get(url, params=params, headers=headers)
 assert response.status_code == 200
