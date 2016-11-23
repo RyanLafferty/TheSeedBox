@@ -268,6 +268,10 @@ td
     color: #000000;
 }
 
+.menu-text-properties:hover {
+    color: #FFFFFF;
+}
+
 .menu-black-bg-color {
     background-color: #000000;
 }
@@ -285,6 +289,10 @@ td
     font-size: 20px;
 }
 
+.glyphicon:hover {
+    color: #FFFFFF;
+}
+
 .seed-green {
 	color: #77A538;
 }
@@ -295,7 +303,8 @@ td
 
 .navbar-custom {
     background-color: #5cb85c;
-    border-color: #000000;
+    border-color: #FFFFFF;
+    border-bottom: 3px solid;
 	/* font-family: 'helvet', 'Kaushan Script', 'Freckle Face', 'Knewave', cursive; */
 	text-align:center;
 }
@@ -331,11 +340,11 @@ td
 }
 
 .navbar-default .navbar-toggle:hover {
-    background-color: #709636;
+    font-weight: bold;
 }
 
 .navbar-default .navbar-toggle:hover .icon-bar {
-    background-color: #000000;
+    font-weight: bold;
 }
 
 .login {
