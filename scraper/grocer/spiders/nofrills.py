@@ -1,9 +1,12 @@
 import scrapy, json
+from grocer.items import Product
 
 class NoFrillsSpider(scrapy.Spider):
-    name = 'No Frills'
+    name = 'NoFrills'
 
     baseUrl = 'https://local.flyerservices.com/LCL/NOFR/en/'
+    categoryBlacklist = {'Home & '}
+    extractProperties = ['ProductTitle', 'Price', 'CategoryName']
 
     def start_requests(self):
         yield scrapy.Request(url=(NoFrillsSpider.baseUrl + 'Landing/GetClosestStoresByProvinceCity?countryCode=CA&province=ON&city=Guelph'), callback=self.get_cache_key)
@@ -35,4 +38,9 @@ class NoFrillsSpider(scrapy.Spider):
             yield request
 
     def collect_products(self, response):
-        print response.body_as_unicode()
+        products = json.loads(response.body_as_unicode())
+
+        for productObject in products['Products']:
+            if productObject['CategoryName'] not in NoFrillsSpider.categoryBlacklist:
+                product = Product(name=productObject['ProductTitle'], price=productObject['Price'])
+                yield product
