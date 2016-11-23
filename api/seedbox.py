@@ -114,11 +114,9 @@ def upload_file():
             flash('No selected file')
             return "<h1 style='color:blue'>ERROR NO SELECTED FILE</h1>"
         if file and allowed_file(file.filename):
-            #file = request.files['file']
-            #return "<h1 style='color:blue'>"+ file.filename + "</h1>"
             filename = secure_filename(file.filename)
-            return "<h1 style='color:blue'>SUCCESS</h1>"
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            #cannot save file for some reason
+            file.save(os.path.join(application.config['UPLOAD_FOLDER'], filename))
             return "<h1 style='color:blue'>SUCCESS</h1>"
 
 @application.route("/api/download")
