@@ -65,11 +65,6 @@ class GardenFreshBoxes(db.Model):
 class PodOrderForms(db.Model):
     __tablename__ = 'PodOrderForms'
     id = db.Column('id', db.Integer, primary_key=True)
-"""
-class abc():
-    def Test():
-        return jsonify(message="Address book created successfully")
-"""
 
 # Set up corresponding RESTful API
 # ==========================================================================================
@@ -86,7 +81,6 @@ manager.create_api(Retailers, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(Products, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(PodOrderForms, methods=['GET', 'POST', 'DELETE'])
 manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
-#manager.create_api(abc, methods=['GET'])
 
 # Misc. routes
 # ==========================================================================================
@@ -94,35 +88,30 @@ manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE'])
 def hello():
     return "<h1 style='color:blue'>SEEDBOX API</h1>"
 
-
 def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-#for uploading a file  $ curl -X POST -d @myfilename URL
 @application.route("/api/upload", methods=['POST'])
 def upload_file():
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
             flash('No file part')
-            return "<h1 style='color:blue'>ERROR NO FILE</h1>"
+            return "<h1 style='color:blue'>ERROR: NO FILE</h1>"
         file = request.files['file']
-        # if user does not select file, browser also
-        # submit a empty part without filename
+        # if user does not select file
         if file.filename == '':
             flash('No selected file')
             return "<h1 style='color:blue'>ERROR NO SELECTED FILE</h1>"
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            file.save(os.path.join(application.config['UPLOAD_FOLDER'], filename))
             return "<h1 style='color:blue'>SUCCESS</h1>"
-            return redirect(url_for('uploaded_file',
-                                    filename=filename))
 
-@application.route("/api/download")
-def download_file():
-    return "<h1 style='color:blue'>Download API</h1>"
+@application.route('/api/download/<filename>', methods=['GET'])
+def download(filename):
+    return send_from_directory(directory=application.config['UPLOAD_FOLDER'], filename=filename)
 
 @application.before_request
 def basic_authorize():
