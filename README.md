@@ -72,31 +72,46 @@ Example: See Example 1
 
 
 ###Delete
-Select
 URL: https://seedbox.tk/api/TABLENAME/ID
+
 TYPE: DELETE
+
 Response: HTTP/1.1 204 No Content
 
 
 ###Update -> NOT implemented TIDI
 URL: https://seedbox.tk/api/TABLENAME/ID
+
 Type: PUT
+
 Parameters: JSON
+
 {"COLUMN_NAME": "VALUE"}
+
 Return: JSON
+
 Example:
+
 HTTP/1.1 200 OK
+
 See Example 1
 
 
 ###Insert
 URL: https://seedbox.tk/api/TABLENAME
+
 Type: POST
+
 Parameters: JSON
+
 {"COLUMN_NAME": "VALUE"}
+
 Return: JSON
+
 Example:
+
 HTTP/1.1 201 Created
+
 See Example 1
 
 ###Example 1:
