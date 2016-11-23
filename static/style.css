@@ -261,3 +261,13 @@ td
 .pod-right-alignment {
     float: right;
 }
+
+.menu-text-properties {
+    text-decoration:underline;
+    padding-left:0.2cm;
+    color: #000000;
+}
+
+.menu-black-bg-color {
+    background-color: #000000;
+}
