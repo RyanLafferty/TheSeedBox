@@ -117,6 +117,7 @@ def upload_file():
             #file = request.files['file']
             #return "<h1 style='color:blue'>"+ file.filename + "</h1>"
             filename = secure_filename(file.filename)
+            return "<h1 style='color:blue'>SUCCESS</h1>"
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return "<h1 style='color:blue'>SUCCESS</h1>"
 
