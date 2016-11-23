@@ -257,3 +257,7 @@ td
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
    color:    #0F688E;
 }
+
+.pod-right-alignment {
+    float: right;
+}
