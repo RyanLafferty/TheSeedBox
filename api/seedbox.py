@@ -103,6 +103,8 @@ def allowed_file(filename):
 @application.route("/api/upload", methods=['POST'])
 def upload_file():
     if request.method == 'POST':
+        file = request.files['file']
+        return "<h1 style='color:blue'>"+ file.filename + "</h1>"
         # check if the post request has the file part
         if 'file' not in request.files:
             flash('No file part')
