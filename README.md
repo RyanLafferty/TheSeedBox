@@ -16,4 +16,128 @@ uwsgi service configuration: `sudo vim /etc/init/seedbox.conf`
 
 # API documentation
 
+## Database
+
+###Operator List
+==, eq, equals, equals_to
+!=, neq, does_not_equal, not_equal_to
+\>, gt, <, lt
+\>=, ge, gte, geq, <=, le, lte, leq
+in, not_in
+is_null, is_not_null
+like
+has
+any
+
+
+
+
+
+
+###Get Entire Table
+URL: https://seedbox.tk/api/TABLENAME
+TYPE: GET
+Parameters:
+Return: JSON
+Example:
+
+
+{
+  "num_results": 1,
+  "objects": [
+    {
+      "email": "test@seedbox.tk",
+      "fname": "Test",
+      "id": 1,
+      "lname": "User",
+      "password": "pass123"
+    }
+  ],
+  "page": 1,
+  "total_pages": 1
+}
+
+
+###Select
+URL: https://seedbox.tk/api/TABLENAME
+TYPE: GET
+Parameters: JSON
+{'q': '{"filters": [{"name": "COLUMN_NAME", "val": "COLUMN_VALUE", "op": "OPERATOR"}]}'}
+Return: JSON
+Example:
+{
+  "num_results": 1,
+  "objects": [
+    {
+      "email": "test@seedbox.tk",
+      "fname": "Test",
+      "id": 1,
+      "lname": "User",
+      "password": "pass123"
+    }
+  ],
+  "page": 1,
+  "total_pages": 1
+}
+
+
+
+
+###Delete
+Select
+URL: https://seedbox.tk/api/TABLENAME/ID
+TYPE: DELETE
+Response: HTTP/1.1 204 No Content
+
+
+###Update -> NOT implemented TIDI
+URL: https://seedbox.tk/api/TABLENAME/ID
+Type: PUT
+Parameters: JSON
+{"COLUMN_NAME": "VALUE"}
+Return: JSON
+Example:
+HTTP/1.1 200 OK
+{
+  "num_results": 1,
+  "objects": [
+    {
+      "email": "test@seedbox.tk",
+      "fname": "Test",
+      "id": 1,
+      "lname": "User",
+      "password": "pass123"
+    }
+  ],
+  "page": 1,
+  "total_pages": 1
+}
+
+
+###Insert
+URL: https://seedbox.tk/api/TABLENAME
+Type: POST
+Parameters: JSON
+{"COLUMN_NAME": "VALUE"}
+Return: JSON
+Example:
+HTTP/1.1 201 Created
+{
+  "num_results": 1,
+  "objects": [
+    {
+      "email": "test@seedbox.tk",
+      "fname": "Test",
+      "id": 1,
+      "lname": "User",
+      "password": "pass123"
+    }
+  ],
+  "page": 1,
+  "total_pages": 1
+}
+
+
+
+
 ## Routes
