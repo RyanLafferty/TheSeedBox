@@ -106,8 +106,7 @@ def upload_file():
             flash('No file part')
             return "<h1 style='color:blue'>ERROR: NO FILE</h1>"
         file = request.files['file']
-        # if user does not select file, browser also
-        # submit a empty part without filename
+        # if user does not select file
         if file.filename == '':
             flash('No selected file')
             return "<h1 style='color:blue'>ERROR NO SELECTED FILE</h1>"
