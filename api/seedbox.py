@@ -103,8 +103,6 @@ def allowed_file(filename):
 @application.route("/api/upload", methods=['POST'])
 def upload_file():
     if request.method == 'POST':
-        file = request.files['file']
-        return "<h1 style='color:blue'>"+ file.filename + "</h1>"
         # check if the post request has the file part
         if 'file' not in request.files:
             flash('No file part')
@@ -116,6 +114,8 @@ def upload_file():
             flash('No selected file')
             return "<h1 style='color:blue'>ERROR NO SELECTED FILE</h1>"
         if file and allowed_file(file.filename):
+            file = request.files['file']
+            return "<h1 style='color:blue'>"+ file.filename + "</h1>"
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return "<h1 style='color:blue'>SUCCESS</h1>"
