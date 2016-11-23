@@ -12,11 +12,16 @@
     <h1>POD</h1>
     <p>Here you can import POD supplied spreadsheet file and view the data.<br>Click on "Import" to select a file to import, or click "Export" to export the current data in the dable</p>
     </center>
-    <div>
-        Search: <input type="text" placeholder="Item">
-        <input type="submit" class="btn btn-success" value="Import" style="margin-right: 10px;float: right">
-        <input type="submit" class="btn btn-success" value="Export" style="margin-right: 10px;float: right">
-    </div>
+    <div class="container">
+    <!-- Changing this to bootstrap inline form -->
+    <form class="form-inline">
+      <div class="form-group">
+        <label for="pod-search">Search: </label>
+        <input type="text" class="form-control" placeholder="Item" id="pod-search">
+      </div>
+      <input type="submit" class="btn btn-success" value="Import" style="margin-right: 10px;float: right">
+      <input type="submit" class="btn btn-success" value="Export" style="margin-right: 10px;float: right">
+    </form>
 
     <center>
       <br>
@@ -102,5 +107,6 @@
         
         fillTable(data);
     </script>
+    </div>
   </body>
 </html>
