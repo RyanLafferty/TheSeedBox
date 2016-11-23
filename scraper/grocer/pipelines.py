@@ -7,5 +7,8 @@
 
 
 class ProductPipeline(object):
+    def parse_price(price):
+        return price
+
     def process_item(self, item, spider):
         return item

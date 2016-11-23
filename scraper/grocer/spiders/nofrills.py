@@ -1,46 +1,11 @@
-import scrapy, json
-from grocer.items import Product
+from grocer.spiders.groceryspider import GrocerySpider
 
-class NoFrillsSpider(scrapy.Spider):
+class NoFrillsSpider(GrocerySpider):
     name = 'NoFrills'
 
     baseUrl = 'https://local.flyerservices.com/LCL/NOFR/en/'
-    categoryBlacklist = {'Home & '}
+    categoryBlacklist = {'Home & Leisure'}
     extractProperties = ['ProductTitle', 'Price', 'CategoryName']
 
-    def start_requests(self):
-        yield scrapy.Request(url=(NoFrillsSpider.baseUrl + 'Landing/GetClosestStoresByProvinceCity?countryCode=CA&province=ON&city=Guelph'), callback=self.get_cache_key)
-
-    def get_cache_key(self, response):
-        stores = json.loads(response.body_as_unicode())
-        storeId = stores['Stores'][0]['StoreId']
-
-        request = scrapy.Request(url=(NoFrillsSpider.baseUrl + 'Landing/CacheKey'), callback=self.get_publication_id)
-        request.meta['store_id'] = storeId
-
-        return request
-
-    def get_publication_id(self, response):
-        cache = json.loads(response.body_as_unicode())
-        key = cache['Key']
-
-        request = scrapy.Request(url=(NoFrillsSpider.baseUrl + 'Landing/GetPublicationsByStoreId?storeId=%s&key=%s' % (response.meta['store_id'], key)), callback=self.get_products)
-        request.meta['store_id'] = response.meta['store_id']
-
-        return request
-
-    def get_products(self, response):
-        publications = json.loads(response.body_as_unicode())
-
-        for publication in publications['Publications']:
-            request = scrapy.Request(url=(NoFrillsSpider.baseUrl + '%s/Product/ListAllProducts?storeId=%s' % (publication['PubId'], response.meta['store_id'])), callback=self.collect_products)
-            request.meta['pub_id'] = publication['PubId']
-            yield request
-
-    def collect_products(self, response):
-        products = json.loads(response.body_as_unicode())
-
-        for productObject in products['Products']:
-            if productObject['CategoryName'] not in NoFrillsSpider.categoryBlacklist:
-                product = Product(name=productObject['ProductTitle'], price=productObject['Price'])
-                yield product
+    def __init__(self):
+        super(NoFrillsSpider, self).__init__('NoFrills', NoFrillsSpider.baseUrl, NoFrillsSpider.categoryBlacklist, NoFrillsSpider.extractProperties)
