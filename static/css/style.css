@@ -237,6 +237,11 @@ td
     white-space: nowrap;
 }
 
+.table-reponsive
+{
+  width: 75%;
+}
+
 .scrollbar
 {
     overflow: auto;
