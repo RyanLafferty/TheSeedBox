@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="robots" content="noindex,nofollow">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-      <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="js/jquery.min.js"></script>
-    <title>The Seed</title>
-  </head>
-  <body>
-    <center>
-      <img src="seed_logo.png">
-      <br>
-      <br>
-      <table id="form-table">
-        <tr id="form-tr">
-          <td id="form-td"><div align="right"><label>Username:</label></div></td>
-          <td id="form-td"><input type="text" id="username" placeholder="Username" required>
-            <button title="Please enter your Seed login ID" class="info-button btn-sm">
-              <span href="#" data-toggle="tooltip" class="glyphicon glyphicon-question-sign" style="color: #77A538;"></span>
-            </button></td>
-        </tr>
-        <tr id="form-tr">
-          <td id="form-td"><label>Current Password:</label></td>
-          <td id="form-td"><input type="password" id="password" placeholder="Password" required></td>
-        </tr>
-      </table>
-      <br>
-      <button onClick="location.href = 'home.html';"> &nbsp; &nbsp; &nbsp; &nbsp; Login &nbsp; &nbsp; &nbsp; &nbsp; </button>
-      <br>
-      <a href="user_reset.html">Forgot Password</a>
-    </center>
-  </body>
+	<meta name="robots" content="noindex,nofollow">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<title>The Seed Login</title>
+	</head>
+	<body>
+	<div class="container">
+	    <div class="login">
+	        <img src="images/TheSeed-tagline_long-padding.png" alt="HTML5 Icon" style="width:256px;height:128px;">
+	        <form action="home.html" method="post" class="lead">
+	            <input type="hidden" value="login" name="type" id="type">
+	            <div class="form-group">
+	                <label class="required-asterisk" for="username">Email Address</label>
+	                <input type="text" autofocus="" required="" minlength="1" maxlength="255" name="username" id="username" class="form-control">
+	            </div>
+	            <div class="form-group">
+	                <label class="required-asterisk" for="password">Password</label>
+	                <input type="password" required="" maxlength="255" minlength="1" id="password" name="password" class="form-control">
+	            </div>
+	            <div class="form-group">
+	                <small class="text-muted"><a href="user_reset.html" class="link-green">Forgot your password?</a></small>
+	            </div>
+	            <button type="submit" class="btn btn-success submit-green" id="login-register-button" type="button">Sign In</button>
+	        </form>
+	    </div>
+	  </div>
+	<!-- Bootstrap js -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	</body>
 </html>

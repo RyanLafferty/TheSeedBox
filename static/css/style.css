@@ -336,3 +336,20 @@ td
 .navbar-default .navbar-toggle:hover .icon-bar {
     background-color: #000000;
 }
+
+.login {
+    margin: auto;
+    width: 50%;
+    padding: 0px;
+    text-align: center;
+}
+
+.login-text-field {
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.login-btn {
+    margin-top: 10px;
+}
