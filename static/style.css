@@ -239,7 +239,6 @@ td
 
 .scrollbar
 {
-    height: 400px;
     overflow: auto;
     width: 75%
 }
