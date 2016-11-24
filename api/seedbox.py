@@ -33,6 +33,10 @@ db = flask_sqlalchemy.SQLAlchemy(application)
 #      all columns (the constructor in flask.ext.sqlalchemy.SQLAlchemy.Model
 #      supplies such a method, so you don't need to declare a new one).
 
+class Test(db.Model):
+    __tablename__ = 'Test'
+    id = db.Column(db.Integer, primary_key=True)
+    sum = db.Column(db.Integer, default=12)
 
 class Users(db.Model):
     __tablename__ = 'Users'
