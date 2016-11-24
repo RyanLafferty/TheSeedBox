@@ -77,7 +77,7 @@
     }
 
     function createGFBTableHeader() {
-        var tableHeaders = ['Item', 'Quantity', 'Price ($)', 'Total ($)', 'Savings (%)'];
+        var tableHeaders = ['Item', 'Price ($)', 'Quantity', 'Savings (%)', 'Total ($)', ];
 
         var tableHeaderElement = document.getElementById("table-header");
         var newRow = document.createElement('tr');
@@ -103,6 +103,7 @@
                 }
                 var newCell = document.createElement('td');
                 newCell.id = key;
+
                 if ( key == 'quantity' ) {
                     var selector = document.createElement('select');
                     for ( var k = 0; k <= 50; k++) {
