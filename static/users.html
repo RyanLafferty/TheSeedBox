@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <div id="menu-placeholder"></div>
+    <center>
+      <h1>Users</h1>
+      <p>Here you can manage all of the system's users. <br>Click "Create User" to create a new user. <br>Click on the check box beside any user in the list then click "Delete Selected Users" to delete them.</p>
+    </center>
+    <br>
+    <div class="container">
+    <br>
+    <center>
+    <form class="form-inline" style="float: left;">
+      <div class="form-group">
+        <label for="pod-search" >Search: </label>
+        <input type="text" class="form-control" placeholder="username" id="pod-search">
+      </div>
+      <input type="button" onClick="location.href='create_user.html'" class="btn btn-success" value="Create User" style="margin-right: 10px; margin-bottom: 10px">
+      <input type="button" class="btn btn-success" value="Delete Selected User" style="margin-right: 10px; margin-bottom: 10px">
+    </form>
+    </center>
+    <center>
+      <div id="table-container">
+        <table class="table table-striped table-bordered">
+          <thead class="thead-default" id="table-header"></thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+    </center>
+    <br>
+    <center></center>
+    <p id="debug"></p>
+    <script>
+      function checkAll()
+      {
+        var newValue = document.getElementById('master_cb').checked;
+        var i;
+        
+        for (i = 0; i < 60; i++)
+        {
+          document.getElementById('user' + i).checked = newValue;
+        }
+      }
+    function fillTable(data) {
+        var i;
+        var j;
+        var tableData = data.objects;
+        var numRows = data.num_results;
+        
+        var tableElement = document.getElementById("table-header");
+        var newRow = document.createElement('tr');
+        
+        //Create Header
+        var newCell = document.createElement('th');
+        newCell.width = '10px';
+        var checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = 'master_cb';
+        checkbox.onchange = checkAll;
+        newCell.appendChild(checkbox);
+        newRow.appendChild(newCell);
+        
+        Object.keys(tableData[0]).forEach(function(title) {
+            newCell = document.createElement('th');
+            var info = document.createTextNode(title);
+            newCell.appendChild(info);
+            newRow.appendChild(newCell);
+        });
+        tableElement.appendChild(newRow);
+        
+        //Create Body
+        /*
+        tableElement = document.getElementById('table-body');
+        for (var nextRow in tableData) {
+            newRow = document.createElement('tr');
+            
+            newCell = document.createElement('td');
+            newCell.width = '10px';
+            checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = 'user' + i;
+            newCell.appendChild(checkbox);
+            newRow.appendChild(newCell);
+            
+            for (var key in nextRow) {
+                var value = nextRow[key];
+                
+                newCell = document.createElement('td');
+                var info = document.createTextNode(value);
+                newCell.appendChild(info);
+                newRow.appendChild(newCell);
+            }
+            tableElement.appendChild(newRow);
+        }
+        */
+    }
+    </script>
+    <script>
+        $.get("menu_admin.html", function(data){
+            $("#menu-placeholder").replaceWith(data);
+        });
+        
+        $.ajax({
+            type: 'GET',
+            url: 'https://seedbox.tk/api/Users',
+            dataType: 'json',
+            success: function (data) {
+                fillTable(data);}
+        });
+    </script>
+    </div>
+  </body>
+</html>
