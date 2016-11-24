@@ -155,7 +155,6 @@ def upload_file():
 def download(filename):
     return send_from_directory(directory=application.config['UPLOAD_FOLDER'], filename=filename)
 
-#send table names?
 @application.route('/api/schema', methods=['GET'])
 def get_tables():
     tables = db.metadata.tables.items()
