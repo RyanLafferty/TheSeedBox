@@ -62,7 +62,6 @@ class Products(db.Model):
     name = db.Column(db.Unicode(256))
     quantity = db.Column(db.Integer)
     dateCreated = db.Column(db.DateTime);
-    dateScraped = db.Column(db.DateTime);
     price = db.Column(db.Float);
     source = db.Column(db.Unicode(2048))
 
@@ -104,6 +103,16 @@ class Scraper(db.Model):
     ctotal = db.Column(db.Float, default=0.0)
     savings = db.Column(db.Float, default=0.0)
 
+class ScraperSettings(db.Model):
+    __tablename__ = 'ScraperSettings'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, default=0)
+    metro_enabled = db.Column(db.Integer, default=0)
+    nofrills_enabled = db.Column(db.Integer, default=0)
+    dayofweek = db.Column(db.Integer, default=0)
+    time = db.Column(db.Unicode(256), default="")
+
+
 # Set up corresponding RESTful API
 # ==========================================================================================
 # Create the database tables.
@@ -123,6 +132,7 @@ manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(Produce, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(GFB, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(Scraper, methods=['GET', 'POST', 'DELETE', 'PUT'])
+manager.create_api(ScraperSettings, methods=['GET', 'POST', 'DELETE', 'PUT'])
 
 # Misc. routes
 # ==========================================================================================
