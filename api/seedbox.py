@@ -80,7 +80,7 @@ manager.create_api(Users, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(Retailers, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(Products, methods=['GET', 'POST', 'DELETE' ,'PUT'])
 manager.create_api(PodOrderForms, methods=['GET', 'POST', 'DELETE' ,'PUT'])
-manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE', ,'PUT'])
+manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE', 'PUT'])
 
 # Misc. routes
 # ==========================================================================================
