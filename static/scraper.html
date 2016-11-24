@@ -26,19 +26,20 @@
     <!-- current settings  -->
     <div id="NW" class="div-placing">
         <form class="lead">
-	            <div class="form-group">
-                    <label for="day">Day of The Week: </label>
-	                <input type="text" value="Thursday" class="field left"  name="type" id="day"  autofocus="" required="" minlength="1" maxlength="255" id="day" class="form-control" readonly>
-	            </div>
-	            <div class="form-group">
-                    <label for="time">Time: </label>
-	                <input type="text" value="10pm" class="field left"  name="type" id="time"  autofocus="" required="" minlength="1" maxlength="255" id="time" class="form-control" readonly>
-	            </div>
-                <div class="form-group">
-                    <label for="stores">Stores: </label>
-	                <input type="text" value="NoFrills, Metro" class="field left"  name="stores" id="type"  autofocus="" required="" minlength="1" maxlength="255" id="stores" class="form-control" readonly>
-	            </div>
-	        </form>
+            <p> current settings </p>
+            <div class="form-group">
+                <label for="day">Day of The Week: </label>
+                <input type="text" value="Thursday" class="field left"  name="type" id="day"  autofocus="" required="" minlength="1" maxlength="255" id="day" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label for="time">Time: </label>
+                <input type="text" value="10pm" class="field left"  name="type" id="time"  autofocus="" required="" minlength="1" maxlength="255" id="time" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <label for="stores">Stores: </label>
+                <input type="text" value="NoFrills, Metro" class="field left"  name="stores" id="type"  autofocus="" required="" minlength="1" maxlength="255" id="stores" class="form-control" readonly>
+            </div>
+        </form>
     </div>
     <!-- manual scrape  -->
     <div id="NE" class="div-placing">
@@ -50,7 +51,32 @@
     </div>​
     <!-- cahnge settings  -->
     <div id="SW" class="div-placing">
-        <p> 4 </p>
+        <form class="lead">
+            <p> change settings </p>
+            <div class="form-group">
+                <label for="day">Day of The Week: </label>
+                <select>
+                    <option id="Monday" value ="Monday">Monday</option>
+                    <option id="Tuesday" value ="Tuesday">Tuesday</option>
+                    <option id="Wednesday" value ="Wednesday">Wednesday</option>
+                    <option id="Thursday" value ="Thursday">Thursday</option>
+                    <option id="Friday" value ="Friday">Friday</option>
+                    <option id="Saturday" value ="Saturday">Saturday</option>
+                    <option id="Sunday" value ="Sunday">Sunday</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="time">Time: </label>
+                <input type="text" value="10" class="field left"  name="type" id="time"  autofocus="" required="" minlength="1" maxlength="255" id="time" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="stores">Stores: </label><br>
+                <form action="">
+                    <input id="NoFrills" type="checkbox" name="store" value="NoFrills"> NoFrills<br>
+                    <input id="Metro" type="checkbox" name="store" value="Metro"> Metro
+                </form>
+            </div>
+        </form>
     </div>
 
 </body>
