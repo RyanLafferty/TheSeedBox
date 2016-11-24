@@ -98,12 +98,12 @@
             }
 
             // create empty rows in table
-            for ( var i = parseInt(data["objects"][i]); i < 20; i++ ) {
+            for ( var i = parseInt(data["num_results"]); i < 20; i++ ) {
                 var newRow = document.createElement('tr');
 
                 for ( var j = 0; j < 5; j++) {
                     var newCell = document.createElement('td');
-                    newCell.innerHTML = "1";
+                    newCell.innerHTML = " ";
                     newRow.appendChild(newCell);
                 }
                 tableBodyElement.appendChild(newRow);
