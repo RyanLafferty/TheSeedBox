@@ -5,6 +5,7 @@
       <script src="js/jquery.min.js"></script>
       <script src="js/bootstrap.min.js"></script>
       <link rel="stylesheet" type="text/css" href="css/style.css">
+      <script src="js/GFBJS.js"></script>
   </head>
   <body>
     <div id="menu-placeholder"></div>
@@ -35,117 +36,6 @@
     Total: <input type="text" value="$0.00" readonly>
     Savings: <input type="text" value="50%" readonly>
     </center>
-    <script>
-
-        function createGFBTableHeader() {
-            var tableHeaders = ['Item', 'Price ($)', 'Quantity', 'Savings (%)', 'Total ($)', ];
-
-            var tableHeaderElement = document.getElementById("table-header");
-            var newRow = document.createElement('tr');
-            for (var i = 0; i < tableHeaders.length; i++) {
-                var newCell = document.createElement('th');
-                var info = document.createTextNode(tableHeaders[i]);
-                newCell.appendChild(info);
-                newRow.appendChild(newCell);
-            }
-            tableHeaderElement.appendChild(newRow);
-        }
-
-        function addDataToGFB(data) {
-            var tableBodyElement = document.getElementById('table-body');
-
-            for (var i = 0; i < data["num_results"]; i++ ) {
-                var newRow = document.createElement('tr');
-                newRow.id = data["objects"][i]["id"];
-
-                for ( var key in data.objects[i]) {
-                    if ( key == "id" ) {
-                        continue;
-                    }
-                    var newCell = document.createElement('td');
-                    newCell.id = key;
-
-                    if ( key == 'quantity' ) {
-                        var selector = document.createElement('select');
-                        for ( var k = 0; k <= 50; k++) {
-                            var option = document.createElement('option');
-                            option.innerHTML = k;
-                            option.value = k;
-                            selector.appendChild(option);
-                        }
-                        newCell.appendChild(selector);
-                    } else {
-                        newCell.innerHTML = data["objects"][i][key];
-                    }
-                    newRow.appendChild(newCell);
-                }
-                tableBodyElement.appendChild(newRow);
-            }
-
-            // create empty rows in table
-            for ( var i = parseInt(data["num_results"]); i < 20; i++ ) {
-                var newRow = document.createElement('tr');
-
-                for ( var j = 0; j < 5; j++) {
-                    var newCell = document.createElement('td');
-                    newCell.innerHTML = " ";
-                    newRow.appendChild(newCell);
-                }
-                tableBodyElement.appendChild(newRow);
-            }
-        }
-
-
-    </script>
-    <script>
-        $.get("menu_admin.html", function(data){
-            $("#menu-placeholder").replaceWith(data);
-        });
-
-
-//        var send = {
-//          "num_results": 1,
-//          "objects": [
-//            {
-//              "id": 1,
-//              "item": apple,
-//              "price": 1.01,
-//              "quantity": 0,
-//              "savings": 10,
-//              "total": 0
-//            }
-//          ],
-//          "page": 1,
-//          "total_pages": 1
-//        }
-
-//            $.ajax({
-//                type: 'POST',
-//                url: '/api/GFB',
-//                data: send, // data passed to db
-//                dataType: 'json',
-//                success: function (y) {
-//                    console.log(y);
-//                }
-//            });
-
-
-
-        $( document ).ready(function() {
-            $.ajax({
-                type: 'GET',
-                url: '/api/GFB',
-                // data: x,  data passed to db
-                dataType: 'json',
-                success: function (getData) { // y is waht the get returns
-                    addDataToGFB(getData);
-                }
-            });
-            createGFBTableHeader();
-
-        });
-
-    </script>
     </div>
   </body>
 </html>
