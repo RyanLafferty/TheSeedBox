@@ -165,15 +165,15 @@ def get_tables():
     #intertables = []
     #tables = []
     tableList = []
-    columnList = []
+    colList = []
 
     for table in tables:
-        for column in table:
-            columnList = []
-            columnList.append(column)
-        tableList.append((table[0], table.get_columns()))
+        tableList.append((table[0])
 
-    return "<h1 style='color:blue'>"+ str(len(columnList)) +"</h1>"
+    for c in Produce.__table__.columns:
+        colList.append(c)
+
+    return "<h1 style='color:blue'>"+ str() +"</h1>"
 
 @application.before_request
 def basic_authorize():
