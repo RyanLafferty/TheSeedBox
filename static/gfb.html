@@ -98,11 +98,22 @@
             newRow.id = data["objects"][i]["id"];
 
             for ( var key in data.objects[i]) {
+                if ( key == "id" ) {
+                    continue;
+                }
                 var newCell = document.createElement('td');
                 newCell.id = key;
-                if ( data["objects"][i][key] == 'quantity' ) {}
-//                newCell.innerHTML = data["objects"][i][key];
-                newCell.innerHTML = 5;
+                if ( data["objects"][i][key] == 'quantity' ) {
+                    var selector = document.createElement('select');
+                    for ( var k = 0; k <= 50; k++) {
+                        var option = document.createElement('option');
+                        option.innerHTML = k;
+                        selector.appendChild(option);
+                    }
+                    newCell.appendChild(selector);
+                } else {
+                    newCell.innerHTML = data["objects"][i][key];
+                }
                 newRow.appendChild(newCell);
                 console.log(key);
             }
