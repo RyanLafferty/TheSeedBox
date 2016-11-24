@@ -166,10 +166,10 @@ def get_tables():
     return jsonify(tablenames=tableList)
 
 @application.route('/api/files', methods=['GET'])
-def get_files:
+def get_files():
     fileList = []
     os.chdir(UPLOAD_FOLDER)
-    for file in glob.glob("*.txt"):
+    for file in glob.glob("*.xls"):
         fileList.append(str(file))
     return jsonify(files=fileList)
 
