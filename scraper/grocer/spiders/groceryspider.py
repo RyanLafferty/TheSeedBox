@@ -2,10 +2,10 @@ import scrapy, json
 from grocer.items import Product
 
 class GrocerySpider(scrapy.Spider):
-    def __init__(self, name, baseUrl, categoryBlacklist, extractProperties):
+    def __init__(self, name, baseUrl, categoryWhitelist, extractProperties):
         super(GrocerySpider, self).__init__(name=name)
         self.baseUrl = baseUrl
-        self.categoryBlacklist = categoryBlacklist
+        self.categoryWhitelist = categoryWhitelist
         self.extractProperties = extractProperties
 
     def start_requests(self):
@@ -41,6 +41,9 @@ class GrocerySpider(scrapy.Spider):
         products = json.loads(response.body_as_unicode())
 
         for productObject in products['Products']:
-            if productObject['CategoryName'] not in self.categoryBlacklist:
-                product = Product(name=productObject['ProductTitle'], price=productObject['Price'], priceUnit=productObject['PriceUnit'])
-                yield product
+            if productObject['CategoryName'] in self.categoryWhitelist:
+                fields = {}
+                for property, field in self.extractProperties.iteritems():
+                    if property in productObject:
+                        fields[field] = productObject[property]
+                yield Product(fields)
