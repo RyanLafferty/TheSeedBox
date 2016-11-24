@@ -169,7 +169,7 @@ def get_tables():
     for table in tables:
         for column in table:
             columnList = []
-            columnList.append(column)
+            columnList.append(column[0])
         tableList.append((table[0], columnList))
 
     return "<h1 style='color:blue'>"+ str(tableList) +"</h1>"
