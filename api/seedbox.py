@@ -158,9 +158,9 @@ def download(filename):
 #send table names?
 @application.route('/api/schema', methods=['GET'])
 def get_tables():
+    classes, models, table_names = [], [], []
     mdat = db.get_tables_for_bind()
     tables = []
-    classes, models, table_names = [], [], []
     for clazz in db.Model._decl_class_registry.values():
         try:
             table_names.append(clazz.__tablename__)
@@ -171,7 +171,7 @@ def get_tables():
         if table[0] in table_names:
             models.append(classes[table_names.index(table[0])])
     for table in mdat:
-        table.append(table)
+        tables.append(table)
     return "<h1 style='color:blue'>"+ str(tables) +"</h1>"
 
 @application.before_request
