@@ -97,12 +97,13 @@
             var newRow = document.createElement('tr');
             newRow.id = data["objects"][i]["id"];
 
-            for ( var j = 0; j < data.objects.length; j++ ) {
+            for ( var key in data.objects) {
                 var newCell = document.createElement('td');
-                newCell.id = data["objects"][i][j].key;
-                if ( data["objects"][i][j] == 'quantity' ) {}
-                newCell.innerHTML = data["objects"][i][j];
+                newCell.id = key;
+                if ( data["objects"][i][key] == 'quantity' ) {}
+                newCell.innerHTML = data["objects"][i][key];
                 newRow.appendChild(newCell);
+                console.log(key);
             }
             tableBodyElement.appendChild(newRow);
         }
