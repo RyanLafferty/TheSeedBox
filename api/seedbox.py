@@ -164,7 +164,7 @@ def get_tables():
     for table in tables:
         tableList.append(table[0])
 
-    return "<h1 style='color:blue'>"+ str(jsonify(tablenames=tableList)) +"</h1>"
+    return jsonify(tablenames=tableList)
 
 @application.before_request
 def basic_authorize():
