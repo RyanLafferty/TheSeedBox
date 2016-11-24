@@ -88,7 +88,19 @@ class GFB(db.Model):
     quantity = db.Column(db.Integer, default=0)
     price = db.Column(db.Float, default=0.0)
     total = db.Column(db.Float, default=0.0)
-    savings = db.Column(db.Float, default=0.0);
+    savings = db.Column(db.Float, default=0.0)
+
+class Scraper(db.Model):
+    __tablename__ = 'Scraper'
+    id = db.Column(db.Integer, primary_key=True)
+    item = db.Column(db.Unicode(256), default="")
+    squantity = db.Column(db.Integer, default=0)
+    sunitcost = db.Column(db.Float, default=0.0)
+    stotal = db.Column(db.Float, default=0.0)
+    cquantity = db.Column(db.Integer, default=0)
+    cunitcost = db.Column(db.Float, default=0.0)
+    ctotal = db.Column(db.Float, default=0.0)
+    savings = db.Column(db.Float, default=0.0)
 
 # Set up corresponding RESTful API
 # ==========================================================================================
@@ -108,6 +120,7 @@ manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE', 'PUT'])
 
 manager.create_api(Produce, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(GFB, methods=['GET', 'POST', 'DELETE', 'PUT'])
+manager.create_api(Scraper, methods=['GET', 'POST', 'DELETE', 'PUT'])
 
 # Misc. routes
 # ==========================================================================================
