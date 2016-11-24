@@ -161,7 +161,7 @@ def get_tables():
     classes, models, table_names = [], [], []
     #tables = db.get_tables_for_bind()
     tables = db.metadata.tables.items()
-    t1 = db.metadata.tables.items[0].columns
+    t1 = db.metadata.tables.items()[0].columns
     #intertables = []
     #tables = []
     tableList = []
