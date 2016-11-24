@@ -14,7 +14,3 @@ class Scraper:
                 process.crawl(spiderDefns[spider])
 
         process.start()
-
-test = Scraper()
-
-test.execute(['Metro', 'NoFrills'])
