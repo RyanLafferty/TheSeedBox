@@ -47,6 +47,8 @@ class Users(db.Model):
     lname = db.Column(db.Unicode(256))
     email = db.Column(db.Unicode(256))
     password = db.Column(db.Unicode(256))
+    logintime = db.Column(db.DateTime);
+
 
 class Retailers(db.Model):
     __tablename__ = 'Retailers'
