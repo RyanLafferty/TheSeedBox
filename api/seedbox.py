@@ -160,7 +160,7 @@ def download(filename):
 def get_tables():
     classes, models, table_names = [], [], []
     #tables = db.get_tables_for_bind()
-    tables = db.metadata.tables()
+    tables = db.metadata
     #intertables = []
     #tables = []
 
