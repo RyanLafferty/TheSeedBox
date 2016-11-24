@@ -2,15 +2,17 @@
  * Created by slawomir on 24/11/16.
  */
 function createGFBTableHeader() {
-    var tableHeaders = ['Item', 'Price ($)', 'Quantity', 'Savings (%)', 'Total ($)', ];
+    //var tableHeaders = ['Item', 'Price ($)', 'Quantity', 'Savings (%)', 'Total ($)', ];
 
     var tableHeaderElement = document.getElementById("table-header");
     var newRow = document.createElement('tr');
-    for (var i = 0; i < tableHeaders.length; i++) {
-        var newCell = document.createElement('th');
-        var info = document.createTextNode(tableHeaders[i]);
-        newCell.appendChild(info);
-        newRow.appendChild(newCell);
+    if ( data["num_results"] != 0) {
+        for (var key in data.objects[0]) {
+            var newCell = document.createElement('th');
+            var info = document.createTextNode(key);
+            newCell.appendChild(info);
+            newRow.appendChild(newCell);
+        }
     }
     tableHeaderElement.appendChild(newRow);
 }
@@ -46,17 +48,17 @@ function addDataToGFB(data) {
         tableBodyElement.appendChild(newRow);
     }
 
-    // create empty rows in table
-    for ( var i = parseInt(data["num_results"]); i < 20; i++ ) {
-        var newRow = document.createElement('tr');
-
-        for ( var j = 0; j < 5; j++) {
-            var newCell = document.createElement('td');
-            newCell.innerHTML = " ";
-            newRow.appendChild(newCell);
-        }
-        tableBodyElement.appendChild(newRow);
-    }
+    // // create empty rows in table
+    // for ( var i = parseInt(data["num_results"]); i < 20; i++ ) {
+    //     var newRow = document.createElement('tr');
+    //
+    //     for ( var j = 0; j < 5; j++) {
+    //         var newCell = document.createElement('td');
+    //         newCell.innerHTML = " ";
+    //         newRow.appendChild(newCell);
+    //     }
+    //     tableBodyElement.appendChild(newRow);
+    // }
 }
 
 $.get("menu_admin.html", function(data){
