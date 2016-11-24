@@ -35,21 +35,19 @@
     </center>
     <br>
     <script>
+        var rownum = 0;
       function checkAll()
       {
         var newValue = document.getElementById('master_cb').checked;
         var i;
         
-        for (i = 0; i < 60; i++)
+        for (i = 0; i < rownum; i++)
         {
           document.getElementById('user' + i).checked = newValue;
         }
       }
     function fillTable(data) {
-        var i;
-        var j;
         var tableData = data.objects;
-        var numRows = data.num_results;
         
         var tableElement = document.getElementById("table-header");
         var newRow = document.createElement('tr');
@@ -81,7 +79,8 @@
             newCell.width = '10px';
             checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
-            checkbox.id = 'user' + i;
+            checkbox.id = 'user' + rownum;
+            rownum += 1;
             newCell.appendChild(checkbox);
             newRow.appendChild(newCell);
             
