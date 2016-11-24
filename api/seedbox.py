@@ -76,10 +76,10 @@ class PodOrderForms(db.Model):
 class Produce(db.Model):
     __tablename__ = 'Produce'
     id = db.Column(db.Integer, primary_key=True)
-    item = db.Column(db.Unicode(256))
-    location = db.Column(db.Unicode(256))
-    amount = db.Column(db.Integer)
-    price = db.Column(db.Float);
+    item = db.Column(db.Unicode(256), default="")
+    location = db.Column(db.Unicode(256), default="")
+    amount = db.Column(db.Integer, default=0)
+    price = db.Column(db.Float, default=0.0);
 
 # Set up corresponding RESTful API
 # ==========================================================================================
