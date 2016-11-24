@@ -163,21 +163,11 @@ def get_tables():
     tables = db.metadata.tables.items()
     #intertables = []
     #tables = []
-    arr = []
-
-    for clazz in db.Model._decl_class_registry.values():
-        try:
-            table_names.append(clazz.__tablename__)
-            classes.append(clazz)
-        except:
-            pass
-    for table in db.metadata.tables.items():
-        if table[0] in table_names:
-            models.append(classes[table_names.index(table[0])])
+    tableList = []
 
     for table in tables:
-        arr.append(table[0])
-    return "<h1 style='color:blue'>"+ str(arr) +"</h1>"
+        tableList.append(table[0])
+    return "<h1 style='color:blue'>"+ str(tableList) +"</h1>"
 
 @application.before_request
 def basic_authorize():
