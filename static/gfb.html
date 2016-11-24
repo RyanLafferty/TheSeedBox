@@ -122,7 +122,7 @@
         }
 
         // create empty rows in table
-        for ( var i = data["num_results"]; i < 20; i++ ) {
+        for ( var i = parseInt(data["num_results"]); i < 20; i++ ) {
             var newRow = document.createElement('tr');
 
             for ( var key in data.objects[i]) {
