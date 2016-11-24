@@ -158,22 +158,13 @@ def download(filename):
 #send table names?
 @application.route('/api/schema', methods=['GET'])
 def get_tables():
-    classes, models, table_names = [], [], []
     #tables = db.get_tables_for_bind()
     tables = db.metadata.tables.items()
-    #t1 = db.metadata.tables.items()[0].columns
-    #intertables = []
-    #tables = []
     tableList = []
-    colList = []
 
     for table in tables:
         tableList.append((table[0])
-
-    for c in Produce.__table__.columns:
-        colList.append(c)
-
-    return "<h1 style='color:blue'>"+ str() +"</h1>"
+    return "<h1 style='color:blue'>"+ str(tableList[0]) +"</h1>"
 
 @application.before_request
 def basic_authorize():
