@@ -171,9 +171,9 @@ def get_tables():
         for column in table:
             columnList = []
             columnList.append(column)
-        tableList.append((table[0], table.columns))
+        tableList.append((table[0], columnList))
 
-    return "<h1 style='color:blue'>"+ str(tableList) +"</h1>"
+    return "<h1 style='color:blue'>"+ str(len(columnList)) +"</h1>"
 
 @application.before_request
 def basic_authorize():
