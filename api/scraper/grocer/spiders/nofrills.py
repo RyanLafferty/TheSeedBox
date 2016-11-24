@@ -1,4 +1,4 @@
-from grocer.spiders.groceryspider import GrocerySpider
+from groceryspider import GrocerySpider
 
 class NoFrillsSpider(GrocerySpider):
     name = 'NoFrills'

@@ -11,8 +11,8 @@
 
 BOT_NAME = 'grocer'
 
-SPIDER_MODULES = ['grocer.spiders']
-NEWSPIDER_MODULE = 'grocer.spiders'
+SPIDER_MODULES = ['scraper.grocer.spiders']
+NEWSPIDER_MODULE = 'scraper.grocer.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -65,7 +65,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'grocer.pipelines.ProductPipeline': 300,
+   'scraper.grocer.pipelines.ProductPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

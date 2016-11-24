@@ -1,5 +1,5 @@
 import scrapy, json
-from grocer.items import Product
+from ..items import Product
 
 class GrocerySpider(scrapy.Spider):
     def __init__(self, name, baseUrl, categoryWhitelist, extractProperties):

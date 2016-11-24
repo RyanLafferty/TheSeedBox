@@ -7,6 +7,8 @@ class Scraper:
     def execute(self, spiders):
         spiderDefns = {'Metro': MetroSpider, 'NoFrills': NoFrillsSpider}
 
+        print get_project_settings().attributes['ITEM_PIPELINES'].value.attributes.keys()
+
         process = CrawlerProcess(get_project_settings())
 
         for spider in spiders:
