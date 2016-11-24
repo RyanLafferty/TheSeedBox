@@ -164,7 +164,7 @@ p
     width: auto
 }
 
-button, input[type="submit"], input[type="file"]
+button, input[type="submit"], input[type="file"], .file-button
 {
     padding: 4px 20px;
     margin: 8px 0;
