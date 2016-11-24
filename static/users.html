@@ -35,6 +35,7 @@
     </center>
     <br>
     <center></center>
+    <p id="debug"></p>
     <script>
       function checkAll()
       {
@@ -49,12 +50,13 @@
     function fillTable(data) {
         var i;
         var j;
-        var tableData = data.tableName;
-        var dataElement = tableData.columnNames;
+        var tableData = data.objects;
+        var numRows = data.num_results;
         
         var tableElement = document.getElementById("table-header");
         var newRow = document.createElement('tr');
         
+        //Create Header
         var newCell = document.createElement('th');
         newCell.width = '10px';
         var checkbox = document.createElement('input');
@@ -64,17 +66,18 @@
         newCell.appendChild(checkbox);
         newRow.appendChild(newCell);
         
-        for (var i = 0; i < dataElement.length; i++) {
+        Object.keys(tableData[0]).forEach(function(title) {
             newCell = document.createElement('th');
-            var info = document.createTextNode(dataElement[i]);
+            var info = document.createTextNode(title);
             newCell.appendChild(info);
             newRow.appendChild(newCell);
-        }
+        });
         tableElement.appendChild(newRow);
         
-        dataElement = tableData.rows;
+        //Create Body
+        /*
         tableElement = document.getElementById('table-body');
-        for (var i = 0; i < dataElement.length; i++) {
+        for (var nextRow in tableData) {
             newRow = document.createElement('tr');
             
             newCell = document.createElement('td');
@@ -85,14 +88,17 @@
             newCell.appendChild(checkbox);
             newRow.appendChild(newCell);
             
-            for (var j = 0; j < dataElement[i].length; j++) {
+            for (var key in nextRow) {
+                var value = nextRow[key];
+                
                 newCell = document.createElement('td');
-                var info = document.createTextNode(dataElement[i][j]);
+                var info = document.createTextNode(value);
                 newCell.appendChild(info);
                 newRow.appendChild(newCell);
             }
             tableElement.appendChild(newRow);
         }
+        */
     }
     </script>
     <script>
@@ -100,15 +106,13 @@
             $("#menu-placeholder").replaceWith(data);
         });
         
-        var data = {"tableName" : {"columnNames" : ["col1", "col2", "col3"],
-        "rows" : [
-     ["col1_val1","col2_val1","col3_val1"],
-     ["col1_val2","col2_val2","col3_val2"],
-     ["col1_val3","col2_val3","col3_val3"],
-     ["col1_val4","col2_val4","col3_val4"]
-    ]}};
-        
-        fillTable(data);
+        $.ajax({
+            type: 'GET',
+            url: 'https://seedbox.tk/api/Users',
+            dataType: 'json',
+            success: function (data) {
+                fillTable(data);}
+        });
     </script>
     </div>
   </body>
