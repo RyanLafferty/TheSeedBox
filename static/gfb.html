@@ -55,7 +55,7 @@
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
 
-        function createGFBTableHeader() {
+        function createGFBTableHeader(data) {
             var tableHeaders = ['Item', 'Price ($)', 'Quantity', 'Savings (%)', 'Total ($)', ];
 
             var tableHeaderElement = document.getElementById("table-header");
@@ -173,10 +173,11 @@
                 // data: x,  data passed to db
                 dataType: 'json',
                 success: function (getData) { // y is waht the get returns
+                    createGFBTableHeader(data);
                     addDataToGFB(getData);
                 }
             });
-            createGFBTableHeader();
+
 
         });
 
