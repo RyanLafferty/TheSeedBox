@@ -158,18 +158,13 @@ def download(filename):
 #send table names?
 @application.route('/api/schema', methods=['GET'])
 def get_tables():
-    classes, models, table_names = [], [], []
-    #tables = db.get_tables_for_bind()
     tables = db.metadata.tables.items()
-    #intertables = []
-    #tables = []
     tableList = []
-    columnList = []
 
     for table in tables:
         tableList.append(table[0])
 
-    return "<h1 style='color:blue'>"+ str(tableList) +"</h1>"
+    return "<h1 style='color:blue'>"+ str(jsonify(tableList)) +"</h1>"
 
 @application.before_request
 def basic_authorize():
