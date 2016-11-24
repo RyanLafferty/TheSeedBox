@@ -155,6 +155,22 @@ def upload_file():
 def download(filename):
     return send_from_directory(directory=application.config['UPLOAD_FOLDER'], filename=filename)
 
+#send table names?
+
+@application.route('/api/schema', methods=['GET'])
+def get_tables:
+    classes, models, table_names = [], [], []
+    for clazz in db.Model._decl_class_registry.values():
+        try:
+            table_names.append(clazz.__tablename__)
+            classes.append(clazz)
+        except:
+            pass
+    for table in db.metadata.tables.items():
+        if table[0] in table_names:
+            models.append(classes[table_names.index(table[0])])
+    return "<h1 style='color:blue'>SUCCESS</h1>"
+
 @application.before_request
 def basic_authorize():
     print "hello"
