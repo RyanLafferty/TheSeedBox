@@ -170,9 +170,9 @@ def get_tables():
     for table in db.metadata.tables.items():
         if table[0] in table_names:
             models.append(classes[table_names.index(table[0])])
-    for table in mdat:
-        tables.append(table)
-    return "<h1 style='color:blue'>"+ str(tables[0]) +"</h1>"
+    for x in range(0, len(mdat)):
+        tables.append(x[0])
+    return "<h1 style='color:blue'>"+ str(tables) +"</h1>"
 
 @application.before_request
 def basic_authorize():
