@@ -79,7 +79,7 @@ TYPE: DELETE
 Response: HTTP/1.1 204 No Content
 
 
-###Update -> NOT implemented TODO
+###Update
 URL: https://website/api/TABLENAME/ID
 
 Type: PUT
