@@ -9,8 +9,8 @@
   <body>
     <div id="menu-placeholder"></div>
     <center>
-      <h1>System Settings</h1>
-      <p>Here you can change the system settings or you can manually execute the web scraper. </p>
+      <h1>Web Scraper and Scraper Settings</h1>
+      <p>Here you can change the web scraper settings and manually execute the web scraper. </p>
       <p>Click on the "Interval" drop down menu to select an interval for the web scraper.</p>
       <br>
       <br>
@@ -42,10 +42,10 @@
       Time: <input type="time" placeholder="hh/mm" style="width: 190px;">
       <br>
       <br>
-      <button onClick="location.href = 'settings.html'" style="margin-left:37px;width: 92px;">Cancel</button>
-      <button onClick="location.href = 'settings.html'" style="width: 95px;">Save</button>
-        <br>
-        <button onClick="location.href='pricing.html'" style="margin-left:37px;width: 190px;">Execute</button>
+      <button onClick="location.href = 'home.html'" class="btn btn-success" style="margin-left:37px;width: 92px;">Cancel</button>
+      <button onClick="location.href = 'home.html'" class="btn btn-success" style="width: 95px;">Save</button>
+    <br>
+    <button onClick="location.href='pricing.html'" class="btn btn-success" style="margin-left:37px;width: 190px;">Execute</button>
     </center>
     <script>
         $.get("menu_admin.html", function(data){
