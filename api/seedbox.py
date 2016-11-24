@@ -171,7 +171,7 @@ def get_tables():
         if table[0] in table_names:
             models.append(classes[table_names.index(table[0])])
     for table in mdat:
-        tables.append(table)
+        tables.append(table[0])
     return "<h1 style='color:blue'>"+ str(tables) +"</h1>"
 
 @application.before_request
