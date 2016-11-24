@@ -33,10 +33,16 @@ db = flask_sqlalchemy.SQLAlchemy(application)
 #      all columns (the constructor in flask.ext.sqlalchemy.SQLAlchemy.Model
 #      supplies such a method, so you don't need to declare a new one).
 
+class Test(db.Model):
+    __tablename__ = 'Test'
+    id = db.Column(db.Integer, primary_key=True)
+    sum = db.Column(db.Integer, default=12)
+    de = db.Column(db.Integer)
 
 class Users(db.Model):
     __tablename__ = 'Users'
     id = db.Column(db.Integer, primary_key=True)
+    admin = db.Column(db.Boolean)
     fname = db.Column(db.Unicode(256))
     lname = db.Column(db.Unicode(256))
     email = db.Column(db.Unicode(256))
@@ -66,6 +72,24 @@ class PodOrderForms(db.Model):
     __tablename__ = 'PodOrderForms'
     id = db.Column('id', db.Integer, primary_key=True)
 
+
+class Produce(db.Model):
+    __tablename__ = 'Produce'
+    id = db.Column(db.Integer, primary_key=True)
+    item = db.Column(db.Unicode(256), default="")
+    location = db.Column(db.Unicode(256), default="")
+    amount = db.Column(db.Integer, default=0)
+    price = db.Column(db.Float, default=0.0);
+
+class GFB(db.Model):
+    __tablename__ = 'GFB'
+    id = db.Column(db.Integer, primary_key=True)
+    item = db.Column(db.Unicode(256), default="")
+    quantity = db.Column(db.Integer, default=0)
+    price = db.Column(db.Float, default=0.0)
+    total = db.Column(db.Float, default=0.0)
+    savings = db.Column(db.Float, default=0.0);
+
 # Set up corresponding RESTful API
 # ==========================================================================================
 # Create the database tables.
@@ -81,6 +105,9 @@ manager.create_api(Retailers, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(Products, methods=['GET', 'POST', 'DELETE' ,'PUT'])
 manager.create_api(PodOrderForms, methods=['GET', 'POST', 'DELETE' ,'PUT'])
 manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE', 'PUT'])
+
+manager.create_api(Produce, methods=['GET', 'POST', 'DELETE', 'PUT'])
+manager.create_api(GFB, methods=['GET', 'POST', 'DELETE', 'PUT'])
 
 # Misc. routes
 # ==========================================================================================
