@@ -173,7 +173,7 @@ def get_tables():
         if table[0] in table_names:
             models.append(classes[table_names.index(table[0])])
 
-    return "<h1 style='color:blue'>"+ str(json.dumps(tables)) +"</h1>"
+    return "<h1 style='color:blue'>"+ str(jsonify(tables)) +"</h1>"
 
 @application.before_request
 def basic_authorize():
