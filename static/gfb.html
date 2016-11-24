@@ -103,11 +103,12 @@
                 }
                 var newCell = document.createElement('td');
                 newCell.id = key;
-                if ( data["objects"][i][key] == 'quantity' ) {
+                if ( key == 'quantity' ) {
                     var selector = document.createElement('select');
                     for ( var k = 0; k <= 50; k++) {
                         var option = document.createElement('option');
                         option.innerHTML = k;
+                        option.value = k;
                         selector.appendChild(option);
                     }
                     newCell.appendChild(selector);
@@ -115,7 +116,6 @@
                     newCell.innerHTML = data["objects"][i][key];
                 }
                 newRow.appendChild(newCell);
-                console.log(key);
             }
             tableBodyElement.appendChild(newRow);
         }
@@ -126,9 +126,8 @@
 
             for ( var key in data.objects[i]) {
                 var newCell = document.createElement('td');
-                newCell.innerHTML = "";
+                newCell.innerHTML = " ";
                 newRow.appendChild(newCell);
-                console.log(key);
             }
             tableBodyElement.appendChild(newRow);
         }
@@ -168,7 +167,6 @@
                 // data: x,  data passed to db
                 dataType: 'json',
                 success: function (getData) { // y is waht the get returns
-                    console.log(getData);
                     addDataToGFB(getData);
                 }
             });
