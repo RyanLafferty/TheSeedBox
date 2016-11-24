@@ -1,4 +1,4 @@
-import os, logging
+import os, logging, glob
 from logging import FileHandler
 
 from flask import Flask, request, flash, url_for, redirect, render_template, jsonify, abort, request, send_from_directory
@@ -155,7 +155,7 @@ def upload_file():
 def download(filename):
     return send_from_directory(directory=application.config['UPLOAD_FOLDER'], filename=filename)
 
-@application.route('/api/schema', methods=['GET'])
+@application.route('/api/tables', methods=['GET'])
 def get_tables():
     tables = db.metadata.tables.items()
     tableList = []
@@ -164,6 +164,15 @@ def get_tables():
         tableList.append(table[0])
 
     return jsonify(tablenames=tableList)
+
+@application.route('/api/files', methods=['GET'])
+def get_files:
+    fileList = []
+    os.chdir(UPLOAD_FOLDER)
+    for file in glob.glob("*.txt"):
+        fileList.append(str(file))
+    return jsonify(files=fileList)
+
 
 @application.before_request
 def basic_authorize():
