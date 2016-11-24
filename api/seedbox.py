@@ -37,6 +37,7 @@ class Test(db.Model):
     __tablename__ = 'Test'
     id = db.Column(db.Integer, primary_key=True)
     sum = db.Column(db.Integer, default=12)
+    de = db.Column(db.Integer)
 
 class Users(db.Model):
     __tablename__ = 'Users'
