@@ -34,8 +34,6 @@
       </div>
     </center>
     <br>
-    <center></center>
-    <p id="debug"></p>
     <script>
       function checkAll()
       {
@@ -66,16 +64,15 @@
         newCell.appendChild(checkbox);
         newRow.appendChild(newCell);
         
-        Object.keys(tableData[0]).forEach(function(title) {
+        for (var title in tableData[0]) {
             newCell = document.createElement('th');
             var info = document.createTextNode(title);
             newCell.appendChild(info);
             newRow.appendChild(newCell);
-        });
+        }
         tableElement.appendChild(newRow);
         
         //Create Body
-        /*
         tableElement = document.getElementById('table-body');
         for (var nextRow in tableData) {
             newRow = document.createElement('tr');
@@ -88,8 +85,8 @@
             newCell.appendChild(checkbox);
             newRow.appendChild(newCell);
             
-            for (var key in nextRow) {
-                var value = nextRow[key];
+            for (var key in tableData[nextRow]) {
+                var value = tableData[nextRow][key];
                 
                 newCell = document.createElement('td');
                 var info = document.createTextNode(value);
@@ -98,7 +95,6 @@
             }
             tableElement.appendChild(newRow);
         }
-        */
     }
     </script>
     <script>
