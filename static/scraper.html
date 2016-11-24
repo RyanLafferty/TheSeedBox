@@ -12,7 +12,7 @@
 
     <style>
         html, body { height:100%; margin:0; padding:0 }
-        .div-placing { position:fixed; width:50%; height:50% }
+        .div-placing { position:fixed; width:50%; height:50%; overflow: scroll; }
         #NW { top:10%;   left:0; }
         #NE { top:10%;   left:50%; }
         #SW { top:55%; left:0; }
@@ -43,15 +43,34 @@
     </div>
     <!-- manual scrape  -->
     <div id="NE" class="div-placing">
-        <p> 2 </p>
+        <form class="lead">
+            <p> manual scrape </p>
+            <div class="form-group">
+                <label for="stores">Stores: </label><br>
+                <form action="">
+                    <input id="NoFrillsManualScrape" type="checkbox" name="store" value="NoFrills"> NoFrills<br>
+                    <input id="MetroManualScrape" type="checkbox" name="store" value="Metro"> Metro
+                </form>
+            </div>
+            <div class="form-group">
+                <button onClick="location.href = 'home.html'" class="btn btn-success" style="width: 110px;" id="ManualScrapeButton"> Manual Scrape </button>
+            </div>
+        </form>
     </div>
     <!--  -->
     <div id="SE" class="div-placing">
-        <p> 3 </p>
+        <form class="lead">
+            <br>
+            <p> SP execute button </p>
+            <div class="form-group">
+                <button onClick="location.href = 'home.html'" class="btn btn-success" style="width: 95px;" id="Execute"> Execute </button>
+            </div>
+        </form>
     </div>​
     <!-- cahnge settings  -->
     <div id="SW" class="div-placing">
         <form class="lead">
+            <br>
             <p> change settings </p>
             <div class="form-group">
                 <label for="day">Day of The Week: </label>
@@ -75,6 +94,9 @@
                     <input id="NoFrills" type="checkbox" name="store" value="NoFrills"> NoFrills<br>
                     <input id="Metro" type="checkbox" name="store" value="Metro"> Metro
                 </form>
+            </div>
+            <div class="form-group">
+                <button onClick="location.href = 'home.html'" class="btn btn-success" style="width: 95px;">Save</button>
             </div>
         </form>
     </div>
