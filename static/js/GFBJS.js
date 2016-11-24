@@ -1,7 +1,7 @@
 /**
  * Created by slawomir on 24/11/16.
  */
-function createGFBTableHeader() {
+function createGFBTableHeader(data) {
     //var tableHeaders = ['Item', 'Price ($)', 'Quantity', 'Savings (%)', 'Total ($)', ];
 
     var tableHeaderElement = document.getElementById("table-header");
@@ -101,9 +101,10 @@ $( document ).ready(function() {
         // data: x,  data passed to db
         dataType: 'json',
         success: function (getData) { // y is waht the get returns
+            createGFBTableHeader(getData);
             addDataToGFB(getData);
         }
     });
-    createGFBTableHeader();
+
 
 });
