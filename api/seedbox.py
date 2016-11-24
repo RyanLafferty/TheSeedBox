@@ -36,7 +36,7 @@ db = flask_sqlalchemy.SQLAlchemy(application)
 class Test(db.Model):
     __tablename__ = 'Test'
     id = db.Column(db.Integer, primary_key=True)
-    sum = db.Column(db.Integer, server_default=12)
+    sum = db.Column(db.Integer, default=12)
     de = db.Column(db.Integer)
 
 class Users(db.Model):
