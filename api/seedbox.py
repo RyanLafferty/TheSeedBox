@@ -159,7 +159,8 @@ def download(filename):
 @application.route('/api/schema', methods=['GET'])
 def get_tables():
     classes, models, table_names = [], [], []
-    tables = db.get_tables_for_bind()
+    #tables = db.get_tables_for_bind()
+    tables = db.metadata.tables()
     #intertables = []
     #tables = []
 
@@ -173,7 +174,7 @@ def get_tables():
         if table[0] in table_names:
             models.append(classes[table_names.index(table[0])])
 
-    return "<h1 style='color:blue'>"+ str(models[0][0]) +"</h1>"
+    return "<h1 style='color:blue'>"+ str(tables) +"</h1>"
 
 @application.before_request
 def basic_authorize():
