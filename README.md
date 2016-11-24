@@ -5,7 +5,7 @@
     source venv/bin/activate
     pip install -r requirements.txt
 
-To refresh the Python code after pulling changes, run `sudo restart seedbox`.
+To refresh the Python code after pulling changes, run `sudo restart seedbox.
 
 ## Server configuration
 
