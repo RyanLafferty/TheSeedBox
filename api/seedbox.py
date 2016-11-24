@@ -37,6 +37,7 @@ db = flask_sqlalchemy.SQLAlchemy(application)
 class Users(db.Model):
     __tablename__ = 'Users'
     id = db.Column(db.Integer, primary_key=True)
+    admin = db.Column(db.Boolean)
     fname = db.Column(db.Unicode(256))
     lname = db.Column(db.Unicode(256))
     email = db.Column(db.Unicode(256))
