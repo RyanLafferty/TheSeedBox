@@ -160,6 +160,7 @@ def download(filename):
 def get_tables():
     classes, models, table_names = [], [], []
     mdat = db.get_tables_for_bind()
+    intertables = []
     tables = []
     for clazz in db.Model._decl_class_registry.values():
         try:
@@ -171,8 +172,10 @@ def get_tables():
         if table[0] in table_names:
             models.append(classes[table_names.index(table[0])])
     for table in mdat:
-        tables.append(table)
-    return "<h1 style='color:blue'>"+ str(tables[0]) +"</h1>"
+        intertables.append(table)
+    for table in intertables:
+        tables.append(intertables[0])
+    return "<h1 style='color:blue'>"+ str(tables) +"</h1>"
 
 @application.before_request
 def basic_authorize():
