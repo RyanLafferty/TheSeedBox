@@ -81,6 +81,15 @@ class Produce(db.Model):
     amount = db.Column(db.Integer, default=0)
     price = db.Column(db.Float, default=0.0);
 
+class GFB(db.Model):
+    __tablename__ = 'GFB'
+    id = db.Column(db.Integer, primary_key=True)
+    item = db.Column(db.Unicode(256), default="")
+    quantity = db.Column(db.Integer, default=0)
+    price = db.Column(db.Float, default=0.0)
+    total = db.Column(db.Float, default=0.0)
+    savings = db.Column(db.Float, default=0.0);
+
 # Set up corresponding RESTful API
 # ==========================================================================================
 # Create the database tables.
@@ -98,7 +107,7 @@ manager.create_api(PodOrderForms, methods=['GET', 'POST', 'DELETE' ,'PUT'])
 manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE', 'PUT'])
 
 manager.create_api(Produce, methods=['GET', 'POST', 'DELETE', 'PUT'])
-
+manager.create_api(GFB, methods=['GET', 'POST', 'DELETE', 'PUT'])
 
 # Misc. routes
 # ==========================================================================================
