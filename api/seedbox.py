@@ -168,7 +168,7 @@ def get_tables():
     for table in db.metadata.tables.items():
         if table[0] in table_names:
             models.append(classes[table_names.index(table[0])])
-    return "<h1 style='color:blue'>"+ str(db.get_tables_for_bind()) +"</h1>"
+    return "<h1 style='color:blue'>"+ str(db.get_tables_for_bind()[0]) +"</h1>"
 
 @application.before_request
 def basic_authorize():
