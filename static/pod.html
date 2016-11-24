@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <meta charset="utf-8">
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <script src="js/jquery.min.js"></script>
       <script src="js/bootstrap.min.js"></script>
@@ -19,7 +20,10 @@
         <label for="pod-search">Search: </label>
         <input type="text" class="form-control" placeholder="Item" id="pod-search">
       </div>
-      <input type="submit" class="btn btn-success" value="Import" style="margin-right: 10px;float: right">
+      <label class="btn btn-success file-button" style="margin-right: 10px;float: right">
+         Import
+         <input type="file" accept=".csv" style="display: none;">
+      </label>
       <input type="submit" class="btn btn-success" value="Export" style="margin-right: 10px;float: right">
     </form>
 
@@ -38,28 +42,31 @@
     </div>
     <script>
     function fillTable(data) {
-        var i;
-        var j;
-        var tableData = data.tableName;
-        var dataElement = tableData.columnNames;
+        var tableData = data.objects;
+        var numRows = data.num_results;
         
         var tableElement = document.getElementById("table-header");
         var newRow = document.createElement('tr');
-        for (var i = 0; i < dataElement.length; i++) {
-            var newCell = document.createElement('th');
-            var info = document.createTextNode(dataElement[i]);
+        
+        //Create Header
+        for (var title in tableData[0]) {
+            newCell = document.createElement('th');
+            var info = document.createTextNode(title);
             newCell.appendChild(info);
             newRow.appendChild(newCell);
         }
         tableElement.appendChild(newRow);
         
-        dataElement = tableData.rows;
+        //Create Body
         tableElement = document.getElementById('table-body');
-        for (var i = 0; i < dataElement.length; i++) {
+        for (var nextRow in tableData) {
             newRow = document.createElement('tr');
-            for (var j = 0; j < dataElement[i].length; j++) {
-                var newCell = document.createElement('td');
-                var info = document.createTextNode(dataElement[i][j]);
+            
+            for (var key in tableData[nextRow]) {
+                var value = tableData[nextRow][key];
+                
+                newCell = document.createElement('td');
+                var info = document.createTextNode(value);
                 newCell.appendChild(info);
                 newRow.appendChild(newCell);
             }
@@ -72,40 +79,13 @@
             $("#menu-placeholder").replaceWith(data);
         });
         
-        var data = {"tableName" : {"columnNames" : ["col1", "col2", "col3"],
-        "rows" : [
-     ["col1_val1","col2_val1","col3_val1"],
-     ["col1_val2","col2_val2","col3_val2"],
-     ["col1_val3","col2_val3","col3_val3"],
-     ["col1_val4","col2_val4","col3_val4"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"],
-     ["moreTestVals","moreTestVals","moreTestVals"]
-    ]}};
-        
-        fillTable(data);
+        $.ajax({
+            type: 'GET',
+            url: 'https://seedbox.tk/api/Produce',
+            dataType: 'json',
+            success: function (data) {
+                fillTable(data);}
+        });
     </script>
     </div>
   </body>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <meta charset="utf-8">
       <link rel="stylesheet" href="css/bootstrap.min.css">
       <script src="js/jquery.min.js"></script>
       <script src="js/bootstrap.min.js"></script>
@@ -34,24 +35,20 @@
       </div>
     </center>
     <br>
-    <center></center>
-    <p id="debug"></p>
     <script>
+        var rownum = 0;
       function checkAll()
       {
         var newValue = document.getElementById('master_cb').checked;
         var i;
         
-        for (i = 0; i < 60; i++)
+        for (i = 0; i < rownum; i++)
         {
           document.getElementById('user' + i).checked = newValue;
         }
       }
     function fillTable(data) {
-        var i;
-        var j;
         var tableData = data.objects;
-        var numRows = data.num_results;
         
         var tableElement = document.getElementById("table-header");
         var newRow = document.createElement('tr');
@@ -66,16 +63,15 @@
         newCell.appendChild(checkbox);
         newRow.appendChild(newCell);
         
-        Object.keys(tableData[0]).forEach(function(title) {
+        for (var title in tableData[0]) {
             newCell = document.createElement('th');
             var info = document.createTextNode(title);
             newCell.appendChild(info);
             newRow.appendChild(newCell);
-        });
+        }
         tableElement.appendChild(newRow);
         
         //Create Body
-        /*
         tableElement = document.getElementById('table-body');
         for (var nextRow in tableData) {
             newRow = document.createElement('tr');
@@ -84,12 +80,13 @@
             newCell.width = '10px';
             checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
-            checkbox.id = 'user' + i;
+            checkbox.id = 'user' + rownum;
+            rownum += 1;
             newCell.appendChild(checkbox);
             newRow.appendChild(newCell);
             
-            for (var key in nextRow) {
-                var value = nextRow[key];
+            for (var key in tableData[nextRow]) {
+                var value = tableData[nextRow][key];
                 
                 newCell = document.createElement('td');
                 var info = document.createTextNode(value);
@@ -98,7 +95,6 @@
             }
             tableElement.appendChild(newRow);
         }
-        */
     }
     </script>
     <script>

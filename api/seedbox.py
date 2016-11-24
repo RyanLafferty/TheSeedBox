@@ -155,6 +155,16 @@ def upload_file():
 def download(filename):
     return send_from_directory(directory=application.config['UPLOAD_FOLDER'], filename=filename)
 
+@application.route('/api/schema', methods=['GET'])
+def get_tables():
+    tables = db.metadata.tables.items()
+    tableList = []
+
+    for table in tables:
+        tableList.append(table[0])
+
+    return jsonify(tablenames=tableList)
+
 @application.before_request
 def basic_authorize():
     print "hello"
