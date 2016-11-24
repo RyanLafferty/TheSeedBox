@@ -12,7 +12,6 @@ function createGFBTableHeader(data) {
             var info = document.createTextNode(key);
             newCell.appendChild(info);
             newRow.appendChild(newCell);
-            console.log(key);
         }
     }
     tableHeaderElement.appendChild(newRow);
