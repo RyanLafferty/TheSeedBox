@@ -11,3 +11,5 @@ class Product(scrapy.Item):
     name = scrapy.Field()
     price = scrapy.Field()
     quantity = scrapy.Field()
+    source = scrapy.Field()
+    dateCreated = scrapy.Field()

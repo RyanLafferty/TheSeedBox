@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
-
-import re
+import re, requests, time
 from scrapy.exceptions import DropItem
 
 class ProductPipeline(object):
+    def __init__(self):
+        self.date = time.strftime("%Y-%m-%dT%H:%M:%S")
+
     def parse_price(self, value):
         match = re.match('^(\d+)\/\$([-+]?[0-9]*\.?[0-9]+)$', value)
         if match:
@@ -24,12 +26,16 @@ class ProductPipeline(object):
         return False
 
     def process_item(self, item, spider):
-        #TODO Submit post requests to insert products
         result = self.parse_price(item['price'])
+
         if result:
             item['quantity'], item['price'] = result
         else:
             raise DropItem("Unable to parse item's price: %s" % item['price'])
 
-        print item
+        item['source'] = spider.name
+        item['dateCreated'] = self.date
+
+        response = requests.post('http://localhost:5000/api/Products', json=dict(item))
+
         return item
