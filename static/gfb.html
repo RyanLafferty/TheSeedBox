@@ -97,17 +97,17 @@
                 tableBodyElement.appendChild(newRow);
             }
 
-//            // create empty rows in table
-//            for ( var i = 0; i < 20; i++ ) {
-//                var newRow = document.createElement('tr');
-//
-//                for ( var key in data.objects[i]) {
-//                    var newCell = document.createElement('td');
-//                    newCell.innerHTML = "1";
-//                    newRow.appendChild(newCell);
-//                }
-//                tableBodyElement.appendChild(newRow);
-//            }
+            // create empty rows in table
+            for ( var i = 0; i < 20; i++ ) {
+                var newRow = document.createElement('tr');
+
+                for ( var j = 0; i < 5; i++) {
+                    var newCell = document.createElement('td');
+                    newCell.innerHTML = "1";
+                    newRow.appendChild(newCell);
+                }
+                tableBodyElement.appendChild(newRow);
+            }
         }
 
 
