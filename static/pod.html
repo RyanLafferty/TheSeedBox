@@ -22,7 +22,7 @@
       </div>
       <label class="btn btn-success file-button" style="margin-right: 10px;float: right">
          Import
-         <input type="file" accept=".csv" style="display: none;">
+         <input type="file" id="file-upload" accept=".csv" style="display: none;" onchange="uploadFile()" multiple>
       </label>
       <input type="submit" class="btn btn-success" value="Export" style="margin-right: 10px;float: right">
     </form>
@@ -40,6 +40,7 @@
     Year: <input type="text" placeholder="Year">
     <input type="submit" value="History" class="btn btn-success">
     </div>
+    <p id="debug"></p>
     <script>
     function fillTable(data) {
         var tableData = data.objects;
@@ -86,6 +87,25 @@
             success: function (data) {
                 fillTable(data);}
         });
+    </script>
+    <script>
+        function uploadFile() {
+            var formData = new FormData();
+            var files = document.getElementById('file-upload').files;
+            for (var i = 0; i < files.length; i++) {
+                formData.append("spreadsheet_" + i, files[i], files[i].name);
+            }
+            
+            $.ajax({
+                type: 'POST',
+                url: 'https://seedbox.tk/api/upload',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    document.getElementById('debug').innerHTML = data;}
+            });
+        }
     </script>
     </div>
   </body>
