@@ -119,6 +119,19 @@
             }
             tableBodyElement.appendChild(newRow);
         }
+
+        // create empty rows in table
+        for ( var i = data["num_results"]; i < 20; i++ ) {
+            var newRow = document.createElement('tr');
+
+            for ( var key in data.objects[i]) {
+                var newCell = document.createElement('td');
+                newCell.innerHTML = "";
+                newRow.appendChild(newCell);
+                console.log(key);
+            }
+            tableBodyElement.appendChild(newRow);
+        }
     }
 
 
