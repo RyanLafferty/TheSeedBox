@@ -164,9 +164,14 @@ def get_tables():
     #intertables = []
     #tables = []
     tableList = []
+    columnList = []
 
     for table in tables:
-        tableList.append(table[0])
+        for column in table:
+            columnList = []
+            columnList.append(column)
+        tableList.append((table[0], columnList))
+
     return "<h1 style='color:blue'>"+ str(tableList) +"</h1>"
 
 @application.before_request
