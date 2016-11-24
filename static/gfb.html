@@ -36,45 +36,17 @@
     Savings: <input type="text" value="50%" readonly>
     </center>
     <script>
-//        keep for now
-//        function createGFBTableHeader() {
-//            var tableHeaders = ['Item', 'Price ($)', 'Quantity', 'Savings (%)', 'Total ($)', ];
-//
-//            var tableHeaderElement = document.getElementById("table-header");
-//            var newRow = document.createElement('tr');
-//            for (var i = 0; i < tableHeaders.length; i++) {
-//                var newCell = document.createElement('th');
-//                var info = document.createTextNode(tableHeaders[i]);
-//                newCell.appendChild(info);
-//                newRow.appendChild(newCell);
-//            }
-//            tableHeaderElement.appendChild(newRow);
-//        }
 
-        String.prototype.capitalizeFirstLetter = function() {
-            return this.charAt(0).toUpperCase() + this.slice(1);
-        }
-
-        function createGFBTableHeader(data) {
+        function createGFBTableHeader() {
             var tableHeaders = ['Item', 'Price ($)', 'Quantity', 'Savings (%)', 'Total ($)', ];
 
             var tableHeaderElement = document.getElementById("table-header");
             var newRow = document.createElement('tr');
-
-            if ( data.objects.length != 0 ) {   // dynamic if data exists
-                for (var key in data.objects[0]) {
-                    var newCell = document.createElement('th');
-                    var info = document.createTextNode(key).capitalizeFirstLetter();
-                    newCell.appendChild(info);
-                    newRow.appendChild(newCell);
-                }
-            } else { // static if data doesn't exist
-                for (var i = 0; i < tableHeaders.length; i++) {
-                    var newCell = document.createElement('th');
-                    var info = document.createTextNode(tableHeaders[i]);
-                    newCell.appendChild(info);
-                    newRow.appendChild(newCell);
-                }
+            for (var i = 0; i < tableHeaders.length; i++) {
+                var newCell = document.createElement('th');
+                var info = document.createTextNode(tableHeaders[i]);
+                newCell.appendChild(info);
+                newRow.appendChild(newCell);
             }
             tableHeaderElement.appendChild(newRow);
         }
@@ -111,20 +83,13 @@
             }
 
             // create empty rows in table
-            for ( var i = parseInt(data["num_results"]); i < 10; i++ ) {
+            for ( var i = parseInt(data["num_results"]); i < 20; i++ ) {
                 var newRow = document.createElement('tr');
-                if ( data.objects.length != 0 ) {
-                    for (var key in data.objects[0]) {
-                        var newCell = document.createElement('td');
-                        newCell.innerHTML = " ";
-                        newRow.appendChild(newCell);
-                    }
-                } else {
-                    for (var j = 0; j < 5; j++) {
-                        var newCell = document.createElement('td');
-                        newCell.innerHTML = " ";
-                        newRow.appendChild(newCell);
-                    }
+
+                for ( var j = 0; j < 5; j++) {
+                    var newCell = document.createElement('td');
+                    newCell.innerHTML = " ";
+                    newRow.appendChild(newCell);
                 }
                 tableBodyElement.appendChild(newRow);
             }
@@ -138,21 +103,21 @@
         });
 
 
-//        var send = {
-//          "num_results": 1,
-//          "objects": [
-//            {
-//              "id": 1,
-//              "item": "apple,
-//              "price": 1.01,
-//              "quantity": 0,
-//              "savings": 10,
-//              "total": 0
-//            }
-//          ],
-//          "page": 1,
-//          "total_pages": 1
-//        }
+        var send = {
+          "num_results": 1,
+          "objects": [
+            {
+              "id": 1,
+              "item": apple,
+              "price": 1.01,
+              "quantity": 0,
+              "savings": 10,
+              "total": 0
+            }
+          ],
+          "page": 1,
+          "total_pages": 1
+        }
 
 //            $.ajax({
 //                type: 'POST',
@@ -173,11 +138,10 @@
                 // data: x,  data passed to db
                 dataType: 'json',
                 success: function (getData) { // y is waht the get returns
-                    createGFBTableHeader(getData);
                     addDataToGFB(getData);
                 }
             });
-
+            createGFBTableHeader();
 
         });
 
