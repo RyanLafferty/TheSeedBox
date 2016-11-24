@@ -140,12 +140,12 @@ def upload_file():
         # check if the post request has the file part
         if 'file' not in request.files:
             flash('No file part')
-            return jsonify(error="no file")
+            return jsonify("no file")
         file = request.files['file']
         # if user does not select file
         if file.filename == '':
             flash('No selected file')
-            return jsonify(error="selected file")
+            return jsonify("no selected file")
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(application.config['UPLOAD_FOLDER'], filename))
