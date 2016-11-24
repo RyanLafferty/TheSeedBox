@@ -43,7 +43,7 @@ any
 
 
 ###Get Entire Table
-URL: https://seedbox.tk/api/TABLENAME
+URL: https://website/api/TABLENAME
 
 TYPE: GET
 
@@ -56,7 +56,7 @@ Example: See Example 1
 
 
 ###Select
-URL: https://seedbox.tk/api/TABLENAME
+URL: https://website/api/TABLENAME
 
 TYPE: GET
 
@@ -72,7 +72,7 @@ Example: See Example 1
 
 
 ###Delete
-URL: https://seedbox.tk/api/TABLENAME/ID
+URL: https://website/api/TABLENAME/ID
 
 TYPE: DELETE
 
@@ -80,7 +80,7 @@ Response: HTTP/1.1 204 No Content
 
 
 ###Update -> NOT implemented TODO
-URL: https://seedbox.tk/api/TABLENAME/ID
+URL: https://website/api/TABLENAME/ID
 
 Type: PUT
 
@@ -98,7 +98,7 @@ See Example 1
 
 
 ###Insert
-URL: https://seedbox.tk/api/TABLENAME
+URL: https://website/api/TABLENAME
 
 Type: POST
 
@@ -119,7 +119,7 @@ See Example 1
   "num_results": 1,
   "objects": [
     {
-      "email": "test@seedbox.tk",
+      "email": "test@website",
       "fname": "Test",
       "id": 1,
       "lname": "User",
