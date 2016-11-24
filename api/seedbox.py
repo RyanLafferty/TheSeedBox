@@ -156,9 +156,8 @@ def download(filename):
     return send_from_directory(directory=application.config['UPLOAD_FOLDER'], filename=filename)
 
 #send table names?
-
 @application.route('/api/schema', methods=['GET'])
-def get_tables:
+def get_tables():
     classes, models, table_names = [], [], []
     for clazz in db.Model._decl_class_registry.values():
         try:
