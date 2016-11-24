@@ -72,6 +72,15 @@ class PodOrderForms(db.Model):
     __tablename__ = 'PodOrderForms'
     id = db.Column('id', db.Integer, primary_key=True)
 
+
+class Produce(db.Model):
+    __tablename__ = 'Produce'
+    id = db.Column(db.Integer, primary_key=True)
+    item = db.Column(db.Unicode(256))
+    location = db.Column(db.Unicode(256))
+    amount = db.Column(db.Integer)
+    price = db.Column(db.Float);
+
 # Set up corresponding RESTful API
 # ==========================================================================================
 # Create the database tables.
@@ -87,6 +96,9 @@ manager.create_api(Retailers, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(Products, methods=['GET', 'POST', 'DELETE' ,'PUT'])
 manager.create_api(PodOrderForms, methods=['GET', 'POST', 'DELETE' ,'PUT'])
 manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE', 'PUT'])
+
+manager.create_api(Produce, methods=['GET', 'POST', 'DELETE', 'PUT'])
+
 
 # Misc. routes
 # ==========================================================================================
