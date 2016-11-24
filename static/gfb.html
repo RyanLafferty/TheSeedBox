@@ -89,6 +89,21 @@
             tableElement.appendChild(newRow);
         }
     }
+    function createGFBTableHeader() {
+        var tableHeaders = ['Item', 'Quantity', 'Price ($)', 'Total ($)', 'Savings (%)'];
+
+        var tableHeaderElement = document.getElementById("table-header");
+        var newRow = document.createElement('tr');
+        for (var i = 0; i < tableHeaders.length; i++) {
+            var newCell = document.createElement('th');
+            var info = document.createTextNode(tableHeaders[i]);
+            newCell.appendChild(info);
+            newRow.appendChild(newCell);
+        }
+        tableHeaderElement.appendChild(newRow);
+    }
+
+
     </script>
     <script>
         $.get("menu_admin.html", function(data){
@@ -115,16 +130,19 @@
 //        });
 
 
-
-        $.ajax({
-            type: 'GET',
-            url: '/api/GFB',
-            // data: x,  data passed to db
-            dataType: 'json',
-            success: function (y) { // y is waht the get returns
-                console.log(y);
-            }
+        $( document ).ready(function() {
+            $.ajax({
+                type: 'GET',
+                url: '/api/GFB',
+                // data: x,  data passed to db
+                dataType: 'json',
+                success: function (y) { // y is waht the get returns
+                    console.log(y);
+                }
+            });
+            createGFBTableHeader();
         });
+
         
         fillTable(data);
     </script>
