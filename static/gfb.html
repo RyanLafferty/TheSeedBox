@@ -94,7 +94,8 @@
         $.get("menu_admin.html", function(data){
             $("#menu-placeholder").replaceWith(data);
         });
-        
+
+
         var data = {"tableName" : {"columnNames" : ["col1", "col2", "col3"],
         "rows" : [
      ["col1_val1","col2_val1","col3_val1"],
@@ -102,6 +103,28 @@
      ["col1_val3","col2_val3","col3_val3"],
      ["col1_val4","col2_val4","col3_val4"]
     ]}};
+
+//        $.ajax({
+//            type: 'POST',
+//            url: '/api/GardenFreshBoxes',
+//            data: data,
+//            dataType: 'json',
+//            success: function (data) {
+//                console.log(data);
+//            }
+//        });
+//
+//
+//
+//        $.ajax({
+//            type: 'GET',
+//            url: '/api/GardenFreshBoxes',
+//            data: data,
+//            dataType: 'json',
+//            success: function (data) {
+//                console.log(data);
+//            }
+//        });
         
         fillTable(data);
     </script>
