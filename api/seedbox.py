@@ -159,9 +159,10 @@ def download(filename):
 @application.route('/api/schema', methods=['GET'])
 def get_tables():
     classes, models, table_names = [], [], []
-    mdat = db.get_tables_for_bind()
-    intertables = []
-    tables = []
+    tables = db.get_tables_for_bind()
+    #intertables = []
+    #tables = []
+
     for clazz in db.Model._decl_class_registry.values():
         try:
             table_names.append(clazz.__tablename__)
@@ -171,11 +172,8 @@ def get_tables():
     for table in db.metadata.tables.items():
         if table[0] in table_names:
             models.append(classes[table_names.index(table[0])])
-    for table in mdat:
-        intertables.append(table)
-    for table in intertables:
-        tables.append(intertables[0])
-    return "<h1 style='color:blue'>"+ str(tables) +"</h1>"
+
+    return "<h1 style='color:blue'>"+ str(json.dumps(tables)) +"</h1>"
 
 @application.before_request
 def basic_authorize():
