@@ -171,6 +171,10 @@ def get_files():
     os.chdir(UPLOAD_FOLDER)
     for file in glob.glob("*.xls"):
         fileList.append(str(file))
+    for file in glob.glob("*.xlsx"):
+        fileList.append(str(file))
+    for file in glob.glob("*.csv"):
+        fileList.append(str(file))
     return jsonify(files=fileList)
 
 
