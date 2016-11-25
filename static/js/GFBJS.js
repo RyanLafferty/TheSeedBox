@@ -49,7 +49,7 @@ function addDataToGFB(data) {
             } else if (key == 'item') {
                 newCell.innerHTML = data["objects"][i][key];
             } else {
-                newCell.innerHTML = '$' + parseFloat(data["objects"][i][key]).toFixed(2);
+                newCell.innerHTML = parseFloat(data["objects"][i][key]).toFixed(2);
             }
             newRow.appendChild(newCell);
 /*            if (key == 'price') {
