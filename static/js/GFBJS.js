@@ -77,7 +77,7 @@ function updateTotal(element) {
     var currentValue = element.options[element.selectedIndex].value;
     /*temp.value = parseInt(temp.value,10);*/
 
-    document.getElementById('savingTotal').value = currentValue;
+    document.getElementById('savingsTotal').value = currentValue;
 
     /*var oldValue = +(temp.value) || 0;
     temp.value = oldValue;
