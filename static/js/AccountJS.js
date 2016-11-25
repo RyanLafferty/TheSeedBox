@@ -1,7 +1,15 @@
 /**
  * Created by slawomir on 24/11/16.
  */
-
+var settings = {
+                    "admin": true,
+                    "fname": $('#fname').val(),
+                    "lname": $('#lname').val(),
+                    "password": $('#password').val(),
+                    "email": $('#email').val(),
+                    "logintime": null,
+                    "password": null
+                }
 
 $( document ).ready(function() {
     $.ajax({
@@ -21,6 +29,7 @@ $( document ).ready(function() {
             url: '/api/Users/1',
             data: settings,  // data passed to db
             dataType: 'json',
+            contentType:"application/json;",
             success: function (getData) { // y is waht the get returns
                 alert("Profile Updated");
             }
@@ -48,14 +57,4 @@ function populateInputBoxes(data) {
     //}
     console.log("get");
 }
-
-var settings = {
-                    "admin": true,
-                    "fname": $('#fname').val(),
-                    "lname": $('#lname').val(),
-                    "password": $('#password').val(),
-                    "email": $('#email').val(),
-                    "logintime": null,
-                    "password": null
-                }
 
