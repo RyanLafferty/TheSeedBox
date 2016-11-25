@@ -6,7 +6,7 @@ from flask import Flask, request, flash, url_for, redirect, render_template, jso
 import flask_sqlalchemy
 import flask_restless
 
-import auth
+# import auth
 
 #Set up upload folder
 UPLOAD_FOLDER = '/uploads'
