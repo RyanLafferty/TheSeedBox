@@ -62,9 +62,9 @@ function createJsonChangeSettings(data) {
 
         }
         console.log(storeNameList);
-        storeString.concat(storeNameList[0]);
-        storeString.concat(", ");
-        storeString.concat(storeNameList[1]);
+        storeString + storeNameList[0];
+        storeString +", ";
+        storeString + storeNameList[1];
         console.log(storeString);
         // add retialers to current savings
         // for ( var j in storeNameList ) {
