@@ -97,7 +97,7 @@ function deleteSelectedUser(data) {
                     deleteUser(key);
                 } // else skip
             } else {
-                console.log(skip);
+                console.log("skip");
             }
         }
 
