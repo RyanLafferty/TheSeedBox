@@ -5,8 +5,8 @@ var administrator = false;
 var logintimee = null;
 var oldPassword = "";
 var emaill = "";
-var fnamee = "";
-var lnamee = "";
+var fnamee = " ";
+var lnamee = " ";
 
 // var settings = {
 //                     "admin": true,
