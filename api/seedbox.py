@@ -166,7 +166,10 @@ def allowed_file(filename):
 
 @application.route("/api/run_scraper", methods=['POST'])
 def run_scraper():
-    run_the_scrapers(nofrills=request.nofrills,metro=request.metro);
+    try:
+        run_the_scrapers(nofrills=request.nofrills,metro=request.metro);
+    except:
+        return sys.exc_info()[0], 200
 
 @application.route("/api/upload", methods=['POST'])
 def upload_file():
