@@ -124,20 +124,6 @@ function changeScrapaerSettings() {
     return settings;
 }
 
-$('#SaveButton').click(function(){
-    callSettings();
-    $.ajax({
-        type: 'PUT',
-        contentType:"application/json",
-        url: '/api/ScraperSettings/' + id,
-        data: JSON.stringify(changeScrapaerSettings()),  // data passed to db
-        dataType: 'json',
-        success: function (getData) { // y is waht the get returns
-            alert("Settings Updated");
-        }
-    });
-});
-
 
 // populate the current settings
 $( document ).ready(function() {
@@ -150,4 +136,18 @@ $( document ).ready(function() {
             createJsonChangeSettings(getData);
         }
     });
+
+    $('#changeSettingsButton').click(function(){
+    callSettings();
+    $.ajax({
+        type: 'PUT',
+        contentType:"application/json",
+        url: '/api/ScraperSettings/' + id,
+        data: JSON.stringify(changeScrapaerSettings()),  // data passed to db
+        dataType: 'json',
+        success: function (getData) { // y is waht the get returns
+            alert("Settings Updated");
+        }
+    });
+});
 });
