@@ -74,12 +74,12 @@ $( document ).ready(function() {
 });
 
 function populateInputBoxes(data) {
-    var k = 1;
+    var k = 0;
     //for (var i = 0; i < data["num_results"]; i++ ) {
         // how to get value for key id data["objects"][i]["id"];
 
         //for ( var key in data.objects[i]) {
-        for ( var key in data.objects[1]) {
+        for ( var key in data.objects[k]) {
             if ( key == "fname" ) {
                 $('#fname').val(data["objects"][k][key]);
             } else if ( key == "lname" ) {
