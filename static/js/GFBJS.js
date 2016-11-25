@@ -111,18 +111,11 @@ $( document ).ready(function() {
 
     $('#gfb-search').keypress(function(e){
 		if (e.keyCode == 13){
-			item = $('#gfb-search').val();
-			options = {
-				"val":item,
-				"op":"like"
-			};
-			
-			newUrl = '/api/GFB'
 			$.ajax({
 				type: 'GET',
 				url: '/api/GFB',
 				dataType: 'json',
-				
+
 				success: function(data){
 					console.log(data)
 				},
