@@ -48,7 +48,7 @@ function fillTable(data) {
     tableElement = document.getElementById('table-body');
     for (var nextRow in tableData) {
         newRow = document.createElement('tr');
-        newRow.id = tableData[nextRow]["id"];
+        newRow.id = 'user' + rownum;
 
         newCell = document.createElement('td');
         newCell.width = '10px';
@@ -85,13 +85,14 @@ function deleteUser(id){
     //     }
     // });
     console.log(id);
-    $('table#usersTable tr#' + id).remove();
+    $('table#usersTable tr#user' + id).remove();
 }
 
 function deleteSelectedUser(data) {
     for (var i = 0; i < data["num_results"]; i++ ) {
         for ( var key in data.objects[i]) {
             if ( key == "id" ) {
+                console.log( data["objects"][i][key] );
                 if ( $('#' + data["objects"][i][key]).is(":checked") ) {
                     deleteUser(key);
                 } else {
