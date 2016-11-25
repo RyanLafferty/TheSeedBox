@@ -7,6 +7,7 @@ var oldPassword = "";
 var emaill = "";
 var fnamee = " ";
 var lnamee = " ";
+var userid = 1;
 
 // var settings = {
 //                     "admin": true,
@@ -77,7 +78,7 @@ $( document ).ready(function() {
         $.ajax({
             type: 'PUT',
             contentType:"application/json",
-            url: '/api/Users/1',
+            url: '/api/Users/' + userid,
             data: JSON.stringify(callSettings()),  // data passed to db
             dataType: 'json',
             success: function (getData) { // y is waht the get returns
@@ -97,18 +98,26 @@ function populateInputBoxes(data) {
             if ( key == "fname" ) {
                 namee = data["objects"][k][key];
                 $('#fname').val(data["objects"][k][key]);
+
             } else if ( key == "lname" ) {
                 lnamee = data["objects"][k][key];
                 $('#lname').val(data["objects"][k][key]);
+
             } else if ( key == "email" ) {
                 emaill = data["objects"][k][key];
                 $('#email').val(data["objects"][k][key]);
+
             } else if ( key == "admin" ) {
                 administrator = data["objects"][k][key];
+
             } else if ( key == "logintime" ) {
                 logintimee = data["objects"][k][key];
+
             } else if ( key == "password" ) {
                 oldPassword = data["objects"][k][key];
+
+            } else if ( key == "id" ) {
+                userid = data["objects"][k][key];
             }
         }
     //}
