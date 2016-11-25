@@ -25,7 +25,7 @@
          <input type="file" id="file-upload" accept=".csv" style="display: none;" onchange="uploadFile()" multiple>
       </label>
       <input type="submit" onclick="downloadFile()" class="btn btn-success" value="Export" style="margin-right: 10px;float: right">
-      <select id="down-files" style="margin-right: 10px;float: right" onchange="updateTable()"></select>
+      <select id="down-files" style="margin-right: 10px;float: right"></select>
     </form>
 
     <center>
@@ -125,16 +125,6 @@
             var dropdown = document.getElementById('down-files');
             var filename = dropdown.options[dropdown.selectedIndex].value;
             window.open('https://seedbox.tk/api/download/' + filename);
-        }
-        function updateTable() {
-            $.ajax({
-                type: 'GET',
-                url: 'https://seedbox.tk/api/Users',
-                dataType: 'json',
-                success: function (data) {
-                    fillTable(data);
-                }
-            });
         }
     </script>
     </div>
