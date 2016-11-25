@@ -13,7 +13,8 @@ var settings = {
 $("#SaveButton").click(function(){
     $.post("/api/AccountSettings/", settings,
     function(data, status){
-        alert("Data: " + data + "\nStatus: " + status);
+        console.log(settings);
+        console.log(status);
     });
 });
 
@@ -31,7 +32,6 @@ $( document ).ready(function() {
 });
 
 function populateInputBoxes(data) {
-    console.log(data);
     for (var i = 0; i < data["num_results"]; i++ ) {
         // how to get value for key id data["objects"][i]["id"];
 
