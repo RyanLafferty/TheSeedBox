@@ -36,9 +36,9 @@ $( document ).ready(function() {
     $('#SaveButton').click(function(){
         $.ajax({
             type: 'PUT',
-            url: '/api/Users/1',
-            data: settings,  // data passed to db
             contentType:"application/json",
+            url: '/api/Users/1',
+            data: JSON.stringify(settings),  // data passed to db
             dataType: 'json',
             success: function (getData) { // y is waht the get returns
                 alert("Profile Updated");
