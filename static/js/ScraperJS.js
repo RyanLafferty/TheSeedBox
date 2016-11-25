@@ -63,8 +63,8 @@ function createJsonChangeSettings(data) {
         }
         console.log(storeNameList);
         storeString = storeNameList[0];
-        storeString +", ";
-        storeString + storeNameList[1];
+        storeString += ", ";
+        storeString += storeNameList[1];
         console.log(storeString);
         // add retialers to current savings
         // for ( var j in storeNameList ) {
