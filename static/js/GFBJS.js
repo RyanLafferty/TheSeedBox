@@ -76,9 +76,9 @@ function addDataToGFB(data) {
 function updateTotal(table) {
     var totalSavings = 0;
     var totalValue = 0;
-    var tempHolder = table.rows[0].cells[2].getElementsByTagName('select');
+    var tempHolder = document.getElementsByTagName('select');
     /*document.getElementById('savingsTotal').value  = table.rows[0].cells[3].innerHTML; */
-    console.log(tempHolder.value);
+    console.log(tempHolder[0].value);
     for (var i = 0; i < table.rows.length; i++) {
         /*table.rows[i].cells[4].innerHTML = parseFloat(table.rows[i].cells[1].innerHTML) * parseFloat(table.rows[i].cells[2].innerHTML);*/
         totalSavings = totalSavings + parseFloat(table.rows[i].cells[3].innerHTML);
@@ -136,7 +136,7 @@ $.get("menu_admin.html", function(data){
 function sendSearch() {
     var request = {
         "name": "item",
-        "val": document.getElementById('gfb-search').value,
+        "val": "apple",
         "op": "like"
     }
     return request;
@@ -158,7 +158,7 @@ $( document ).ready(function() {
     $('#gfb-search').keypress(function(e){
         console.log( "begin" );
 		if (e.keyCode == 13){
-            e.preventDefault();
+            event.preventDefault();
 			$.ajax({
 				type: 'GET',
                 contentType:"application/json",
