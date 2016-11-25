@@ -123,6 +123,14 @@ class SpreadSheets(db.Model):
     ss_name = db.Column(db.Unicode(256), default="")
     json_data = db.Column(db.Text)
 
+    #def __init__(self, **kwargs):
+    #    super(SpreadSheets, self).__init__(**kwargs)
+
+    def __init__(self, ss_name, json_data):
+        self.ss_name = ss_name
+        self.json_data = json_data
+
+
 # Set up corresponding RESTful API
 # ==========================================================================================
 # Create the database tables.
@@ -229,6 +237,9 @@ def backup_database():
     sql_dump()
     backupName = DBNAME + '.sql'
     return send_from_directory(directory=application.config['UPLOAD_FOLDER'], filename=backupName)
+
+@application.route('/api/SpreadSheets/<filename>', )
+
 
 
 @application.before_request
