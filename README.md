@@ -20,7 +20,7 @@ Table of Contents
       * [Download](#download)
       * [List Tables](#list-tables)
       * [List Files](#list-files)
-    * [Authenticate](#authenticate)
+      * [Authenticate](#authenticate)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
@@ -220,7 +220,7 @@ Return: `JSON`
 }
 ```
 
-## Authenticate
+### Authenticate
 
 URL: `/api/authenticate`
 
