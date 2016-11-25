@@ -10,11 +10,10 @@ var settings = {
 
 
 
-function saveButtonClick() {
+$("#SaveButton").click(function(){
     $.post("/api/AccountSettings/", settings,
     function(data, status){
         console.log(settings);
-        console.log(status);
     });
 });
 
