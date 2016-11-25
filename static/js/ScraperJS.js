@@ -111,6 +111,12 @@ function isCheckedMetro() {
     }
 }
 
+function getTimeInput() {
+    var t = $("#time").val();
+
+    return text(t);
+}
+
 function changeScrapaerSettings() {
 
     var settings = {
@@ -124,8 +130,7 @@ function changeScrapaerSettings() {
     console.log( dayToIntDropdown());
     console.log( isCheckedMetro());
     console.log( isCheckedNoFrills());
-    console.log( $('#time').getHours());
-    console.log( $('#time').getMinutes());
+    console.log( getTimeInput());
     console.log( 0);
     return settings;
 }
