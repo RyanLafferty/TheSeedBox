@@ -191,10 +191,10 @@ def get_files():
 @application.route('/api/authenticate', methods=['POST'])
 def get_authenticate():
 
-    if request and request.method == 'POST' and hasattr(request, 'email') and hasattr(request, 'password'):
-        db_user = Users.query.filter_by(email=request.email).first()
+    if request and request.method == 'POST' and request.form['email'] and request.form['password']:
+        db_user = Users.query.filter_by(email=request.form['email']).first()
 
-        if db_user is None or db_user.password != request.password:
+        if db_user is None or db_user.password != request.form['password']:
             return '{"Authentication error"}'
 
         return '{"success=true"}'
