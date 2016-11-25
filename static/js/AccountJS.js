@@ -13,18 +13,18 @@ var settings = {
 
 var id = "1";
 
-$("#SaveButton").click(function(){
-    $.ajax({
-        type: 'PUT',
-        url: '/api/Users' + id,
-        data: settings,  // data passed to db
-        dataType: 'json',
-        success: function (getData) { // y is waht the get returns
-            alert("Profile Updated");
-        }
-    });
-    console.log("put");
-});
+// $("#SaveButton").click(function(){
+//     $.ajax({
+//         type: 'PUT',
+//         url: '/api/Users' + id,
+//         data: settings,  // data passed to db
+//         dataType: 'json',
+//         success: function (getData) { // y is waht the get returns
+//             alert("Profile Updated");
+//         }
+//     });
+//     console.log("put");
+// });
 
 $( document ).ready(function() {
     $.ajax({
@@ -33,7 +33,7 @@ $( document ).ready(function() {
         // data: x,  data passed to db
         dataType: 'json',
         success: function (getData) { // y is waht the get returns
-            populateInputBoxes(getData);
+            //populateInputBoxes(getData);
             console.log(getData);
         }
     });
@@ -45,7 +45,7 @@ function populateInputBoxes(data) {
         // how to get value for key id data["objects"][i]["id"];
 
         //for ( var key in data.objects[i]) {
-        for ( var key in data.objects[0]) {
+        for ( var key in data.objects[2]) {
             if ( key == "fname" ) {
                 $('#fname').val(data["objects"][i][key]);
             } else if ( key == "lname" ) {
