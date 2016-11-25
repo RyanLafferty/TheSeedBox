@@ -95,29 +95,31 @@ function populateInputBoxes(data) {
 
         //for ( var key in data.objects[i]) {
         for ( var key in data.objects[k]) {
-            if ( key == "fname" ) {
-                namee = data["objects"][k][key];
-                $('#fname').val(data["objects"][k][key]);
-
-            } else if ( key == "lname" ) {
-                lnamee = data["objects"][k][key];
-                $('#lname').val(data["objects"][k][key]);
-
-            } else if ( key == "email" ) {
-                emaill = data["objects"][k][key];
-                $('#email').val(data["objects"][k][key]);
-
-            } else if ( key == "admin" ) {
-                administrator = data["objects"][k][key];
-
-            } else if ( key == "logintime" ) {
-                logintimee = data["objects"][k][key];
-
-            } else if ( key == "password" ) {
-                oldPassword = data["objects"][k][key];
-
-            } else if ( key == "id" ) {
-                userid = data["objects"][k][key];
+            switch (key) {
+                case "fname":
+                    namee = data["objects"][k][key];
+                    $('#fname').val(data["objects"][k][key]);
+                    break;
+                case "lname":
+                    lnamee = data["objects"][k][key];
+                    $('#lname').val(data["objects"][k][key]);
+                    break;
+                case "email":
+                    emaill = data["objects"][k][key];
+                    $('#email').val(data["objects"][k][key]);
+                    break;
+                case "admin":
+                    administrator = data["objects"][k][key];
+                    break;
+                case "logintime":
+                    logintimee = data["objects"][k][key];
+                    break;
+                case "password":
+                    oldPassword = data["objects"][k][key];
+                    break;
+                case "id":
+                    userid = data["objects"][k][key];
+                    break;
             }
         }
     //}
