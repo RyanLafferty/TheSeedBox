@@ -39,6 +39,7 @@ $( document ).ready(function() {
 });
 
 function populateInputBoxes(data) {
+    console.log(data);
     for (var i = 0; i < data["num_results"]; i++ ) {
         // how to get value for key id data["objects"][i]["id"];
 
@@ -49,7 +50,7 @@ function populateInputBoxes(data) {
             } else if ( key == "lname" ) {
                 $('#lname').val(data["objects"][i][key]);
             } else if ( key == "email" ) {
-                //$('#email').val(data["objects"][i][key]);
+                $('#email').val(data["objects"][i][key]);
             }
         }
     }
