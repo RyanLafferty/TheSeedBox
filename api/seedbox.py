@@ -1,11 +1,11 @@
 import os, logging, glob
 from logging import FileHandler
+from werkzeug.utils import secure_filename
 
 from flask import Flask, request, flash, url_for, redirect, render_template, jsonify, abort, request, send_from_directory
 import flask_sqlalchemy
 import flask_restless
-from werkzeug.utils import secure_filename
-#from flask_restful import reqparse, abort, Api, Resource
+
 
 #Set up upload folder
 UPLOAD_FOLDER = '/uploads'
@@ -192,10 +192,11 @@ def get_files():
 def basic_authorize():
     print "hello"
 
+"""
 @application.route('/api/all')
 def all():
     return jsonify(Users=str(Users.query.all()))
-
+"""
 
 
 # ==========================================================================================
