@@ -1,4 +1,4 @@
-import os, logging, glob, time
+import os, logging, glob, time, sys
 from logging import FileHandler
 from werkzeug.utils import secure_filename
 from CSVandXLparser import inputSpreadSheet
@@ -166,10 +166,13 @@ def allowed_file(filename):
 
 @application.route("/api/run_scraper", methods=['POST'])
 def run_scraper():
+    print "asdkfjh"
     try:
-        run_the_scrapers(nofrills=request.nofrills,metro=request.metro);
+        run_the_scrapers()#nofrills=request.nofrills,metro=request.metro);
     except:
-        return sys.exc_info()[0], 200
+        return jsonify(sys.exc_info()[0])
+    return "OK"
+
 
 @application.route("/api/upload", methods=['POST'])
 def upload_file():
@@ -231,7 +234,7 @@ def get_authenticate():
         if db_user is None or db_user.password != request.form['password']:
             return '{"Authentication error"}'
 
-        resp = make_response(render_template('/home.html'))
+        resp = make_response("Logged in!")
         resp.set_cookie('SESSID', SESSION_TOKEN)
         return resp
 
