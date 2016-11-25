@@ -122,9 +122,7 @@ $( document ).ready(function() {
 				type: 'GET',
 				url: '/api/GFB',
 				dataType: 'json',
-				contentType:"application/json",
-
-				data: JSON.stringify(options),
+				
 				success: function(data){
 					console.log(data)
 				},
