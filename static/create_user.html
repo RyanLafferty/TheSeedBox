@@ -18,13 +18,13 @@
     <br>
     <table id="form-table">
       <tr id="form-tr">
-        <td id="form-td">Username:</td>
-        <td id="form-td"><input type="text" placeholder="Username" placeholder="Username" required>*</td>
+        <td id="form-td">Email:</td>
+        <td id="form-td"><input type="text" placeholder="Email" id="email" required>*</td>
       </tr>
       <tr id="form-tr">
         <td id="form-td">Password:</td>
         <td id="form-td">
-            <input type="password" placeholder="Password" required>*
+            <input type="password" placeholder="Password" id="password" required>*
             <button title="Minimum of 6 characters required" class="info-button btn-sm">
                 <span href="#" data-toggle="tooltip" class="glyphicon glyphicon-question-sign" style="color: #77A538;"></span>
             </button>
@@ -33,7 +33,7 @@
       </tr>
       <tr id="form-tr">
         <td id="form-td">Confirm Password:</td>
-        <td id="form-td"><input type="password" placeholder="Confirm Password" required>*</td>
+        <td id="form-td"><input type="password" placeholder="Confirm Password" id="confirmPass" required>*</td>
       </tr>
       <tr id="form-tr">
         <td id="form-td">
@@ -48,7 +48,7 @@ Admin: Same abilities of user and can create and delete accounts" class="info-bu
       <tr id="form-tr">
         <td id="form-td">
             <div align="right">
-                <input type="radio" name="user_type" value="user" checked>
+                <input type="radio" name="user_type" value="user" id="user" checked>
             </div>
         </td>
         </td>
@@ -58,7 +58,7 @@ Admin: Same abilities of user and can create and delete accounts" class="info-bu
       <tr id="form-tr">
         <td id="form-td">
             <div align="right">
-                <input type="radio" name="user_type" value="admin">
+                <input type="radio" name="user_type" value="admin" id="admin">
             </div>
         </td>
         </td>
@@ -66,16 +66,55 @@ Admin: Same abilities of user and can create and delete accounts" class="info-bu
         <td id="form-td">Admin</td>
       </tr>
     </table>
- 
     <br>
+    <p id="response"></p>
     <br>
     <button onClick="location.href = 'users.html'" class="btn btn-success">Cancel</button>
-    <button onClick="location.href = 'users.html'" class="btn btn-success">Save</button>
+    <button onClick="createUser()" class="btn btn-success">Save</button>
     </center>
     <script>
         $.get("menu_admin.html", function(data){
             $("#menu-placeholder").replaceWith(data);
         });
+    </script>
+    <script>
+        function createUser() {
+            var email = document.getElementById('email');
+            var password = document.getElementById('password');
+            var confirmPass = document.getElementById('confirmPass');
+            var isAdmin = (document.getElementById('user').checked ? false : true);
+            var response = document.getElementById('response');
+            
+            if (email.value == "")
+                response.innerHTML = "Please enter an email";
+            if (email.value.search(/[a-z0-9-_.]+@[a-z0-9]+\.[a-z][a-z]+/i) != 0)
+                response.innerHTML = "Email is not valid";
+            else if (password.value == "")
+                response.innerHTML = "Please enter a password";
+            else if (password.value != confirmPass.value)
+                response.innerHTML = "Passwords do not match";
+            else {
+                //Send data to API
+                var settings = {
+                   "admin": isAdmin,
+                   "fname": null,
+                   "lname": null,
+                   "password": password.value,
+                   "email": email.value,
+                   "logintime": null
+               }
+               
+               $.ajax({
+                   type: 'POST',
+                   url: '/api/Users',
+                   data: settings,
+                   dataType: 'json',
+                   success: function (data) {
+                       alert("Profile Added");
+                   }
+               });
+            }
+        }
     </script>
   </body>
 </html>
