@@ -12,13 +12,13 @@
 //                 }
 
 var settings = {
-                    "admin": true,
-                    "fname": "ffffff",
-                    "lname": "ffffff",
-                    "password": "ffffff",
-                    "email": "ffffff",
-                    "logintime": null,
-                }
+  "admin": true,
+  "email": "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.com",
+  "fname": "robbbb",
+  "lname": "ssstttttttttsss",
+  "logintime": null,
+  "password": "1234"
+}
 
 
 $( document ).ready(function() {
