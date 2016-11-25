@@ -84,6 +84,7 @@ function deleteUser(id){
     //         console.log("User deleted" + id);
     //     }
     // });
+    console.log(id);
     $('table#usersTable tr#' + id).remove();
 }
 
@@ -91,7 +92,6 @@ function deleteSelectedUser(data) {
     for (var i = 0; i < data["num_results"]; i++ ) {
         for ( var key in data.objects[i]) {
             if ( key == "id" ) {
-                console.log( key );
                 if ( $('#' + key).is(":checked") ) {
                     deleteUser(key);
                 } // else skip
@@ -100,7 +100,7 @@ function deleteSelectedUser(data) {
 
     }
     // refresh table after deleting selected users
-    refreshTable();
+    //refreshTable();
 
 }
 
