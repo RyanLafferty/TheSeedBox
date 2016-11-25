@@ -25,11 +25,11 @@ function populateInputBoxes(data) {
         for ( var key in data.objects[1]) {
             console.log(key);
             if ( key == "fname" ) {
-                $('#fname').val(data["objects"][i][key]);
+                $('#fname').val(data["objects"][1][key]);
             } else if ( key == "lname" ) {
-                $('#lname').val(data["objects"][i][key]);
+                $('#lname').val(data["objects"][1][key]);
             } else if ( key == "email" ) {
-                $('#email').val(data["objects"][i][key]);
+                $('#email').val(data["objects"][1][key]);
             }
         }
     //}
