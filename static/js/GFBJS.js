@@ -75,7 +75,8 @@ function addDataToGFB(data) {
 
 function updateTotal(table) {
     var totalSavings = 0;
-    document.getElementById('savingsTotal').value  = table.rows[0].cells[3].value
+    document.getElementById('savingsTotal').value  = table.rows[0].cells[3].value;
+    console.log(table.rows[0].cells[3].value);
     /*for (var i = 0; i <table.rows.length; i++) {
         totalSavings = totalSavings + parseInt(table.rows[i].cells[3].value);
     }*/
