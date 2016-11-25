@@ -5,6 +5,7 @@ from werkzeug.utils import secure_filename
 from flask import Flask, request, flash, url_for, redirect, render_template, jsonify, abort, request, send_from_directory
 import flask_sqlalchemy
 import flask_restless
+from sqldump import sql_dump
 
 import auth
 
@@ -204,8 +205,10 @@ def get_authenticate():
 
 @application.route('/api/backup', methods=['GET'])
 def backup_database():
-    os.system('python sqldump.py')
-    return send_from_directory(directory=application.config['UPLOAD_FOLDER'], filename=(DBNAME + '.sql'))
+    #os.system('python sqldump.py')
+    sqldump()
+    backupName = DBNAME + '.sql'
+    return send_from_directory(directory=application.config['UPLOAD_FOLDER'], filename=backupName)
 
 
 @application.before_request
