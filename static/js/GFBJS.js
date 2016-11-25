@@ -75,6 +75,7 @@ function addDataToGFB(data) {
 
 function updateTotal(element) {
     var currentValue = element.options[element.selectedIndex].value;
+    console.log(currentValue);
     /*temp.value = parseInt(temp.value,10);*/
 
     document.getElementById('savingsTotal').value += currentValue;
