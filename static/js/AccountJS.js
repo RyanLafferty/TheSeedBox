@@ -3,6 +3,7 @@
  */
 var administrator = false;
 var logintimee = null;
+var oldPassword = " ";
 // var settings = {
 //                     "admin": true,
 //                     "fname": $('#fname').val(),
@@ -32,7 +33,7 @@ function callSettings() {
             "fname": $('#fname').val(),
             "lname": $('#lname').val(),
             "logintime": logintimee,
-            "password": $('#password').val()
+            "password": oldPassword
         }
     } else {
         var settings = {
@@ -79,7 +80,6 @@ function populateInputBoxes(data) {
         // how to get value for key id data["objects"][i]["id"];
 
         //for ( var key in data.objects[i]) {
-    console.log(data.objects[k]);
         for ( var key in data.objects[k]) {
             if ( key == "fname" ) {
                 $('#fname').val(data["objects"][k][key]);
@@ -91,6 +91,8 @@ function populateInputBoxes(data) {
                 administrator = data["objects"][k][key];
             } else if ( key == "logintime" ) {
                 logintimee = data["objects"][k][key];
+            } else if ( key == "password" ) {
+                oldPassword = data["objects"][k][key];
             }
         }
     //}
