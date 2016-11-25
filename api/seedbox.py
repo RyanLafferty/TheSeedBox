@@ -6,8 +6,6 @@ from flask import Flask, request, flash, url_for, redirect, render_template, jso
 import flask_sqlalchemy
 import flask_restless
 
-# import auth
-
 #Set up upload folder
 UPLOAD_FOLDER = '/uploads'
 ALLOWED_EXTENSIONS = set(['csv'])
@@ -190,6 +188,8 @@ def get_files():
 
 @application.route('/api/authenticate/<email>/<password>', methods=['GET'])
 def get_authenticate(email, password):
+    import auth
+
     db_user = Users.query.filter_by(email=email).first()
 
     if db_user is None:
