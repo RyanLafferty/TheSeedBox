@@ -18,7 +18,7 @@ $( document ).ready(function() {
 
 function populateInputBoxes(data) {
 
-    for (var i = 0; i < data["num_results"]; i++ ) {
+    //for (var i = 0; i < data["num_results"]; i++ ) {
         // how to get value for key id data["objects"][i]["id"];
 
         //for ( var key in data.objects[i]) {
@@ -32,7 +32,7 @@ function populateInputBoxes(data) {
                 $('#email').val(data["objects"][i][key]);
             }
         }
-    }
+    //}
     console.log("get");
 }
 
