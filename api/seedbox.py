@@ -10,7 +10,8 @@ import auth
 
 #Set up upload folder
 UPLOAD_FOLDER = '/uploads'
-ALLOWED_EXTENSIONS = set(['csv'])
+ALLOWED_EXTENSIONS = set(['csv', 'xls', 'xlsx'])
+DBNAME = 'TheSeedSA'
 
 # Set up application
 # ==========================================================================================
@@ -200,6 +201,12 @@ def get_authenticate():
         return '{"success=true"}'
 
     return '{"Requires two parameters, [email=...] and [password=...]"}'
+
+@application.route('/api/backup', methods=['GET'])
+def backup_database():
+    os.system('python sqldump.py')
+    return send_from_directory(directory=application.config['UPLOAD_FOLDER'], filename=(DBNAME + '.sql'))
+
 
 @application.before_request
 def basic_authorize():
