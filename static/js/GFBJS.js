@@ -96,6 +96,15 @@ $.get("menu_admin.html", function(data){
 //            });
 
 
+function sendSearch() {
+    var request = {
+        "name": "item",
+        "val": "apple",
+        "op": "like"
+    }
+    return request;
+}
+
 
 $( document ).ready(function() {
     $.ajax({
@@ -110,10 +119,13 @@ $( document ).ready(function() {
     });
 
     $('#gfb-search').keypress(function(e){
+        console.log( "begin" );
 		if (e.keyCode == 13){
 			$.ajax({
 				type: 'GET',
+                contentType:"application/json",
 				url: '/api/GFB',
+                data: JSON.stringify(sendSearch()),
 				dataType: 'json',
 
 				success: function(data){
