@@ -20,10 +20,12 @@ def run_the_scrapers(nofrills=None,metro=None):
     timestamp = time.strftime('%H:%M')
     dow = list(calendar.day_abbr).index(time.strftime('%a'))
 
-    jobs = ScraperSettings.query.filter_by(dayofweek=dow, time=timestamp)
+    jobs = ScraperSettings.query.filter_by(dayofweek=dow, time=timestamp).all()
 
     for job in jobs:
         print job
+
+
 
     # if nofrills is not None and metro is not None:
     #     scr = []

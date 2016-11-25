@@ -18,6 +18,7 @@ function checkAll()
     }
 }
 function fillTable(data) {
+    rownum = 0;
     var tableData = data.objects;
 
     var tableElement = document.getElementById("table-header");
@@ -29,7 +30,7 @@ function fillTable(data) {
         var newCell = document.createElement('th');
         newCell.width = '10px';
         var checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
+        checkbox.type = 'checkbox';.val()
         checkbox.id = 'master_cb';
         checkbox.onchange = checkAll;
         newCell.appendChild(checkbox);
@@ -54,7 +55,7 @@ function fillTable(data) {
         newCell.width = '10px';
         checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        //checkbox.id = 'user' + rownum;
+        checkbox.id = 'user' + rownum;
 
         checkbox.id = tableData[nextRow]["id"]; // ised in delete, very important line
 
