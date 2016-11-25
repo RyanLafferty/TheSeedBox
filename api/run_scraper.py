@@ -6,7 +6,7 @@ import flask_sqlalchemy
 
 from scraper import scraper
 
-def run_the_scrapers():
+def run_the_scrapers(nofrills=None,metro=None):
 
     # Set up application
     # ==========================================================================================
@@ -22,7 +22,16 @@ def run_the_scrapers():
 
     jobs = ScraperSettings.query.filter_by(dayofweek=dow, time=timestamp)
 
-    s = scraper.Scraper(scrapers=['NoFrills', 'Metro'])
+    if nofrills is not None and metro is not None:
+        scr = []
+        if nofrills == "true":
+            scr.add('NoFrills')
+        if metro == "true":
+            scr.add('Metro')
+
+        s = scraper.Scraper(scrapers=scr)
+    else:
+        s = scraper.Scraper(scrapers=['NoFrills', 'Metro'])
 
 if __name__ == "__main__":
     from seedbox import ScraperSettings
