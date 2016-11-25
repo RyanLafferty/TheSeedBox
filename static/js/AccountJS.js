@@ -25,11 +25,13 @@ $( document ).ready(function() {
         dataType: 'json',
         success: function (getData) { // y is waht the get returns
             populateInputBoxes(getData);
+            console.log(getData);
         }
     });
 });
 
 function populateInputBoxes(data) {
+    console.log(data);
     for (var i = 0; i < data["num_results"]; i++ ) {
         // how to get value for key id data["objects"][i]["id"];
 
