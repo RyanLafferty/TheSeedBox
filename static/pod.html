@@ -31,7 +31,7 @@
     <center>
       <br>
       <div id="table-container">
-        <table class="table table-striped table-bordered">
+        <table id="contents" class="table table-striped table-bordered">
           <thead class="thead-default" id="table-header"></thead>
           <tbody id="table-body"></tbody>
         </table>
@@ -48,7 +48,9 @@
         
         var tableElement = document.getElementById("table-header");
         var newRow = document.createElement('tr');
-        
+       
+        $("#contents tr").remove();
+ 
         //Create Header
         for (var title in tableData[0]) {
             newCell = document.createElement('th');
