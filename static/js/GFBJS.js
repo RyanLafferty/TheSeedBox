@@ -44,11 +44,11 @@ function addDataToGFB(data) {
                 }
                 newCell.appendChild(selector);
             } else {
-                newCell.innerHTML = parseFloat(data["objects"][i][key]);
+                newCell.innerHTML = data["objects"][i][key];
             }
             newRow.appendChild(newCell);
             if (key == 'price') {
-                totalSaved += data["objects"][i][key];
+                totalSaved += parseFloat(data["objects"][i][key]);
             }
         }
         tableBodyElement.appendChild(newRow);
