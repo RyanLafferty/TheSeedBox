@@ -59,9 +59,9 @@ function createJsonChangeSettings(data) {
                     storeNameList.push( "nofrills" );
                 }
             }
-            console.log($('#day').val());
-        }
 
+        }
+        console.log(storeNameList);
         // add retialers to current savings
         for ( var j in storeNameList ) {
             console.log(storeString);
