@@ -1,4 +1,4 @@
-import os, logging, glob
+import os, logging, glob, time
 from logging import FileHandler
 from werkzeug.utils import secure_filename
 from CSVandXLparser import inputSpreadSheet
@@ -6,12 +6,14 @@ from CSVandXLparser import inputSpreadSheet
 from flask import Flask, request, flash, url_for, redirect, render_template, jsonify, abort, request, send_from_directory
 import flask_sqlalchemy
 import flask_restless
+from sqldump import sql_dump
 
 import auth
 
 #Set up upload folder
 UPLOAD_FOLDER = '/uploads'
-ALLOWED_EXTENSIONS = set(['csv'])
+ALLOWED_EXTENSIONS = set(['csv', 'xls', 'xlsx'])
+DBNAME = 'TheSeedSA'
 
 # Set up application
 # ==========================================================================================
@@ -215,6 +217,14 @@ def get_authenticate():
         return '{"success=true"}'
 
     return '{"Requires two parameters, [email=...] and [password=...]"}'
+
+@application.route('/api/backup', methods=['GET'])
+def backup_database():
+    #os.system('python sqldump.py')
+    sql_dump()
+    backupName = DBNAME + '.sql'
+    return send_from_directory(directory=application.config['UPLOAD_FOLDER'], filename=backupName)
+
 
 @application.before_request
 def basic_authorize():
