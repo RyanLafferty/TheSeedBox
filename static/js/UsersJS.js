@@ -93,6 +93,8 @@ function deleteSelectedUser(data) {
         }
 
     }
+    // refresh table after deleting selected users
+    refreshTable();
 
 }
 
@@ -104,6 +106,17 @@ function deleteSelectedUserGetTTable() {
         success: function (data) {
             deleteSelectedUser(data);
             alert( "Selected Users Deleted" );
+        }
+    });
+}
+
+function refreshTable() {
+    $.ajax({
+        type: 'GET',
+        url: '/api/Users',
+        dataType: 'json',
+        success: function (data) {
+            fillTable(data);
         }
     });
 }
