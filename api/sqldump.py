@@ -1,4 +1,4 @@
-import os, subprocess, system
+import os, subprocess
 import time
 from ConfigParser import SafeConfigParser
 
