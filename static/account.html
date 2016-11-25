@@ -7,6 +7,11 @@
       <script src="js/bootstrap.min.js"></script>
       <link rel="stylesheet" type="text/css" href="css/style.css">
       <script src="js/AccountJS.js"></script>
+      <script>
+        $.get("menu_admin.html", function(data){
+            $("#menu-placeholder").replaceWith(data);
+        });
+      </script>
   </head>
   <body>
     <div id="menu-placeholder"></div>
@@ -52,10 +57,5 @@
     <button onClick="location.href = 'home.html'" class="btn btn-success" style="margin: 10px; width: 95px" >Cancel</button>
     <button id="SaveButton" class="btn btn-success" style="margin: 10px; width: 95px">Save</button>
     </center>
-    <script>
-        $.get("menu_admin.html", function(data){
-            $("#menu-placeholder").replaceWith(data);
-        });
-    </script>
   </body>
 </html>
