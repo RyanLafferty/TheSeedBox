@@ -145,8 +145,7 @@
                 success: function (data) {
                     var filteredData = data["objects"][0]["json_data"]; 
                     console.log(filteredData);
-                    console.log(JSON.parse(filteredData).type);
-                    fillTable(JSON.parse(filteredData));
+                    fillTable(JSON.stringify(filteredData));
                 }
             });
         }
