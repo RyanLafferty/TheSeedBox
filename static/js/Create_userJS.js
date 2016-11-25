@@ -39,6 +39,7 @@ function createUser() {
            dataType: 'json',
            success: function (data) {
                alert("Profile Added");
+               location.href = "users.html";
            }
        });
     }
