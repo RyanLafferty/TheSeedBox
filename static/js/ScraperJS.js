@@ -67,10 +67,10 @@ function createJsonChangeSettings(data) {
         storeString += storeNameList[1];
         console.log(storeString);
         // add retialers to current savings
-        // for ( var j in storeNameList ) {
-        //     console.log(j);
-        //     storeString.concat(storeNameList[j]);
-        // }
+        for ( var j = 0; j < storeNameList.length; j++ ) {
+            console.log(j);
+            storeString += storeNameList[j];
+        }
         $('#stores').val( storeString );
 
             // newCell.innerHTML = data["objects"][i][key];
