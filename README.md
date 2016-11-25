@@ -1,5 +1,29 @@
 # TheSeedBox
 
+Table of Contents
+=================
+
+  * [TheSeedBox](#theseedbox)
+    * [Dependencies](#dependencies)
+    * [Server configuration](#server-configuration)
+  * [API documentation](#api-documentation)
+    * [Database](#database)
+      * [OPERATOR List](#operator-list)
+      * [Get Entire Table](#get-entire-table)
+      * [Select](#select)
+      * [Delete](#delete)
+      * [Update](#update)
+      * [Insert](#insert)
+      * [Example 1:](#example-1)
+    * [Extra Routes](#extra-routes)
+      * [Upload](#upload)
+      * [Download](#download)
+      * [List Tables](#list-tables)
+      * [List Files](#list-files)
+    * [Authenticate](#authenticate)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
+
 ## Dependencies
 
 ```bash
@@ -204,4 +228,4 @@ Type `POST`
 
 Parameters: `email, password`
 
-Return: `JSON` => {"success=true"} or {"Authentication error"}
+Return: `JSON` => `{"success=true"}` or `{"Authentication error"}`
