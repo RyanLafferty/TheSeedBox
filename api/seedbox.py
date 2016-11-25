@@ -1,11 +1,12 @@
-import os, logging
+import os, logging, glob
 from logging import FileHandler
+from werkzeug.utils import secure_filename
 
 from flask import Flask, request, flash, url_for, redirect, render_template, jsonify, abort, request, send_from_directory
 import flask_sqlalchemy
 import flask_restless
-from werkzeug.utils import secure_filename
-#from flask_restful import reqparse, abort, Api, Resource
+
+import auth
 
 #Set up upload folder
 UPLOAD_FOLDER = '/uploads'
@@ -62,7 +63,6 @@ class Products(db.Model):
     name = db.Column(db.Unicode(256))
     quantity = db.Column(db.Integer)
     dateCreated = db.Column(db.DateTime);
-    dateScraped = db.Column(db.DateTime);
     price = db.Column(db.Float);
     source = db.Column(db.Unicode(2048))
 
@@ -104,6 +104,16 @@ class Scraper(db.Model):
     ctotal = db.Column(db.Float, default=0.0)
     savings = db.Column(db.Float, default=0.0)
 
+class ScraperSettings(db.Model):
+    __tablename__ = 'ScraperSettings'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, default=0)
+    metro_enabled = db.Column(db.Integer, default=0)
+    nofrills_enabled = db.Column(db.Integer, default=0)
+    dayofweek = db.Column(db.Integer, default=0)
+    time = db.Column(db.Unicode(256), default="")
+
+
 # Set up corresponding RESTful API
 # ==========================================================================================
 # Create the database tables.
@@ -123,6 +133,7 @@ manager.create_api(GardenFreshBoxes, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(Produce, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(GFB, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(Scraper, methods=['GET', 'POST', 'DELETE', 'PUT'])
+manager.create_api(ScraperSettings, methods=['GET', 'POST', 'DELETE', 'PUT'])
 
 # Misc. routes
 # ==========================================================================================
@@ -140,39 +151,64 @@ def upload_file():
         # check if the post request has the file part
         if 'file' not in request.files:
             flash('No file part')
-            return "<h1 style='color:blue'>ERROR: NO FILE</h1>"
+            return jsonify("no file")
         file = request.files['file']
         # if user does not select file
         if file.filename == '':
             flash('No selected file')
-            return "<h1 style='color:blue'>ERROR NO SELECTED FILE</h1>"
+            return jsonify("no selected file")
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(application.config['UPLOAD_FOLDER'], filename))
-            return "<h1 style='color:blue'>SUCCESS</h1>"
+            return jsonify("Success")
 
 @application.route('/api/download/<filename>', methods=['GET'])
 def download(filename):
     return send_from_directory(directory=application.config['UPLOAD_FOLDER'], filename=filename)
+
+@application.route('/api/tables', methods=['GET'])
+def get_tables():
+    tables = db.metadata.tables.items()
+    tableList = []
+
+    for table in tables:
+        tableList.append(table[0])
+
+    return jsonify(tablenames=tableList)
+
+@application.route('/api/files', methods=['GET'])
+def get_files():
+    fileList = []
+    os.chdir(UPLOAD_FOLDER)
+    for file in glob.glob("*.xls"):
+        fileList.append(str(file))
+    for file in glob.glob("*.xlsx"):
+        fileList.append(str(file))
+    for file in glob.glob("*.csv"):
+        fileList.append(str(file))
+    return jsonify(files=fileList)
+
+@application.route('/api/authenticate', methods=['POST'])
+def get_authenticate():
+
+    if request and request.method == 'POST' and request.form['email'] and request.form['password']:
+        db_user = Users.query.filter_by(email=request.form['email']).first()
+
+        if db_user is None or db_user.password != request.form['password']:
+            return '{"Authentication error"}'
+
+        return '{"success=true"}'
+
+    return '{"Requires two parameters, [email=...] and [password=...]"}'
 
 @application.before_request
 def basic_authorize():
     print "hello"
 
 """
-@application.route('/Test')
-    def index():
-        return jsonify({'Users': Users.query.all()})
-"""
-
-"""
-@application.route('/Test', methods = ['POST'])
-def Test():
-   if request.method == 'POST':
-      if not request.form['fname']:
-         flash('Please enter all the fields', 'error')
-      else:
-         return redirect('https://seedbox.tk/api/Users')
+@application.route('/api/all')
+def all():
+    return jsonify(Users=str(Users.query.all()))
 """
 
 

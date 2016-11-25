@@ -8,6 +8,9 @@ function createGFBTableHeader(data) {
     var newRow = document.createElement('tr');
     if ( data["num_results"] != 0) {
         for (var key in data.objects[0]) {
+            if ( key == "id" ) {
+                continue;
+            }
             var newCell = document.createElement('th');
             var info = document.createTextNode(key);
             newCell.appendChild(info);
@@ -108,3 +111,4 @@ $( document ).ready(function() {
 
 
 });
+
