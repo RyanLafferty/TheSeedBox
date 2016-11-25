@@ -145,7 +145,7 @@
                 success: function (data) {
                     var filteredData = data["objects"][0]["json_data"]; 
                     console.log(filteredData);
-                    fillTable(jQuery.parseJSON(filteredData));
+                    fillTable($.parseJSON(filteredData));
                 }
             });
         }
