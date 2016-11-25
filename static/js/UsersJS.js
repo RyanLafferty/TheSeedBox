@@ -21,6 +21,9 @@ function fillTable(data) {
     var tableData = data.objects;
 
     var tableElement = document.getElementById("table-header");
+
+    tableElement.id = "usersTable";
+
     var newRow = document.createElement('tr');
 
     if ( headerAlreadyExists == false ) {
@@ -47,6 +50,7 @@ function fillTable(data) {
     tableElement = document.getElementById('table-body');
     for (var nextRow in tableData) {
         newRow = document.createElement('tr');
+        newRow.id = tableData[nextRow]["id"];
 
         newCell = document.createElement('td');
         newCell.width = '10px';
@@ -55,7 +59,7 @@ function fillTable(data) {
         //checkbox.id = 'user' + rownum;
 
         checkbox.id = tableData[nextRow]["id"]; // ised in delete, very important line
-        console.log( tableData[nextRow]["id"] );
+
         rownum += 1;
         newCell.appendChild(checkbox);
         newRow.appendChild(newCell);
@@ -74,20 +78,22 @@ function fillTable(data) {
 }
 
 function deleteUser(id){
-    $.ajax({
-        type: 'DELETE',
-        url: '/api/Users/' + id,
-        dataType: 'json',
-        success: function (data) {
-            console.log("User deleted" + id);
-        }
-    });
+    // $.ajax({
+    //     type: 'DELETE',
+    //     url: '/api/Users/' + id,
+    //     dataType: 'json',
+    //     success: function (data) {
+    //         console.log("User deleted" + id);
+    //     }
+    // });
+    $('table#usersTable tr#' + id).remove();
 }
 
 function deleteSelectedUser(data) {
     for (var i = 0; i < data["num_results"]; i++ ) {
         for ( var key in data.objects[i]) {
             if ( key == "id" ) {
+                console.log( key );
                 if ( $('#' + key).is(":checked") ) {
                     deleteUser(key);
                 } // else skip
