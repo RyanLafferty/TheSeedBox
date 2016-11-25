@@ -59,7 +59,6 @@ $( document ).ready(function() {
                 console.log("putsuccess");
             }
         });
-        console.log(settings);
         console.log("put");
     });
 });
