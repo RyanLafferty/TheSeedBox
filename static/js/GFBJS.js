@@ -74,10 +74,10 @@ function addDataToGFB(data) {
 }
 
 function updateTotal(element) {
-    var temp = document.getElementById('savingsTotal');
-    temp.value = parseInt(temp.value,10);
+    var currentValue = element.options[element.selectedIndex].value;
+    /*temp.value = parseInt(temp.value,10);*/
 
-    temp.value += 1;
+    document.getElementById('savingTotal').value = currentValue;
 
     /*var oldValue = +(temp.value) || 0;
     temp.value = oldValue;
