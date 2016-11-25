@@ -67,36 +67,48 @@ function fillTable(data) {
     }
 }
 
+function sendSearch() {
+    var request = {
+        "name": "email",
+        "val": "email",
+        "op": "like"
+    }
+    return request;
+}
 
-
-$.ajax({
-    type: 'GET',
-    url: 'https://seedbox.tk/api/Users',
-    dataType: 'json',
-    success: function (data) {
-        fillTable(data);}
-});
-
-$('#pod-search').keypress(function(e){
-  if (e.keyCode == 13){
-    item = $('#pod-search').val();
+$( document ).ready(function() {
 
     $.ajax({
-      type: 'GET',
-      url: 'https://seedbox.tk/api/Users',
-      contentType:"application/json",
+        type: 'GET',
+        url: '/api/Users',
+        dataType: 'json',
+        success: function (data) {
+            fillTable(data);
+        }
+    });
 
-      /*data: {
-        "val":item,
-        "op":"LIKE"
-      },*/
-      success: function(data){
-        console.log(data)
-      },
-      error: function(data){
-        console.log(data)
-      }
-   });
-  }
-});
+
+    $('#user-search').keypress(function(e){
+        console.log( "begin" );
+		if (e.keyCode == 13){
+            event.preventDefault();
+			$.ajax({
+				type: 'GET',
+                contentType:"application/json",
+				url: '/api/Users',
+                data: JSON.stringify(sendSearch()),
+				dataType: 'json',
+
+				success: function(data){
+                    console.log("success");
+					console.log(data)
+				},
+				error: function(data){
+                    console.log("error");
+					console.log(data)
+				}
+			});
+		}
+	});
+}
 
