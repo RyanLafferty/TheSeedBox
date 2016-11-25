@@ -1,30 +1,7 @@
 /**
  * Created by slawomir on 24/11/16.
  */
-var settings = {
-                    "admin": true,
-                    "fname": $('#fname').val(),
-                    "lname": $('#lname').val(),
-                    "password": $('#password').val(),
-                    "email": $('#email').val(),
-                    "logintime": null,
-                    "password": null
-                }
 
-var id = "1";
-
-// $("#SaveButton").click(function(){
-//     $.ajax({
-//         type: 'PUT',
-//         url: '/api/Users' + id,
-//         data: settings,  // data passed to db
-//         dataType: 'json',
-//         success: function (getData) { // y is waht the get returns
-//             alert("Profile Updated");
-//         }
-//     });
-//     console.log("put");
-// });
 
 $( document ).ready(function() {
     $.ajax({
@@ -57,3 +34,28 @@ function populateInputBoxes(data) {
     }
     console.log("get");
 }
+
+var settings = {
+                    "admin": true,
+                    "fname": $('#fname').val(),
+                    "lname": $('#lname').val(),
+                    "password": $('#password').val(),
+                    "email": $('#email').val(),
+                    "logintime": null,
+                    "password": null
+                }
+
+var id = "1";
+
+// $("#SaveButton").click(function(){
+//     $.ajax({
+//         type: 'PUT',
+//         url: '/api/Users' + id,
+//         data: settings,  // data passed to db
+//         dataType: 'json',
+//         success: function (getData) { // y is waht the get returns
+//             alert("Profile Updated");
+//         }
+//     });
+//     console.log("put");
+// });
