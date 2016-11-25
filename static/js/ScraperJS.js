@@ -71,7 +71,7 @@ function createJsonChangeSettings(data) {
         //     console.log(j);
         //     storeString.concat(storeNameList[j]);
         // }
-        $('#stores').val( storeString ;
+        $('#stores').val( storeString );
 
             // newCell.innerHTML = data["objects"][i][key];
 
