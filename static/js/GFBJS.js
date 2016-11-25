@@ -75,10 +75,14 @@ function addDataToGFB(data) {
 
 function updateTotal(element) {
     var temp = document.getElementById('savingsTotal');
-    var oldValue = +(temp.value) || 0;
+    temp.value = parseInt(temp.value,10);
+
+    temp.value += 1;
+
+    /*var oldValue = +(temp.value) || 0;
     temp.value = oldValue;
     var value = parseInt(1);
-    temp.value += value;
+    temp.value += value;*/
 
 
 }
