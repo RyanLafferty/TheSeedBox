@@ -208,7 +208,6 @@ def backup_database():
     #os.system('python sqldump.py')
     sql_dump()
     backupName = DBNAME + '.sql'
-    return jsonify(files=backupName)
     return send_from_directory(directory=application.config['UPLOAD_FOLDER'], filename=backupName)
 
 
