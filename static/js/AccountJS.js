@@ -11,18 +11,31 @@
 //                     "password": null
 //                 }
 
-var settings = {
-  "admin": true,
-  "email": "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.com",
-  "fname": "robbbb",
-  "lname": "ssstttttttttsss",
-  "logintime": null,
-  "password": "1234"
+
+// wroks
+// var settings = {
+//   "admin": true,
+//   "email": "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.com",
+//   "fname": "robbbb",
+//   "lname": "ssstttttttttsss",
+//   "logintime": null,
+//   "password": "1234"
+// }
+
+function callSettings() {
+    var settings = {
+        "admin": true,
+        "email": $('#fname').val(),
+        "fname": $('#fname').val(),
+        "lname": $('#fname').val(),
+        "logintime": null,
+        "password": $('#fname').val()
+    }
+
+    return settings;
 }
 
-
 $( document ).ready(function() {
-    console.log(settings);
     $.ajax({
         type: 'GET',
         url: '/api/Users',
@@ -32,18 +45,20 @@ $( document ).ready(function() {
             populateInputBoxes(getData);
         }
     });
-    console.log(settings);
+
     $('#SaveButton').click(function(){
+        callSettings();
         $.ajax({
             type: 'PUT',
+            contentType:"application/json",
             url: '/api/Users/1',
-            data: settings,  // data passed to db
+            data: JSON.stringify(callSettings()),  // data passed to db
             dataType: 'json',
             success: function (getData) { // y is waht the get returns
                 alert("Profile Updated");
+                console.log("putsuccess");
             }
         });
-        console.log(settings);
         console.log("put");
     });
 });
