@@ -76,13 +76,13 @@ function addDataToGFB(data) {
 function updateTotal(table) {
     var totalSavings = 0;
     var totalValue = 0;
-    /*document.getElementById('savingsTotal').value  = table.rows[0].cells[3].innerHTML;
-    console.log(table.rows[0].cells[3].value);*/
+    /*document.getElementById('savingsTotal').value  = table.rows[0].cells[3].innerHTML; */
+    console.log(table.rows[0].cells[2].innerHTML);
     for (var i = 0; i < table.rows.length; i++) {
-        totalSavings = totalSavings + parseInt(table.rows[i].cells[3].innerHTML);
-        totalValue = totalValue + parseInt(table.rows[i].cells[4].innerHTML);
+        /*table.rows[i].cells[4].innerHTML = parseFloat(table.rows[i].cells[1].innerHTML) * parseFloat(table.rows[i].cells[2].innerHTML);*/
+        totalSavings = totalSavings + parseFloat(table.rows[i].cells[3].innerHTML);
+        totalValue = totalValue + parseFloat(table.rows[i].cells[4].innerHTML);
     }
-    console.log(totalSavings);
     document.getElementById('savingsTotal').value = '$' + totalSavings;
     document.getElementById('totalValue').value = '$' + totalValue;
     
