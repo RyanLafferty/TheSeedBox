@@ -44,7 +44,7 @@ function addDataToGFB(data) {
 
                 }
                 newCell.appendChild(selector);
-                selector.addEventListener('change', updateTotal(), false);
+                selector.addEventListener('change', updateTotal(selector), false);
             } else if (key == 'item') {
                 newCell.innerHTML = data["objects"][i][key];
             } else {
@@ -72,8 +72,8 @@ function addDataToGFB(data) {
     // }
 }
 
-function updateTotal() {
-    /*document.getElementById('savingsTotal').value += element.value;*/
+function updateTotal(element) {
+    document.getElementById('savingsTotal').value += element.value;
 
 
 }
