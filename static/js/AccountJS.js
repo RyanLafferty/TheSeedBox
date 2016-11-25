@@ -79,6 +79,7 @@ function populateInputBoxes(data) {
         // how to get value for key id data["objects"][i]["id"];
 
         //for ( var key in data.objects[i]) {
+    console.log(data.objects[k]);
         for ( var key in data.objects[k]) {
             if ( key == "fname" ) {
                 $('#fname').val(data["objects"][k][key]);
