@@ -33,7 +33,7 @@ $( document ).ready(function() {
         // data: x,  data passed to db
         dataType: 'json',
         success: function (getData) { // y is waht the get returns
-            //populateInputBoxes(getData);
+            populateInputBoxes(getData);
             console.log(getData);
         }
     });
