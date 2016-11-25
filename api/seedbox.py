@@ -1,6 +1,7 @@
 import os, logging, glob
 from logging import FileHandler
 from werkzeug.utils import secure_filename
+from CSVandXLparser import inputSpreadSheet
 
 from flask import Flask, request, flash, url_for, redirect, render_template, jsonify, abort, request, send_from_directory
 import flask_sqlalchemy
@@ -113,6 +114,11 @@ class ScraperSettings(db.Model):
     dayofweek = db.Column(db.Integer, default=0)
     time = db.Column(db.Unicode(256), default="")
 
+class SpreadSheets(db.Model):
+    __tablename__ = 'SpreadSheets'
+    id = db.Column(db.Integer, primary_key=True)
+    ss_name = db.Column(db.Unicode(256), default="")
+    json_data = db.Column(db.JSON)
 
 # Set up corresponding RESTful API
 # ==========================================================================================
@@ -134,6 +140,7 @@ manager.create_api(Produce, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(GFB, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(Scraper, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(ScraperSettings, methods=['GET', 'POST', 'DELETE', 'PUT'])
+manager.create_api(SpreadSheets, methods['GET', 'POST', 'DELETE', 'PUT'])
 
 # Misc. routes
 # ==========================================================================================
@@ -159,7 +166,15 @@ def upload_file():
             return jsonify("no selected file")
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(application.config['UPLOAD_FOLDER'], filename))
+            file_path = os.path.join(application.config['UPLOAD_FOLDER'], filename)
+            file.save(file_path)
+            try:
+                json_data = inputSpreadSheet(file_path)
+            except:
+                return jsonify("error parsing file")
+            new_entry = SpreadSheets(filename, json_data)
+            db.session.add(new_entry)
+            db.session.commit()
             return jsonify("Success")
 
 @application.route('/api/download/<filename>', methods=['GET'])
