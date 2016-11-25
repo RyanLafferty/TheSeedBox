@@ -48,15 +48,15 @@ var settings = {
 
 var id = "1";
 
-// $("#SaveButton").click(function(){
-//     $.ajax({
-//         type: 'PUT',
-//         url: '/api/Users' + id,
-//         data: settings,  // data passed to db
-//         dataType: 'json',
-//         success: function (getData) { // y is waht the get returns
-//             alert("Profile Updated");
-//         }
-//     });
-//     console.log("put");
-// });
+$("#SaveButton").click(function(){
+    $.ajax({
+        type: 'PUT',
+        url: '/api/Users' + id,
+        data: settings,  // data passed to db
+        dataType: 'json',
+        success: function (getData) { // y is waht the get returns
+            alert("Profile Updated");
+        }
+    });
+    console.log("put");
+});
