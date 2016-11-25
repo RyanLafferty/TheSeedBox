@@ -229,3 +229,13 @@ Type `POST`
 Parameters: `email, password`
 
 Return: `JSON` => `{"success=true"}` or `{"Authentication error"}`
+
+### Run scraper manually
+
+URL: `/api/run_scraper`
+
+Type `POST`
+
+Parameters: `nofrills, metro`
+
+Return: `JSON` => `{"success=true"}` or `{"Error"}`
