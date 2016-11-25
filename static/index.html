@@ -14,7 +14,7 @@
 	<div class="container">
 	    <div class="login">
 	        <img src="images/TheSeed-tagline_long-padding.png" alt="HTML5 Icon" style="width:256px;height:128px;">
-	        <form action="" method="post" class="lead">
+	        <form class="lead" id="loginForm">
 	            <input type="hidden" value="login" name="type" id="type">
 	            <div class="form-group">
 	                <label class="required-asterisk" for="username">Email</label>
@@ -32,7 +32,8 @@
 	    </div>
 	  </div>
     <script>
-    $('input#login-register-button').click( function() {
+    $('#loginForm').submit( function(e) {
+        e.preventDefault();
         $.post('/api/authenticate', { email: $("#username"), password: $("#password")}, 
             function(returnedData){
                  console.log(returnedData);
