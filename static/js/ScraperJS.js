@@ -142,15 +142,15 @@ $( document ).ready(function() {
     });
 
     $('#changeSettingsButton').click(function(){
-    $.ajax({
-        type: 'PUT',
-        contentType:"application/json",
-        url: '/api/ScraperSettings/' + id,
-        data: JSON.stringify(changeScrapaerSettings()),  // data passed to db
-        dataType: 'json',
-        success: function (getData) { // y is waht the get returns
-            alert("Settings Updated");
-        }
+        $.ajax({
+            type: 'PUT',
+            contentType:"application/json",
+            url: '/api/ScraperSettings/' + id,
+            data: JSON.stringify(changeScrapaerSettings()),  // data passed to db
+            dataType: 'json',
+            success: function (getData) { // y is waht the get returns
+                alert("Settings Updated");
+            }
+        });
     });
-});
 });

@@ -50,7 +50,10 @@ function fillTable(data) {
         newCell.width = '10px';
         checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.id = 'user' + rownum;
+        //checkbox.id = 'user' + rownum;
+
+        checkbox.id = tableData[nextRow]["id"]; // ised in delete, very important line
+
         rownum += 1;
         newCell.appendChild(checkbox);
         newRow.appendChild(newCell);
@@ -59,6 +62,7 @@ function fillTable(data) {
             var value = tableData[nextRow][key];
 
             newCell = document.createElement('td');
+            newCell.id = key;
             var info = document.createTextNode(value);
             newCell.appendChild(info);
             newRow.appendChild(newCell);
@@ -66,6 +70,44 @@ function fillTable(data) {
         tableElement.appendChild(newRow);
     }
 }
+
+function deleteUser(id){
+    $.ajax({
+        type: 'DELETE',
+        url: '/api/Users/' + id,
+        dataType: 'json',
+        success: function (data) {
+            console.log("User deleted" + id);
+        }
+    });
+}
+
+function deleteSelectedUser(data) {
+    for (var i = 0; i < data["num_results"]; i++ ) {
+        for ( var key in data.objects[i]) {
+            if ( key == "id" ) {
+                if ( $('#' + key).is(":checked") ) {
+                    deleteUser(key);
+                } // else skip
+            }
+        }
+
+    }
+
+}
+
+function deleteSelectedUserGetTTable() {
+    $.ajax({
+        type: 'GET',
+        url: '/api/Users',
+        dataType: 'json',
+        success: function (data) {
+            deleteSelectedUser(data);
+            alert( "Selected Users Deleted" );
+        }
+    });
+}
+
 
 function sendSearch() {
     var request = {
@@ -110,5 +152,9 @@ $( document ).ready(function() {
 			});
 		}
 	});
+
+    $('#deleteUserButton').click(function(){
+        deleteSelectedUserGetTTable();
+    });
 })
 
