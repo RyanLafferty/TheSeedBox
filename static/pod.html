@@ -162,13 +162,15 @@
         
             var tableElement = document.getElementById("table-header");
             var newRow = document.createElement('tr');
+ 
+            var columns = {"Product", "Location", "Quantity", "Price"}
        
             $("#contents tr").remove();
  
             //Create Header
-            for (var title in tableData) {
+            for (var title in columns) {
                 newCell = document.createElement('th');
-                var info = document.createTextNode(tableData[title][1]);
+                var info = document.createTextNode(title);
                 newCell.appendChild(info);
                 newRow.appendChild(newCell);
             }
