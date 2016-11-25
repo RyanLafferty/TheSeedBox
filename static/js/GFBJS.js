@@ -43,8 +43,8 @@ function addDataToGFB(data) {
                     selector.appendChild(option);
 
                 }
-                selector.addEventListener('change', updateTotal(), false);
                 newCell.appendChild(selector);
+                selector.addEventListener('change', updateTotal(), false);
             } else if (key == 'item') {
                 newCell.innerHTML = data["objects"][i][key];
             } else {
