@@ -6,7 +6,7 @@ $.get("menu_admin.html", function(data){
 });
 
 var rownum = 0;
-
+var headerAlreadyExists = false;
 function checkAll()
 {
     var newValue = document.getElementById('master_cb').checked;
@@ -23,24 +23,26 @@ function fillTable(data) {
     var tableElement = document.getElementById("table-header");
     var newRow = document.createElement('tr');
 
-    //Create Header
-    var newCell = document.createElement('th');
-    newCell.width = '10px';
-    var checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.id = 'master_cb';
-    checkbox.onchange = checkAll;
-    newCell.appendChild(checkbox);
-    newRow.appendChild(newCell);
-
-    for (var title in tableData[0]) {
-        newCell = document.createElement('th');
-        var info = document.createTextNode(title);
-        newCell.appendChild(info);
+    if ( headerAlreadyExists == false ) {
+        //Create Header
+        var newCell = document.createElement('th');
+        newCell.width = '10px';
+        var checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = 'master_cb';
+        checkbox.onchange = checkAll;
+        newCell.appendChild(checkbox);
         newRow.appendChild(newCell);
-    }
-    tableElement.appendChild(newRow);
 
+        for (var title in tableData[0]) {
+            newCell = document.createElement('th');
+            var info = document.createTextNode(title);
+            newCell.appendChild(info);
+            newRow.appendChild(newCell);
+        }
+        tableElement.appendChild(newRow);
+        headerAlreadyExists = true;
+    }
     //Create Body
     tableElement = document.getElementById('table-body');
     for (var nextRow in tableData) {
@@ -53,7 +55,7 @@ function fillTable(data) {
         //checkbox.id = 'user' + rownum;
 
         checkbox.id = tableData[nextRow]["id"]; // ised in delete, very important line
-
+        console.log( tableData[nextRow]["id"] );
         rownum += 1;
         newCell.appendChild(checkbox);
         newRow.appendChild(newCell);
