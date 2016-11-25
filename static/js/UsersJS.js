@@ -117,7 +117,7 @@ function deleteSelectedUserGetTTable() {
 function sendSearch() {
     var request = {
         "name": "email",
-        "val": "email",
+        "val": document.getElementById('user-search').value,
         "op": "like"
     }
     return request;
