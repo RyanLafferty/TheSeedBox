@@ -17,100 +17,87 @@
         #NE { top:10%;   left:50%; }
         #SW { top:55%; left:0; }
         #SE { top:55%; left:50%; }
-        }
+
     </style>
 </head>
 <body>
     <div id="menu-placeholder"></div>
-    <center>
-    <h1> Web Scraper and Web Scraper Settings </h1>
-    </center>
+    <h1 style="text-align:center"> Web Scraper and Web Scraper Settings </h1>
 
-
-
-    <!-- current settings  -->
-    <div class="bigger-div">
-    <div id="top-menu" style="float: right; border: 1px solid; padding: 2px; height: 100%">
-            <p> Current Settings </p>
-            <div class="form-group">
-                <label for="day">Day of The Week: </label>
-                <input type="text" value="Thursday" class="field left"  name="type" id="day"  autofocus="" required="" minlength="1" maxlength="255" id="day" class="form-control" readonly>
-            </div>
-            <div class="form-group">
-                <label for="time">Time: </label>
-                <input type="text" value="10pm" class="field left"  name="type" id="time"  autofocus="" required="" minlength="1" maxlength="255" id="time" class="form-control" readonly style="margin-left: 80px">
-            </div>
-            <div class="form-group">
-                <label for="stores">Stores: </label>
-                <input type="text" value="NoFrills, Metro" class="field left"  name="stores" id="type"  autofocus="" required="" minlength="1" maxlength="255" id="stores" class="form-control" readonly style="margin-left: 70px">
-            </div>
-            <br><br>
-            <hr>
-            <p> Change Settings </p>
-            <div class="form-group">
-                <label for="day">Day of The Week: </label>
-                <select>
-                    <option id="Monday" value ="Monday">Monday</option>
-                    <option id="Tuesday" value ="Tuesday">Tuesday</option>
-                    <option id="Wednesday" value ="Wednesday">Wednesday</option>
-                    <option id="Thursday" value ="Thursday">Thursday</option>
-                    <option id="Friday" value ="Friday">Friday</option>
-                    <option id="Saturday" value ="Saturday">Saturday</option>
-                    <option id="Sunday" value ="Sunday">Sunday</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="time">Time: </label>
-                <input type="time" value="10" class="field left"  name="type" id="time"  autofocus="" required="" minlength="1" maxlength="255" id="time" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="stores">Stores: </label><br>
-            </div>
-                <form action="">
-                    <input id="NoFrills" type="checkbox" name="store" value="NoFrills"> NoFrills<br>
-                    <input id="Metro" type="checkbox" name="store" value="Metro"> Metro
-                </form>
-            <div class="form-group" style="">
-                <button onClick="location.href = 'home.html'" class="btn btn-success" style="width: 95px;">Save</button>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-6 thing">
+                    <h4 style="text-align:center"> Current Settings </h4>
+                    <div class="form-group">
+                        <label for="day">Day of The Week: </label>
+                        <input type="text" class="field left"  name="type"  autofocus="" required="" minlength="1" maxlength="255" id="day" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="timeField">Time: </label>
+                        <input type="text" value="10pm" class="field left"  name="type" autofocus="" required="" minlength="1" maxlength="255" id="timeField" class="form-control" readonly style="margin-left: 80px">
+                    </div>
+                    <div class="form-group">
+                        <label for="stores">Stores: </label>
+                        <input type="text" value="NoFrills, Metro" class="field left"  name="stores"  autofocus="" required="" minlength="1" maxlength="255" id="stores" class="form-control" readonly style="margin-left: 70px">
+                    </div>
                 </div>
-        </div>
-        <center>
-        <div class="big-div" style="padding: 25px">
-
-
-            
-        <div class="man-scrape">
-         <p> Manual Scrape </p>
-            <div class="form-group">
-                <label for="stores">Stores: </label><br>
-                <form action="">
-                    <input id="NoFrillsManualScrape" type="checkbox" name="store" value="NoFrills"> NoFrills<br>
-                    <input id="MetroManualScrape" type="checkbox" name="store" value="Metro"> Metro
-                </form>
-            </div>
-            <div class="form-group">
-                <button onClick="location.href = 'home.html'" class="btn btn-success" style="width: auto;" id="ManualScrapeButton">Scrape Now </button>
-            </div>
-            </div>
+                <div class="col-md-6 thing">
+                    <div class="man-scrape">
+                        <h4 style="text-align:center"> Manual Scrape </h4>
+                        <div class="form-group">
+                            <label for="stores">Stores: </label><br>
+                            <form action="">
+                                <input id="NoFrillsManualScrape" type="checkbox" name="store" value="NoFrills"> NoFrills<br>
+                                <input id="MetroManualScrape" type="checkbox" name="store" value="Metro"> Metro
+                            </form>
+                        </div>
+                        <div class="form-group" style="text-align:center">
+                            <button onClick="location.href = 'home.html'" class="btn btn-success" style="width: auto;" id="ManualScrapeButton">Scrape Now </button>
+                        </div>
+                    </div>
                 </div>
-    <!-- cahnge settings  -->
-            </center>
-        </div>
-    <!-- manual scrape  -->
-    
-            
-            
-            <hr>
-            <center>
-            <div class="bottom-scraper" style="padding: 25px">
-            <p> Compare Suppliers vs Competitors </p>
-            <div class="form-group">
-                <button onclick="location.href = 'pricing.html'" class="btn btn-success" style="width: auto" id="Execute"> View Comparison </button>
+                </div>
             </div>
-    <!-- execute button-->
-            </center>
-           
-            
+            <hr>
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <h4 style="text-align:center"> Change Settings </h4>
+                    <div class="form-group">
+                        <label for="day">Day of The Week: </label>
+                        <select id="DayDropdown">
+                            <option id="Monday" value ="Monday">Monday</option>
+                            <option id="Tuesday" value ="Tuesday">Tuesday</option>
+                            <option id="Wednesday" value ="Wednesday">Wednesday</option>
+                            <option id="Thursday" value ="Thursday">Thursday</option>
+                            <option id="Friday" value ="Friday">Friday</option>
+                            <option id="Saturday" value ="Saturday">Saturday</option>
+                            <option id="Sunday" value ="Sunday">Sunday</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Time: </label>
+                        <input type="time" class="field left"  name="type"  autofocus="" required="" minlength="1" maxlength="255" id="timee" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="stores">Stores: </label><br>
+                    </div>
+                    <form action="">
+                        <input id="NoFrills" type="checkbox" name="store" value="NoFrills"> NoFrills<br>
+                        <input id="Metro" type="checkbox" name="store" value="Metro"> Metro
+                    </form>
+                    <div class="form-group" style="text-align:center">
+                        <button id="changeSettingsButton" class="btn btn-success" style="width: 95px;">Save</button>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4 style="text-align:center"> Compare Suppliers vs Competitors </h4>
+                    <div class="form-group" style="text-align:center">
+                        <button onclick="location.href = 'pricing.html'" class="btn btn-success" style="width: auto" id="Execute"> View Comparison </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
 </html>

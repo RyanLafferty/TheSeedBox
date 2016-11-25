@@ -29,13 +29,14 @@
           <tbody id="table-body"></tbody>
         </table>
       </div>
+      <input type="submit" id="calculate_totals" value="Calculate" class="btn btn-success" onclick="updateTotal(document.getElementById('table-body'))">
       </center>
     </center>
     <br>
     <br>
     <center>
-    Total: <input type="text" value="$0.00" readonly>
-    Savings: <input type="text" value="50%" readonly>
+    Total: <input type="text" id="totalValue" value="$0.00" readonly>
+    Savings: <input type="text" id="savingsTotal" value="0" readonly>
     </center>
     </div>
   </body>

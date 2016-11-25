@@ -28,6 +28,14 @@ def sql_dump():
 
     #mysqldump_cmd = "mysqldump -u " + db_User_Name + " --password='" + DB_User_Password + "' -h mysql.server --databases '" + DB_Name + "' > " + datetimeBackupDir + "/" + DB_Name + ".sql"
     mysqldump_cmd = "mysqldump -u " + db_User_Name + " --password='" + DB_User_Password + "' --all-databases > " + backupDir + "/" + DB_Name + ".sql"
+    arg1 = "-u"
+    arg2 = db_User_Name
+    arg3 = "--password='" + DB_User_Password + "'"
+    arg4 = "--all-databases"
+    arg5 =  ">"
+    arg6 = backupDir + "/" + DB_Name + ".sql"
 
-    #subprocess.call((mysqldump_cmd, shell=True)
+
+
+    subprocess.call(mysqldump_cmd, arg1, arg2, arg3, arg4, arg5, arg6)
     #os.system(mysqldump_cmd)

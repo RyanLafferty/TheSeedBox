@@ -22,7 +22,7 @@ function createGFBTableHeader(data) {
 
 function addDataToGFB(data) {
     var tableBodyElement = document.getElementById('table-body');
-
+    var totalSaved = 0;
     for (var i = 0; i < data["num_results"]; i++ ) {
         var newRow = document.createElement('tr');
         newRow.id = data["objects"][i]["id"];
@@ -41,15 +41,24 @@ function addDataToGFB(data) {
                     option.innerHTML = k;
                     option.value = k;
                     selector.appendChild(option);
+
                 }
                 newCell.appendChild(selector);
-            } else {
+                /*selector.addEventListener('change', updateTotal(selector), false);*/
+                /*selector.onchange = function(){updateTotal(selector)};*/
+            } else if (key == 'item') {
                 newCell.innerHTML = data["objects"][i][key];
+            } else {
+                newCell.innerHTML = parseFloat(data["objects"][i][key]).toFixed(2);
             }
             newRow.appendChild(newCell);
+/*            if (key == 'price') {
+                totalSaved += parseFloat(data["objects"][i][key]);
+            }*/
         }
         tableBodyElement.appendChild(newRow);
     }
+    document.getElementById('totalValue').value = '$' + totalSaved;
 
     // // create empty rows in table
     // for ( var i = parseInt(data["num_results"]); i < 20; i++ ) {
@@ -63,6 +72,35 @@ function addDataToGFB(data) {
     //     tableBodyElement.appendChild(newRow);
     // }
 }
+
+function updateTotal(table) {
+    var totalSavings = 0;
+    var totalValue = 0;
+    var quantityValues = document.getElementsByTagName('select');
+    /*document.getElementById('savingsTotal').value  = table.rows[0].cells[3].innerHTML; */
+    /*console.log(tempHolder[0].value);*/
+    for (var i = 0; i < table.rows.length; i++) {
+        table.rows[i].cells[4].innerHTML = (parseFloat(table.rows[i].cells[1].innerHTML) * parseFloat(quantityValues[i].value)).toFixed(2); /** parseFloat(quantityValues[i]);*/
+        /*table.rows[i].cells[4].innerHTML = parseFloat(table.rows[i].cells[1].innerHTML) * parseFloat(table.rows[i].cells[2].innerHTML);*/
+        totalSavings = totalSavings + parseFloat(table.rows[i].cells[3].innerHTML);
+        totalValue = totalValue + parseFloat(table.rows[i].cells[4].innerHTML);
+    }
+    document.getElementById('savingsTotal').value = '$' + totalSavings;
+    document.getElementById('totalValue').value = '$' + totalValue;
+    
+    /*var currentValue = element.options[element.selectedIndex].value;
+    console.log(currentValue); */
+
+
+    /*var oldValue = +(temp.value) || 0;
+    temp.value = parseInt(temp.value,10);
+    temp.value = oldValue;
+    var value = parseInt(1);
+    temp.value += value;*/
+
+
+}
+
 
 $.get("menu_admin.html", function(data){
     $("#menu-placeholder").replaceWith(data);
@@ -96,6 +134,15 @@ $.get("menu_admin.html", function(data){
 //            });
 
 
+function sendSearch() {
+    var request = {
+        "name": "item",
+        "val": "apple",
+        "op": "like"
+    }
+    return request;
+}
+
 
 $( document ).ready(function() {
     $.ajax({
@@ -109,33 +156,30 @@ $( document ).ready(function() {
         }
     });
 
+    $('#gfb-search').keypress(function(e){
+        console.log( "begin" );
+		if (e.keyCode == 13){
+            event.preventDefault();
+			$.ajax({
+				type: 'GET',
+                contentType:"application/json",
+				url: '/api/GFB',
+                data: JSON.stringify(sendSearch()),
+				dataType: 'json',
+
+				success: function(data){
+                    console.log("success");
+					console.log(data)
+				},
+				error: function(data){
+                    console.log("error");
+					console.log(data)
+				}
+			});
+		}
+	});
+    console.log("end");
+
 
 });
 
-$('#gfb-search').keypress(function(e){
-	if (e.keyCode == 13){
-		item = $('#gfb-search').val();
-		options = {
-			"val": item,
-			"op":"LIKE"
-
-		};
-		
-		newUrl = 'api/GFB'
-		$.ajax({
-			type: 'GET',
-			url: '/api/GFB',
-			dataType: 'json',
-			data: {
-				"val":item,
-				"op":"LIKE"
-			},
-			success: function(data){
-				alert(data);
-			},
-			error: function(data){
-				alert(data);
-			}
-		});
-	}
-});

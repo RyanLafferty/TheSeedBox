@@ -22,16 +22,16 @@
       </div>
       <label class="btn btn-success file-button" style="margin-right: 10px;float: right">
          Import
-         <input type="file" id="file-upload" accept=".csv" style="display: none;" onchange="uploadFile()" multiple>
+         <input type="file" id="file-upload" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" style="display: none;" onchange="uploadFile()" multiple>
       </label>
       <input type="submit" onclick="downloadFile()" class="btn btn-success" value="Export" style="margin-right: 10px;float: right">
-      <select id="down-files" style="margin-right: 10px;float: right" onchange="updateTable()"></select>
+      <select id="down-files" style="margin-right: 10px;float: right" onchange="updateTable(this.value)"></select>
     </form>
 
     <center>
       <br>
       <div id="table-container">
-        <table class="table table-striped table-bordered">
+        <table id="contents" class="table table-striped table-bordered">
           <thead class="thead-default" id="table-header"></thead>
           <tbody id="table-body"></tbody>
         </table>
@@ -48,7 +48,9 @@
         
         var tableElement = document.getElementById("table-header");
         var newRow = document.createElement('tr');
-        
+       
+        $("#contents tr").remove();
+ 
         //Create Header
         for (var title in tableData[0]) {
             newCell = document.createElement('th');
@@ -126,15 +128,16 @@
             var filename = dropdown.options[dropdown.selectedIndex].value;
             window.open('https://seedbox.tk/api/download/' + filename);
         }
-        function updateTable() {
-            var selectedTable = document.getElementById('down-files').options[dropdown.selectedIndex].value;
-            // change URL from Produce to Spreadsheets -> spreadsheet-name
+        function updateTable(name) {
+            // change URL from Produce to Spreadsheets -> ss_name (ssname)
             $.ajax({
                 type: 'GET',
-                url: 'https://seedbox.tk/api/Produce',
+                url: 'https://seedbox.tk/api/SpreadSheet',
                 dataType: 'json',
+                data: {'q': '{"filters": [{"name": "ss_name", "val": ' + name + ', "op": "like"}]}'},
                 success: function (data) {
-                    fillTable(data);
+                    var filteredData = data["objects"][0]["json_data"]; 
+                    fillTable(JSON.stringify(filteredData));
                 }
             });
         }

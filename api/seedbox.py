@@ -7,6 +7,7 @@ from flask import Flask, request, flash, url_for, redirect, render_template, jso
 import flask_sqlalchemy
 import flask_restless
 from sqldump import sql_dump
+import run_scraper
 
 import auth
 
@@ -57,7 +58,7 @@ class Users(db.Model):
 class Retailers(db.Model):
     __tablename__ = 'Retailers'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Unicode(256), unique=True)
+    name = db.Column(db.Unicode(200), unique=True)
     url = db.Column(db.Unicode(256))
 
 class Products(db.Model):
@@ -120,7 +121,7 @@ class SpreadSheets(db.Model):
     __tablename__ = 'SpreadSheets'
     id = db.Column(db.Integer, primary_key=True)
     ss_name = db.Column(db.Unicode(256), default="")
-    json_data = db.Column(db.Text, default="")
+    json_data = db.Column(db.Text)
 
     #def __init__(self, **kwargs):
     #    super(SpreadSheets, self).__init__(**kwargs)
@@ -161,6 +162,10 @@ def hello():
 def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+@application.route("/api/run_scraper")
+def run_scraper():
+    run_the_scrapers();
 
 @application.route("/api/upload", methods=['POST'])
 def upload_file():

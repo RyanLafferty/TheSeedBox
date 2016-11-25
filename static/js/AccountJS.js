@@ -1,6 +1,14 @@
 /**
  * Created by slawomir on 24/11/16.
  */
+var administrator = false;
+var logintimee = null;
+var oldPassword = "";
+var emaill = "";
+var fnamee = " ";
+var lnamee = " ";
+var userid = 1;
+
 // var settings = {
 //                     "admin": true,
 //                     "fname": $('#fname').val(),
@@ -23,15 +31,34 @@
 // }
 
 function callSettings() {
-    var settings = {
-        "admin": true,
-        "email": $('#fname').val(),
-        "fname": $('#fname').val(),
-        "lname": $('#fname').val(),
-        "logintime": null,
-        "password": $('#fname').val()
+    if ( $('#NewPassword').val() != $('#ConfirmNewPassword').val() ) {
+        var settings = {
+            "admin": administrator,
+            "email": $('#email').val(),
+            "fname": $('#fname').val(),
+            "lname": $('#lname').val(),
+            "logintime": logintimee,
+            "password": oldPassword
+        }
+    } else if ( oldPassword == $('#password').val() ) {
+        var settings = {
+            "admin": administrator,
+            "email": $('#email').val(),
+            "fname": $('#fname').val(),
+            "lname": $('#lname').val(),
+            "logintime": logintimee,
+            "password": $('#NewPassword').val()
+        }
+    } else {
+        var settings = {
+            "admin": administrator,
+            "email": emaill,
+            "fname": fnamee,
+            "lname": lnamee,
+            "logintime": logintimee,
+            "password": oldPassword
+        }
     }
-
     return settings;
 }
 
@@ -51,34 +78,48 @@ $( document ).ready(function() {
         $.ajax({
             type: 'PUT',
             contentType:"application/json",
-            url: '/api/Users/1',
+            url: '/api/Users/' + userid,
             data: JSON.stringify(callSettings()),  // data passed to db
             dataType: 'json',
             success: function (getData) { // y is waht the get returns
                 alert("Profile Updated");
-                console.log("putsuccess");
             }
         });
-        console.log("put");
     });
 });
 
 function populateInputBoxes(data) {
-
+    var k = 0;
     //for (var i = 0; i < data["num_results"]; i++ ) {
         // how to get value for key id data["objects"][i]["id"];
 
         //for ( var key in data.objects[i]) {
-        for ( var key in data.objects[1]) {
+        for ( var key in data.objects[k]) {
             if ( key == "fname" ) {
-                $('#fname').val(data["objects"][1][key]);
+                namee = data["objects"][k][key];
+                $('#fname').val(data["objects"][k][key]);
+
             } else if ( key == "lname" ) {
-                $('#lname').val(data["objects"][1][key]);
+                lnamee = data["objects"][k][key];
+                $('#lname').val(data["objects"][k][key]);
+
             } else if ( key == "email" ) {
-                $('#email').val(data["objects"][1][key]);
+                emaill = data["objects"][k][key];
+                $('#email').val(data["objects"][k][key]);
+
+            } else if ( key == "admin" ) {
+                administrator = data["objects"][k][key];
+
+            } else if ( key == "logintime" ) {
+                logintimee = data["objects"][k][key];
+
+            } else if ( key == "password" ) {
+                oldPassword = data["objects"][k][key];
+
+            } else if ( key == "id" ) {
+                userid = data["objects"][k][key];
             }
         }
     //}
-    console.log("get");
 }
 
