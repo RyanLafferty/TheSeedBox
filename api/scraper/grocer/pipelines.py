@@ -36,6 +36,6 @@ class ProductPipeline(object):
         item['source'] = spider.name
         item['dateCreated'] = self.date
 
-        response = requests.post('http://localhost:5000/api/Products', json=dict(item))
+        response = requests.post('http://seedbox.tk/api/Products', json=dict(item))
 
         return item
