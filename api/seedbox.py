@@ -120,7 +120,7 @@ class SpreadSheets(db.Model):
     __tablename__ = 'SpreadSheets'
     id = db.Column(db.Integer, primary_key=True)
     ss_name = db.Column(db.Unicode(256), default="")
-    json_data = db.Column(JSON)
+    json_data = db.Column(db.Text, default="")
 
 # Set up corresponding RESTful API
 # ==========================================================================================
