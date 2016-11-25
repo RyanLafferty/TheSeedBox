@@ -41,7 +41,7 @@ function addDataToGFB(data) {
                     option.innerHTML = k;
                     option.value = k;
                     selector.appendChild(option);
-                    selector.addEventListener("click", updateTotal(option));
+                    selector.addEventListener("change", updateTotal(option));
 
                 }
                 newCell.appendChild(selector);
