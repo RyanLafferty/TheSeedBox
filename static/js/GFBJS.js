@@ -44,7 +44,7 @@ function addDataToGFB(data) {
                 }
                 newCell.appendChild(selector);
             } else {
-                newCell.innerHTML = Convert.ToInt64(data["objects"][i][key]);
+                newCell.innerHTML = parseFloat(data["objects"][i][key]);
             }
             newRow.appendChild(newCell);
             if (key == 'price') {
