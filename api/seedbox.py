@@ -170,6 +170,7 @@ def run_scraper():
         run_the_scrapers()#nofrills=request.nofrills,metro=request.metro);
     except:
         return jsonify(sys.exc_info()[0])
+    return "OK"
 
 
 @application.route("/api/upload", methods=['POST'])
