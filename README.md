@@ -145,6 +145,13 @@ Return: JSON
 
 "Success"
 
+###Download
+URL: https://website/api/download/FILENAME
+
+Type: GET
+
+Return: File
+
 ###List Tables
 URL: https://website/api/tables
 
@@ -164,5 +171,21 @@ Return: JSON
     "GFB",
     "Retailers",
     "Test"
+  ]
+}
+
+###List Files
+URL: https://website/api/files
+
+Type: GET
+
+Return: JSON
+
+{
+  "files": [
+    "a.csv",
+    "Supplier_Price_List_WE_September_23-2016.csv",
+    "test.csv",
+    "CIS3750_A2_Requirements_Screaming_Programmers.csv"
   ]
 }
