@@ -110,4 +110,21 @@ $( document ).ready(function() {
     });
 
 
-});z
+});
+
+$('#gfb-search').live("keypress", function(e){
+	if (e.keyCode == 13){
+		item = $('#gfb-search').val();
+		$.ajax({
+			type: 'GET',
+			url: 'api/GFB/Search/' + item,
+			dataType: 'json',
+			success: function (){
+				
+			}
+			error: function (){
+				
+			}
+		});
+	}
+});
