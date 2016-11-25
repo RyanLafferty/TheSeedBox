@@ -121,6 +121,7 @@ $( document ).ready(function() {
     $('#gfb-search').keypress(function(e){
         console.log( "begin" );
 		if (e.keyCode == 13){
+            event.preventDefault();
 			$.ajax({
 				type: 'GET',
                 contentType:"application/json",
