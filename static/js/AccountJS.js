@@ -2,18 +2,26 @@
  * Created by slawomir on 24/11/16.
  */
 var settings = {
-                    fname: $('#CurrentPassword').val(),
-                    lname: $('#CurrentPassword').val(),
-                    password: $('#CurrentPassword').val(),
-                    email: $('#Email').val()
+                    "admin": true,
+                    "fname": $('#CurrentPassword').val(),
+                    "lname": $('#CurrentPassword').val(),
+                    "password": $('#CurrentPassword').val(),
+                    "email": $('#Email').val(),
+                    "logintime": null,
+                    "password": null
                 }
 
-
+var id = "1";
 
 $("#SaveButton").click(function(){
-    $.post("/api/AccountSettings/", settings,
-    function(data, status){
-        console.log(settings);
+    $.ajax({
+        type: 'PUT',
+        url: '/api/Users' + id,
+        data: settings,  // data passed to db
+        dataType: 'json',
+        success: function (getData) { // y is waht the get returns
+            alert("Profile Updated");
+        }
     });
 });
 
