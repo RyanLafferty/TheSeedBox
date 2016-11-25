@@ -40,7 +40,7 @@
     Year: <input type="text" placeholder="Year">
     <input type="submit" value="History" class="btn btn-success">
     </div>
-    <p id="debug"></p>
+    <div id="debug"></div>
     <script>
     function fillTable(data) {
         var tableData = data.objects;
@@ -93,7 +93,7 @@
             var formData = new FormData();
             var files = document.getElementById('file-upload').files;
             for (var i = 0; i < files.length; i++) {
-                formData.append("spreadsheet_" + i, files[i], files[i].name);
+                formData.append("file", files[i]);
             }
             
             $.ajax({
@@ -103,7 +103,11 @@
                 processData: false,
                 contentType: false,
                 success: function (data) {
-                    document.getElementById('debug').innerHTML = data;}
+                    document.getElementById('debug').innerHTML = data;
+                },
+                error: function (data) {
+                    document.getElementById('debug').innerHTML = data;
+                }
             });
         }
     </script>
