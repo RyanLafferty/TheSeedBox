@@ -120,10 +120,10 @@ $('#gfb-search').live("keypress", function(e){
 			url: 'api/GFB/Search/' + item,
 			dataType: 'json',
 			success: function (){
-				alert("Success");
+				
 			}
 			error: function (){
-				alert("Failed!");
+				
 			}
 		});
 	}
