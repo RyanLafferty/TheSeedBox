@@ -126,7 +126,10 @@ $('#gfb-search').keypress(function(e){
 			type: 'GET',
 			url: '/api/GFB',
 			dataType: 'json'
-			data: options,
+			data: {
+				"val":item,
+				"op":"LIKE"
+			},
 			success: function(data){
 				alert(data);
 			}
