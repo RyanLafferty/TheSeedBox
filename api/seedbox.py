@@ -13,6 +13,7 @@ import auth
 
 #Set up upload folder
 UPLOAD_FOLDER = '/uploads'
+SESSION_TOKEN = '2f2a061d076f33f6cc5ae217ebb9d38e'
 ALLOWED_EXTENSIONS = set(['csv', 'xls', 'xlsx'])
 DBNAME = 'TheSeedSA'
 
@@ -227,6 +228,7 @@ def get_authenticate():
         if db_user is None or db_user.password != request.form['password']:
             return '{"Authentication error"}'
 
+        db.session.set_cookie('SESSID', SESSION_TOKEN);
         return '{"success=true"}'
 
     return '{"Requires two parameters, [email=...] and [password=...]"}'
