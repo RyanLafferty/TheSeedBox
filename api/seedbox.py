@@ -194,7 +194,7 @@ def basic_authorize():
 
 @application.route('/api/all')
 def all():
-    return jsonify(Users=Users.query.all())
+    return jsonify(Users=str(Users.query.all()))
 
 
 
