@@ -137,9 +137,8 @@
                 dataType: 'json',
                 data: {'q': '{"filters": [{"name": "ss_name", "val": "' + name + '", "op": "eq"}]}'},
                 success: function (data) {
-                    //var filteredData = data["objects"][0]["json_data"]; 
-                    //fillTable(JSON.stringify(filteredData));
-                    fillTable(data);
+                    var filteredData = data["objects"][0]["json_data"]; 
+                    fillTable(JSON.stringify(filteredData));
                 }
             });
         }
