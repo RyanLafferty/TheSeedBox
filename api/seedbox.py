@@ -3,7 +3,7 @@ from logging import FileHandler
 from werkzeug.utils import secure_filename
 from CSVandXLparser import inputSpreadSheet
 
-from flask import Flask, request, flash, url_for, redirect, render_template, jsonify, abort, request, send_from_directory
+from flask import Flask, request, flash, url_for, redirect, render_template, jsonify, abort, request, send_from_directory, make_response
 import flask_sqlalchemy
 import flask_restless
 from sqldump import sql_dump
@@ -164,9 +164,12 @@ def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-@application.route("/api/run_scraper")
+@application.route("/api/run_scraper", methods=['POST'])
 def run_scraper():
-    run_the_scrapers();
+    try:
+        run_the_scrapers(nofrills=request.nofrills,metro=request.metro);
+    except:
+        return sys.exc_info()[0], 200
 
 @application.route("/api/upload", methods=['POST'])
 def upload_file():
@@ -228,8 +231,9 @@ def get_authenticate():
         if db_user is None or db_user.password != request.form['password']:
             return '{"Authentication error"}'
 
-        db.session.set_cookie('SESSID', SESSION_TOKEN);
-        return '{"success=true"}'
+        resp = make_response(render_template('/home.html'))
+        resp.set_cookie('SESSID', SESSION_TOKEN)
+        return resp
 
     return '{"Requires two parameters, [email=...] and [password=...]"}'
 
