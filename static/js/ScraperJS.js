@@ -58,7 +58,7 @@ function createJsonChangeSettings(data) {
                 if ( data["objects"][i][key] == 1 ) {
                     storeNameList.push( "nofrills" );
                 }
-            } else if ( key == "ide" ) {
+            } else if ( key == "id" ) {
                 id = data["objects"][i][key];
             }
         }
@@ -117,14 +117,15 @@ function changeScrapaerSettings() {
         "dayofweek": dayToIntDropdown(),
         "metro_enabled": isCheckedMetro(),
         "nofrills_enabled": isCheckedNoFrills(),
-        "time": $('#time').val(),
+        "time": "18:00",
         "user_id": 0
     }
 
     console.log( dayToIntDropdown());
     console.log( isCheckedMetro());
     console.log( isCheckedNoFrills());
-    console.log( $('#time').val());
+    console.log( $('#time').getHours());
+    console.log( $('#time').getMinutes());
     console.log( 0);
     return settings;
 }
