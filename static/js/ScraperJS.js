@@ -28,6 +28,8 @@ $.get("menu_admin.html", function(data){
 function createJsonChangeSettings(data) {
     console.log("begin");
     console.log(data);
+    var  storeNameList = [];
+    var storeString = "";
     for (var i = 0; i < data["num_results"]; i++ ) {
         for ( var key in data.objects[i]) {
             if ( key == "dayofweek" ) {
@@ -46,9 +48,25 @@ function createJsonChangeSettings(data) {
                 } else if ( data["objects"][i][key] == 6 ) {
                     $('#day').val( 'Sun' );
                 }
+            } else if ( key == "time" ) {
+                $('#timeField').val(data["objects"][k][key]);
+            } else if ( key == "metro_enabled" ) {
+                if ( data["objects"][i][key] == 1 ) {
+                    storeNameList.push( "metro" );
+                }
+            } else if ( key == "nofrills_enabled" )  {
+                if ( data["objects"][i][key] == 1 ) {
+                    storeNameList.push( "nofrills" );
+                }
             }
             console.log($('#day').val());
         }
+
+        // add retialers to current savings
+        for ( var j in storeNameList ) {
+            storeString = storeString + j;
+        }
+        $('#storesList').val( storeString );
 
             // newCell.innerHTML = data["objects"][i][key];
 
