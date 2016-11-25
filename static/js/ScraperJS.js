@@ -112,9 +112,7 @@ function isCheckedMetro() {
 }
 
 function getTimeInput() {
-    var t = $("#time").value;
-
-    return $("#time").value;
+    return $('#time').value;
 }
 
 function changeScrapaerSettings() {
