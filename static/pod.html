@@ -124,11 +124,7 @@
         function downloadFile() {
             var dropdown = document.getElementById('down-files');
             var filename = dropdown.options[dropdown.selectedIndex].value;
-            
-            $.ajax({
-                type: 'GET',
-                url: 'https://seedbox.tk/api/download/' + filename,
-            });
+            window.open('https://seedbox.tk/api/download/' + filename);
         }
     </script>
     </div>
