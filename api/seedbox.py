@@ -206,7 +206,7 @@ def get_authenticate():
 @application.route('/api/backup', methods=['GET'])
 def backup_database():
     #os.system('python sqldump.py')
-    sqldump()
+    sql_dump()
     backupName = DBNAME + '.sql'
     return jsonify(files=backupName)
     return send_from_directory(directory=application.config['UPLOAD_FOLDER'], filename=backupName)
