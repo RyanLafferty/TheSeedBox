@@ -120,7 +120,7 @@ $( document ).ready(function() {
     				dataType: 'json',
 
     				success: function (getData) {
-    				
+    					highlightRow(getData);
     				}
     			});
     		}
