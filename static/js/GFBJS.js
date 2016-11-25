@@ -45,7 +45,7 @@ function addDataToGFB(data) {
                 }
                 newCell.appendChild(selector);
                 /*selector.addEventListener('change', updateTotal(selector), false);*/
-                selector.onchange = function(){updateTotal(selector)};
+                /*selector.onchange = function(){updateTotal(selector)};*/
             } else if (key == 'item') {
                 newCell.innerHTML = data["objects"][i][key];
             } else {
