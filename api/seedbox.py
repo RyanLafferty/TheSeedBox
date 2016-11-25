@@ -169,7 +169,8 @@ def run_scraper():
     try:
         run_the_scrapers(nofrills=request.nofrills,metro=request.metro);
     except:
-        return sys.exc_info()[0], 200
+        return jsonify(sys.exc_info()[0])
+
 
 @application.route("/api/upload", methods=['POST'])
 def upload_file():
@@ -231,7 +232,7 @@ def get_authenticate():
         if db_user is None or db_user.password != request.form['password']:
             return '{"Authentication error"}'
 
-        resp = make_response(render_template('/home.html'))
+        resp = make_response("Logged in!")
         resp.set_cookie('SESSID', SESSION_TOKEN)
         return resp
 
