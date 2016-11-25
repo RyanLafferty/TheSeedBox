@@ -138,7 +138,7 @@ $( document ).ready(function() {
     $('#user-search').keypress(function(e){
         console.log( "begin" );
 		if (e.keyCode == 13){
-            event.preventDefault();
+            e.preventDefault();
 			$.ajax({
 				type: 'GET',
                 contentType:"application/json",
