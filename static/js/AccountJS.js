@@ -1,6 +1,8 @@
 /**
  * Created by slawomir on 24/11/16.
  */
+var administrator = false;
+var logintimee = null;
 // var settings = {
 //                     "admin": true,
 //                     "fname": $('#fname').val(),
@@ -23,15 +25,25 @@
 // }
 
 function callSettings() {
-    var settings = {
-        "admin": true,
-        "email": $('#fname').val(),
-        "fname": $('#fname').val(),
-        "lname": $('#fname').val(),
-        "logintime": null,
-        "password": $('#fname').val()
+    if ( $('#NewPassword').val() != $('#ConfirmNewPassword').val() ) {
+        var settings = {
+            "admin": administrator,
+            "email": $('#email').val(),
+            "fname": $('#fname').val(),
+            "lname": $('#lname').val(),
+            "logintime": logintimee,
+            "password": $('#password').val()
+        }
+    } else {
+        var settings = {
+            "admin": administrator,
+            "email": $('#email').val(),
+            "fname": $('#fname').val(),
+            "lname": $('#lname').val(),
+            "logintime": logintimee,
+            "password": $('#NewPassword').val()
+        }
     }
-
     return settings;
 }
 
@@ -56,29 +68,30 @@ $( document ).ready(function() {
             dataType: 'json',
             success: function (getData) { // y is waht the get returns
                 alert("Profile Updated");
-                console.log("putsuccess");
             }
         });
-        console.log("put");
     });
 });
 
 function populateInputBoxes(data) {
-
+    var k = 1;
     //for (var i = 0; i < data["num_results"]; i++ ) {
         // how to get value for key id data["objects"][i]["id"];
 
         //for ( var key in data.objects[i]) {
         for ( var key in data.objects[1]) {
             if ( key == "fname" ) {
-                $('#fname').val(data["objects"][1][key]);
+                $('#fname').val(data["objects"][k][key]);
             } else if ( key == "lname" ) {
-                $('#lname').val(data["objects"][1][key]);
+                $('#lname').val(data["objects"][k][key]);
             } else if ( key == "email" ) {
-                $('#email').val(data["objects"][1][key]);
+                $('#email').val(data["objects"][k][key]);
+            } else if ( key == "admin" ) {
+                administrator = data["objects"][k][key];
+            } else if ( key == "logintime" ) {
+                logintimee = data["objects"][k][key];
             }
         }
     //}
-    console.log("get");
 }
 
