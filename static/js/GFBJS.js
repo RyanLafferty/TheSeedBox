@@ -132,6 +132,9 @@ $('#gfb-search').keypress(function(e){
 			},
 			success: function(data){
 				alert(data);
+			},
+			error: function(data){
+				alert(data);
 			}
 		});
 	}
