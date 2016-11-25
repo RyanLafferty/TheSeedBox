@@ -20,23 +20,24 @@ def run_the_scrapers(nofrills=None,metro=None):
     timestamp = time.strftime('%H:%M')
     dow = list(calendar.day_abbr).index(time.strftime('%a'))
 
-    jobs = ScraperSettings.query.filter_by(dayofweek=dow, time=timestamp).all()
+    if nofrills is not None and metro is not None:
+        scr = []
+        if nofrills == "true":
+            scr.add('NoFrills')
+        if metro == "true":
+            scr.add('Metro')
 
-    for job in jobs:
-        print job
+        s = scraper.Scraper(scrapers=scr)
+    else:
+        jobs = ScraperSettings.query.filter_by(dayofweek=dow, time=timestamp).all()
+        arr = []
+        for j in jobs:
+            if j.nofrills_enabled == 1:
+                arr.append("NoFrills")
+            if j.metro_enabled == 1:
+                arr.append("Metro")
+        s = scraper.Scraper(scrapers=arr)
 
-
-
-    # if nofrills is not None and metro is not None:
-    #     scr = []
-    #     if nofrills == "true":
-    #         scr.add('NoFrills')
-    #     if metro == "true":
-    #         scr.add('Metro')
-
-    #     s = scraper.Scraper(scrapers=scr)
-    # else:
-    #     s = scraper.Scraper(scrapers=['NoFrills', 'Metro'])
 
 if __name__ == "__main__":
     from seedbox import ScraperSettings
