@@ -23,7 +23,6 @@ function createGFBTableHeader(data) {
 function addDataToGFB(data) {
     var tableBodyElement = document.getElementById('table-body');
     var totalSaved = 0;
-    va
     for (var i = 0; i < data["num_results"]; i++ ) {
         var newRow = document.createElement('tr');
         newRow.id = data["objects"][i]["id"];
