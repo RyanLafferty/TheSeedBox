@@ -1,11 +1,15 @@
 # TheSeedBox
+
 ## Dependencies
+
+```bash
     cd TheSeedBox/api
     virtualenv venv
     source venv/bin/activate
     pip install -r requirements.txt
+```
 
-To refresh the Python code after pulling changes, run `sudo restart seedbox.
+To refresh the Python code after pulling changes, run `sudo restart seedbox`
 
 ## Server configuration
 
@@ -18,7 +22,9 @@ uwsgi service configuration: `sudo vim /etc/init/seedbox.conf`
 
 ## Database
 
-###OPERATOR List
+### OPERATOR List
+
+```SQL
 ==, eq, equals, equals_to
 
 !=, neq, does_not_equal, not_equal_to
@@ -36,85 +42,81 @@ like
 has
 
 any
+```
 
+### Get Entire Table
 
+URL: `/api/TABLENAME`
 
+TYPE: `GET`
 
+Parameters: ``
 
+Return: `JSON`
 
-###Get Entire Table
-URL: https://website/api/TABLENAME
+> Example: See Example 1
 
-TYPE: GET
+### Select
+URL: `/api/TABLENAME`
 
-Parameters:
+TYPE: `GET`
 
-Return: JSON
+Parameters: `JSON`
 
-Example: See Example 1
-
-
-
-###Select
-URL: https://website/api/TABLENAME
-
-TYPE: GET
-
-Parameters: JSON
-
+```JavaScript
 {'q': '{"filters": [{"name": "COLUMN_NAME", "val": "COLUMN_VALUE", "op": "OPERATOR"}]}'}
+```
 
-Return: JSON
+Return: `JSON`
 
-Example: See Example 1
+> Example: See Example 1
 
+### Delete
+URL: `/api/TABLENAME/ID`
 
+TYPE: `DELETE`
 
-
-###Delete
-URL: https://website/api/TABLENAME/ID
-
-TYPE: DELETE
-
-Response: HTTP/1.1 204 No Content
-
+Return: `HTTP/1.1 204 No Content`
 
 ###Update
-URL: https://website/api/TABLENAME/ID
 
-Type: PUT
+URL: `/api/TABLENAME/ID`
 
-Parameters: JSON
+Type: `PUT`
 
-{"COLUMN_NAME": "VALUE"}
-
-Return: JSON
-
-Example:
-
-HTTP/1.1 200 OK
-
-See Example 1
-
-
-###Insert
-URL: https://website/api/TABLENAME
-
-Type: POST
-
-Parameters: JSON
+Parameters: `JSON`
 
 {"COLUMN_NAME": "VALUE"}
 
-Return: JSON
+Return: `JSON`
 
 Example:
 
-HTTP/1.1 201 Created
+> HTTP/1.1 200 OK
 
-See Example 1
+> See Example 1
+
+### Insert
+
+URL: `/api/TABLENAME`
+
+Type: `POST`
+
+Parameters: `JSON`
+
+{"COLUMN_NAME": "VALUE"}
+
+Return: `JSON`
+
+Example:
+
+> HTTP/1.1 201 Created
+
+> See Example 1
 
 ###Example 1:
+
+```JavaScript
 {
   "num_results": 1,
   "objects": [
@@ -129,36 +131,37 @@ See Example 1
   "page": 1,
   "total_pages": 1
 }
+```
 
+## Extra Routes
 
-## Routes
+### Upload
 
+URL: `/api/upload`
 
-###Upload
-URL: https://website/api/upload
+Type: `POST`
 
-Type: POST
+Parameters: `file`
 
-Parameters: file
-
-Return: JSON
+Return: `JSON`
 
 "Success"
 
 ###Download
-URL: https://website/api/download/FILENAME
+URL: `/api/download/FILENAME`
 
-Type: GET
+Type: `GET`
 
-Return: File
+Return: `File`
 
 ###List Tables
-URL: https://website/api/tables
+URL: `/api/tables`
 
-Type: GET
+Type: `GET`
 
-Return: JSON
+Return: `JSON`
 
+```JavaScript
 {
   "tablenames": [
     "ScraperSettings",
@@ -173,14 +176,16 @@ Return: JSON
     "Test"
   ]
 }
+```
 
-###List Files
-URL: https://website/api/files
+### List Files
+URL: `/api/files`
 
-Type: GET
+Type: `GET`
 
-Return: JSON
+Return: `JSON`
 
+```JavaScript
 {
   "files": [
     "a.csv",
@@ -189,3 +194,14 @@ Return: JSON
     "CIS3750_A2_Requirements_Screaming_Programmers.csv"
   ]
 }
+```
+
+## Authenticate
+
+URL: `/api/authenticate`
+
+Type `POST`
+
+Parameters: `email, password`
+
+Return: `JSON` => {"success=true"} or {"Authentication error"}
