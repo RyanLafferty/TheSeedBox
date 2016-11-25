@@ -49,7 +49,7 @@ function populateInputBoxes(data) {
             } else if ( key == "lname" ) {
                 $('#lname').val(data["objects"][i][key]);
             } else if ( key == "email" ) {
-                $('#email').val(data["objects"][i][key]);
+                //$('#email').val(data["objects"][i][key]);
             }
         }
     }
