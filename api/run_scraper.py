@@ -30,6 +30,7 @@ def run_the_scrapers(nofrills=None,metro=None):
         s = scraper.Scraper(scrapers=scr)
     else:
         jobs = ScraperSettings.query.filter_by(dayofweek=dow, time=timestamp).all()
+        
         arr = []
         for j in jobs:
             if j.nofrills_enabled == 1:
