@@ -17,8 +17,6 @@ class Scraper:
             self.spiderDefns['Metro'] = NoFrillsSpider
 
     def execute(self, spiders):
-        print get_project_settings().attributes['ITEM_PIPELINES'].value.attributes.keys()
-
         process = CrawlerProcess(get_project_settings())
 
         for spider in spiders:
