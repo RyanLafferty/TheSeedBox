@@ -168,7 +168,7 @@
             //Create Header
             for (var title in tableData) {
                 newCell = document.createElement('th');
-                var info = document.createTextNode(title.value);
+                var info = document.createTextNode(tableData[title][1]);
                 newCell.appendChild(info);
                 newRow.appendChild(newCell);
             }
