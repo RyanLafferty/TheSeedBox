@@ -118,11 +118,7 @@ $( document ).ready(function() {
         }
     });
 
-
-
-});
-
-$('#gfb-search').keypress(function(e){
+    $('#gfb-search').keypress(function(e){
         console.log( "begin" );
 		if (e.keyCode == 13){
 			$.ajax({
@@ -144,4 +140,7 @@ $('#gfb-search').keypress(function(e){
 		}
 	});
     console.log("end");
+
+
+});
 
