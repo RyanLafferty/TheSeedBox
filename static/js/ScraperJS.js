@@ -29,7 +29,7 @@ function createJsonChangeSettings(data) {
     console.log("begin");
     console.log(data);
     var  storeNameList = [];
-    var storeString = "";
+    var storeString = " ";
     for (var i = 0; i < data["num_results"]; i++ ) {
         for ( var key in data.objects[i]) {
             if ( key == "dayofweek" ) {
@@ -62,7 +62,7 @@ function createJsonChangeSettings(data) {
 
         }
         console.log(storeNameList);
-        storeString + storeNameList[0];
+        storeString = storeNameList[0];
         storeString +", ";
         storeString + storeNameList[1];
         console.log(storeString);
