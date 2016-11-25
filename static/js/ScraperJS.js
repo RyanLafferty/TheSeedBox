@@ -46,7 +46,8 @@ function createJsonChangeSettings(data) {
                     $('#day').val( 'Sun' );
                 }
             }
-            }
+            console.log($('#day').val());
+        }
 
             // newCell.innerHTML = data["objects"][i][key];
 
