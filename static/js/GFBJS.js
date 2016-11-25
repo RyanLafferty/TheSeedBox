@@ -112,12 +112,13 @@ $( document ).ready(function() {
 
 });
 
-$('#gfb-search').on("keypress", function(e){
+$('#gfb-search').keypress(function(e){
 	if (e.keyCode == 13){
 		item = $('#gfb-search').val();
+		newUrl = 'api/GFB/Search/' + item;
 		$.ajax({
 			type: 'GET',
-			url: 'api/GFB/Search/' + item,
+			url: newUrl,
 			dataType: 'json',
 			error: function (getData) {
 				alert("Test");
