@@ -29,6 +29,6 @@ datetimeBackupDir = backupDir + datetime
 
 
 #mysqldump_cmd = "mysqldump -u " + db_User_Name + " --password='" + DB_User_Password + "' -h mysql.server --databases '" + DB_Name + "' > " + datetimeBackupDir + "/" + DB_Name + ".sql"
-mysqldump_cmd = "mysqldump -u " + db_User_Name + " --password='" + DB_User_Password + "' > " + backupDir + "/" + DB_Name + ".sql"
+mysqldump_cmd = "mysqldump -u " + db_User_Name + " --password='" + DB_User_Password + "' --all-databases > " + backupDir + "/" + DB_Name + ".sql"
 
 os.system(mysqldump_cmd)
