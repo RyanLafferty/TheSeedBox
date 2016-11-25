@@ -124,7 +124,7 @@ function changeScrapaerSettings() {
         "time": getTimeInput(),
         "user_id": 0
     }
-    
+
     return settings;
 }
 
