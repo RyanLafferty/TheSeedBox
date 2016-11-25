@@ -3,7 +3,11 @@
  */
 var administrator = false;
 var logintimee = null;
-var oldPassword = " ";
+var oldPassword = "";
+var emaill = "";
+var fnamee = "";
+var lnamee = "";
+
 // var settings = {
 //                     "admin": true,
 //                     "fname": $('#fname').val(),
@@ -35,7 +39,7 @@ function callSettings() {
             "logintime": logintimee,
             "password": oldPassword
         }
-    } else {
+    } else if ( oldPassword == $('#password').val() ) {
         var settings = {
             "admin": administrator,
             "email": $('#email').val(),
@@ -43,6 +47,15 @@ function callSettings() {
             "lname": $('#lname').val(),
             "logintime": logintimee,
             "password": $('#NewPassword').val()
+        }
+    } else {
+        var settings = {
+            "admin": administrator,
+            "email": emaill,
+            "fname": fnamee,
+            "lname": lnamee,
+            "logintime": logintimee,
+            "password": oldPassword
         }
     }
     return settings;
@@ -82,10 +95,13 @@ function populateInputBoxes(data) {
         //for ( var key in data.objects[i]) {
         for ( var key in data.objects[k]) {
             if ( key == "fname" ) {
+                namee = data["objects"][k][key];
                 $('#fname').val(data["objects"][k][key]);
             } else if ( key == "lname" ) {
+                lnamee = data["objects"][k][key];
                 $('#lname').val(data["objects"][k][key]);
             } else if ( key == "email" ) {
+                emaill = data["objects"][k][key];
                 $('#email').val(data["objects"][k][key]);
             } else if ( key == "admin" ) {
                 administrator = data["objects"][k][key];
