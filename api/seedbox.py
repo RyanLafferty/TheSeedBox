@@ -3,7 +3,7 @@ from logging import FileHandler
 from werkzeug.utils import secure_filename
 from CSVandXLparser import inputSpreadSheet
 
-from flask import Flask, request, flash, url_for, redirect, render_template, jsonify, abort, request, send_from_directory
+from flask import Flask, request, flash, url_for, redirect, render_template, jsonify, abort, request, send_from_directory, make_response
 import flask_sqlalchemy
 import flask_restless
 from sqldump import sql_dump
@@ -228,8 +228,9 @@ def get_authenticate():
         if db_user is None or db_user.password != request.form['password']:
             return '{"Authentication error"}'
 
-        db.session.set_cookie('SESSID', SESSION_TOKEN);
-        return '{"success=true"}'
+        resp = make_response(render_template('/home.html'))
+        resp.set_cookie('SESSID', SESSION_TOKEN)
+        return resp
 
     return '{"Requires two parameters, [email=...] and [password=...]"}'
 
