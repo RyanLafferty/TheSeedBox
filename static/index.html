@@ -34,7 +34,7 @@
     <script>
     $('#loginForm').submit( function(e) {
         e.preventDefault();
-        $.post('/api/authenticate', { email: $("#username"), password: $("#password")}, 
+        $.post('/api/authenticate', { email: $("#username").val(), password: $("#password").val()}, 
             function(returnedData){
                  console.log(returnedData);
         });
