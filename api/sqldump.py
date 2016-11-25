@@ -1,4 +1,4 @@
-import os, subprocess
+import os, subprocess, system
 import time
 from ConfigParser import SafeConfigParser
 
@@ -32,4 +32,4 @@ def sql_dump():
     #p = subprocess.Popen(mysqldump_cmd, shell=True)
     #p.wait()
     os.system(mysqldump_cmd)
-    time.sleep(5)
+    #time.sleep(5)
