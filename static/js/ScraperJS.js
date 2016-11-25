@@ -170,7 +170,7 @@ $( document ).ready(function() {
         $.ajax({
             type: 'POST',
             contentType:"application/json",
-            url: '/api/run_scraper';
+            url: '/api/run_scraper',
             data: JSON.stringify(obj),  // data passed to db
             dataType: 'json',
             success: function (getData) { // y is waht the get returns
