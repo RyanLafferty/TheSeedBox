@@ -74,7 +74,7 @@ function addDataToGFB(data) {
 }
 
 function updateTotal(element) {
-    document.getElementById('savingsTotal').value += 1;
+    document.getElementById('savingsTotal').parseFloat(value) += 1;
 
 
 }
