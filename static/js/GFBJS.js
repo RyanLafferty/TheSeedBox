@@ -80,7 +80,7 @@ function updateTotal(table) {
     /*document.getElementById('savingsTotal').value  = table.rows[0].cells[3].innerHTML; */
     /*console.log(tempHolder[0].value);*/
     for (var i = 0; i < table.rows.length; i++) {
-        table.rows[i].cells[4].innerHTML = parseFloat(table.rows[i].cells[1].innerHTML); /** parseFloat(quantityValues[i]);*/
+        table.rows[i].cells[4].innerHTML = parseFloat(table.rows[i].cells[1].innerHTML) * parseFloat(quantityValues[i].value); /** parseFloat(quantityValues[i]);*/
         /*table.rows[i].cells[4].innerHTML = parseFloat(table.rows[i].cells[1].innerHTML) * parseFloat(table.rows[i].cells[2].innerHTML);*/
         totalSavings = totalSavings + parseFloat(table.rows[i].cells[3].innerHTML);
         totalValue = totalValue + parseFloat(table.rows[i].cells[4].innerHTML);
