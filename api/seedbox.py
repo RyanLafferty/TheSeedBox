@@ -57,7 +57,7 @@ class Users(db.Model):
 class Retailers(db.Model):
     __tablename__ = 'Retailers'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Unicode(256), unique=True)
+    name = db.Column(db.Unicode(200), unique=True)
     url = db.Column(db.Unicode(256))
 
 class Products(db.Model):
