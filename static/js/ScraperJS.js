@@ -64,7 +64,8 @@ function createJsonChangeSettings(data) {
 
         // add retialers to current savings
         for ( var j in storeNameList ) {
-            storeString = storeString.concat(j);
+            console.log(storeString);
+            storeString.concat(j);
         }
         $('#storesList').val( storeString );
 
