@@ -112,18 +112,15 @@ $( document ).ready(function() {
 
 });
 
-$('#gfb-search').live("keypress", function(e){
+$('#gfb-search').on("keypress", function(e){
 	if (e.keyCode == 13){
 		item = $('#gfb-search').val();
 		$.ajax({
 			type: 'GET',
 			url: 'api/GFB/Search/' + item,
 			dataType: 'json',
-			success: function (){
-				
-			}
-			error: function (){
-				
+			success: function (getData) {
+				alert("Test");
 			}
 		});
 	}
