@@ -78,7 +78,7 @@ function updateTotal(table) {
     var totalValue = 0;
     var tempHolder = table.rows[0].cells[2].getElementsByTagName('select');
     /*document.getElementById('savingsTotal').value  = table.rows[0].cells[3].innerHTML; */
-    console.log(tempHolder.options[tempHolder.selectIndex].value);
+    console.log(tempHolder.value);
     for (var i = 0; i < table.rows.length; i++) {
         /*table.rows[i].cells[4].innerHTML = parseFloat(table.rows[i].cells[1].innerHTML) * parseFloat(table.rows[i].cells[2].innerHTML);*/
         totalSavings = totalSavings + parseFloat(table.rows[i].cells[3].innerHTML);
