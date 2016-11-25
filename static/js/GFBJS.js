@@ -52,9 +52,9 @@ function addDataToGFB(data) {
                 newCell.innerHTML = parseFloat(data["objects"][i][key]);
             }
             newRow.appendChild(newCell);
-            if (key == 'price') {
+/*            if (key == 'price') {
                 totalSaved += parseFloat(data["objects"][i][key]);
-            }
+            }*/
         }
         tableBodyElement.appendChild(newRow);
     }
@@ -73,7 +73,12 @@ function addDataToGFB(data) {
     // }
 }
 
-function updateTotal(element) {
+function updateTotal(table) {
+    var totalSavings = 0;
+    document.getElementById('savingsTotal').value  = table.rows[0].cells[3].value
+    /*for (var i = 0; i <table.rows.length; i++) {
+        totalSavings = totalSavings + parseInt(table.rows[i].cells[3].value);
+    }*/
     /*var currentValue = element.options[element.selectedIndex].value;
     console.log(currentValue);
 
