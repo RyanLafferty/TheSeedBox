@@ -95,9 +95,9 @@ function deleteSelectedUser(data) {
             if ( key == "id" ) {
                 if ( $('#' + key).is(":checked") ) {
                     deleteUser(key);
-                } // else skip
-            } else {
-                console.log("skip");
+                } else {
+                    console.log("skip");
+                 }// else skip
             }
         }
 
