@@ -109,6 +109,29 @@ $( document ).ready(function() {
         }
     });
 
+    $('#gfb-search').keypress(function(e){
+		if (e.keyCode == 13){
+			item = $('#gfb-search').val();
+			
+			newUrl = '/api/GFB'
+			$.ajax({
+				type: 'GET',
+				url: '/api/GFB',
+				dataType: 'json',
+				data: {
+					"val":item,
+					"op":"LIKE"
+				},
+				success: function(data){
+					console.log(data)
+				},
+				error: function(data){
+					console.log(data)
+				}
+			});
+		}
+	});
+
 
 });
 

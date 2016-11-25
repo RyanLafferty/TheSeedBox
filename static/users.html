@@ -109,6 +109,29 @@
             success: function (data) {
                 fillTable(data);}
         });
+
+        $('#pod-search').keypress(function(e){
+          if (e.keyCode == 13){
+            item = $('#pod-search').val();
+      
+            $.ajax({
+              type: 'GET',
+              url: 'https://seedbox.tk/api/Users',
+              contentType:"application/json",
+
+              /*data: {
+                "val":item,
+                "op":"LIKE"
+              },*/
+              success: function(data){
+                console.log(data)
+              },
+              error: function(data){
+                console.log(data)
+              }
+           });
+          }
+        });
     </script>
     </div>
   </body>

@@ -1,16 +1,19 @@
-import os, logging, glob
+import os, logging, glob, time
 from logging import FileHandler
 from werkzeug.utils import secure_filename
+from CSVandXLparser import inputSpreadSheet
 
 from flask import Flask, request, flash, url_for, redirect, render_template, jsonify, abort, request, send_from_directory
 import flask_sqlalchemy
 import flask_restless
+from sqldump import sql_dump
 
 import auth
 
 #Set up upload folder
 UPLOAD_FOLDER = '/uploads'
-ALLOWED_EXTENSIONS = set(['csv'])
+ALLOWED_EXTENSIONS = set(['csv', 'xls', 'xlsx'])
+DBNAME = 'TheSeedSA'
 
 # Set up application
 # ==========================================================================================
@@ -54,7 +57,7 @@ class Users(db.Model):
 class Retailers(db.Model):
     __tablename__ = 'Retailers'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Unicode(256), unique=True)
+    name = db.Column(db.Unicode(200), unique=True)
     url = db.Column(db.Unicode(256))
 
 class Products(db.Model):
@@ -113,6 +116,11 @@ class ScraperSettings(db.Model):
     dayofweek = db.Column(db.Integer, default=0)
     time = db.Column(db.Unicode(256), default="")
 
+class SpreadSheets(db.Model):
+    __tablename__ = 'SpreadSheets'
+    id = db.Column(db.Integer, primary_key=True)
+    ss_name = db.Column(db.Unicode(256), default="")
+    json_data = db.Column(db.Text)
 
 # Set up corresponding RESTful API
 # ==========================================================================================
@@ -134,6 +142,7 @@ manager.create_api(Produce, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(GFB, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(Scraper, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(ScraperSettings, methods=['GET', 'POST', 'DELETE', 'PUT'])
+manager.create_api(SpreadSheets, methods=['GET', 'POST', 'DELETE', 'PUT'])
 
 # Misc. routes
 # ==========================================================================================
@@ -159,7 +168,15 @@ def upload_file():
             return jsonify("no selected file")
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(application.config['UPLOAD_FOLDER'], filename))
+            file_path = os.path.join(application.config['UPLOAD_FOLDER'], filename)
+            file.save(file_path)
+            try:
+                json_data = inputSpreadSheet(file_path)
+            except:
+                return jsonify("error parsing file")
+            new_entry = SpreadSheets(filename, json_data)
+            db.session.add(new_entry)
+            db.session.commit()
             return jsonify("Success")
 
 @application.route('/api/download/<filename>', methods=['GET'])
@@ -200,6 +217,14 @@ def get_authenticate():
         return '{"success=true"}'
 
     return '{"Requires two parameters, [email=...] and [password=...]"}'
+
+@application.route('/api/backup', methods=['GET'])
+def backup_database():
+    #os.system('python sqldump.py')
+    sql_dump()
+    backupName = DBNAME + '.sql'
+    return send_from_directory(directory=application.config['UPLOAD_FOLDER'], filename=backupName)
+
 
 @application.before_request
 def basic_authorize():

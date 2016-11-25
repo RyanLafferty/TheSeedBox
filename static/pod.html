@@ -25,19 +25,19 @@
          <input type="file" id="file-upload" accept=".csv" style="display: none;" onchange="uploadFile()" multiple>
       </label>
       <input type="submit" onclick="downloadFile()" class="btn btn-success" value="Export" style="margin-right: 10px;float: right">
-      <select id="down-files" style="margin-right: 10px;float: right"></select>
+      <select id="down-files" style="margin-right: 10px;float: right" onchange="updateTable(this.value)"></select>
     </form>
 
     <center>
       <br>
       <div id="table-container">
-        <table class="table table-striped table-bordered">
+        <table id="contents" class="table table-striped table-bordered">
           <thead class="thead-default" id="table-header"></thead>
           <tbody id="table-body"></tbody>
         </table>
       </div>
     </center>
-    <div align="center">
+    <div >
     Year: <input type="text" placeholder="Year">
     <input type="submit" value="History" class="btn btn-success">
     </div>
@@ -48,7 +48,9 @@
         
         var tableElement = document.getElementById("table-header");
         var newRow = document.createElement('tr');
-        
+       
+        $("#contents tr").remove();
+ 
         //Create Header
         for (var title in tableData[0]) {
             newCell = document.createElement('th');
@@ -125,6 +127,17 @@
             var dropdown = document.getElementById('down-files');
             var filename = dropdown.options[dropdown.selectedIndex].value;
             window.open('https://seedbox.tk/api/download/' + filename);
+        }
+        function updateTable(ssname) {
+            // change URL from Produce to Spreadsheets -> spreadsheet-name (str)
+            $.ajax({
+                type: 'GET',
+                url: 'https://seedbox.tk/api/SpreadSheets',
+                dataType: 'json',
+                success: function (data) {
+                    fillTable(data);
+                }
+            });
         }
     </script>
     </div>
