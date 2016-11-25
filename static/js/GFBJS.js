@@ -112,12 +112,3 @@ $( document ).ready(function() {
 
 });
 
-$('#gfb-search').keypress(function(e){
-	if (e.keyCode == 13){
-		item = $('#gfb-search').val();
-		newUrl = 'api/GFB/Search/' + item;
-		$.get(newUrl, function() {
-			alert("finished");
-		});
-	}
-});
