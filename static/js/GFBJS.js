@@ -53,8 +53,7 @@ function addDataToGFB(data) {
         }
         tableBodyElement.appendChild(newRow);
     }
-    totalSaved = 5;
-    document.getElementById('totalValue').value = totalSaved;
+    document.getElementById('totalValue').value = '$' + totalSaved;
 
     // // create empty rows in table
     // for ( var i = parseInt(data["num_results"]); i < 20; i++ ) {
