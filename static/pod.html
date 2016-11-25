@@ -128,13 +128,26 @@
             var filename = dropdown.options[dropdown.selectedIndex].value;
             window.open('https://seedbox.tk/api/download/' + filename);
         }
-        function updateTable(ssname) {
+        function updateTable(name) {
             // change URL from Produce to Spreadsheets -> ss_name (ssname)
             $.ajax({
                 type: 'GET',
                 url: 'https://seedbox.tk/api/SpreadSheets',
                 dataType: 'json',
+                data: '{'q': '{"filters": [{"name": "id", "val": "5", "op": "eq"}]}'}',
                 success: function (data) {
+                    //for (var i = 0; i < data["num_results"]; i++) {
+                    //    for (var key in data.objects[i]) {
+                    //        if (key == "ss_name") {
+                    //            var ss_name = data["objects"][i][key];
+                    //            if(ss_name.includes(name))
+                    //            {
+                    //                var filteredData = data["objects"][i]["json_data"]; 
+                    //            }
+                    //        }
+                    //    }
+                    //}
+                    //fillTable(JSON.parse(filteredData));
                     fillTable(data);
                 }
             });
