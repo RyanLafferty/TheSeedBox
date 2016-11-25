@@ -6,6 +6,11 @@
       <script src="js/jquery.min.js"></script>
       <script src="js/bootstrap.min.js"></script>
       <link rel="stylesheet" type="text/css" href="css/style.css">
+      <script>
+        $.get("menu_admin.html", function(data){
+            $("#menu-placeholder").replaceWith(data);
+        });
+      </script>
   </head>
   <body>
     <div id="menu-placeholder"></div>
@@ -80,9 +85,6 @@
     }
     </script>
     <script>
-        $.get("menu_admin.html", function(data){
-            $("#menu-placeholder").replaceWith(data);
-        });
         
         $.ajax({
             type: 'GET',
