@@ -22,8 +22,6 @@ function fillTable(data) {
 
     var tableElement = document.getElementById("table-header");
 
-    tableElement.id = "usersTable";
-
     var newRow = document.createElement('tr');
 
     if ( headerAlreadyExists == false ) {
