@@ -32,7 +32,7 @@ function fillTable(data) {
         var checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.id = 'master_cb';
-        checkbox.onchange = checkAll;
+        //checkbox.onchange = checkAll;
         newCell.appendChild(checkbox);
         newRow.appendChild(newCell);
 
@@ -55,7 +55,7 @@ function fillTable(data) {
         newCell.width = '10px';
         checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.id = 'user' + rownum;
+        //checkbox.id = 'user' + rownum;
 
         checkbox.id = tableData[nextRow]["id"]; // ised in delete, very important line
 
