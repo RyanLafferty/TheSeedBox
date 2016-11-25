@@ -49,7 +49,7 @@ function createJsonChangeSettings(data) {
                     $('#day').val( 'Sun' );
                 }
             } else if ( key == "time" ) {
-                $('#timeField').val(data["objects"][k][key]);
+                $('#timeField').val(data["objects"][i][key]);
             } else if ( key == "metro_enabled" ) {
                 if ( data["objects"][i][key] == 1 ) {
                     storeNameList.push( "metro" );
