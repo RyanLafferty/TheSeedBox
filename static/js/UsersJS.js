@@ -76,35 +76,30 @@ function fillTable(data) {
 }
 
 function deleteUser(id){
-    // $.ajax({
-    //     type: 'DELETE',
-    //     url: '/api/Users/' + id,
-    //     dataType: 'json',
-    //     success: function (data) {
-    //         console.log("User deleted" + id);
-    //     }
-    // });
-    console.log(id);
     $('table#usersTable tr#user' + id).remove();
+    $.ajax({
+        type: 'DELETE',
+        url: '/api/Users/' + id,
+        dataType: 'json',
+        success: function (data) {
+            console.log("Deleted user" + id);
+        }
+    });
+
 }
 
 function deleteSelectedUser(data) {
     for (var i = 0; i < data["num_results"]; i++ ) {
         for ( var key in data.objects[i]) {
             if ( key == "id" ) {
-                console.log( data["objects"][i][key] );
                 if ( $('#' + data["objects"][i][key]).is(":checked") ) {
                     deleteUser(data["objects"][i][key]);
                 } else {
-                    console.log("----skip------");
                  }// else skip
             }
         }
 
     }
-    // refresh table after deleting selected users
-    //refreshTable();
-
 }
 
 function deleteSelectedUserGetTTable() {
@@ -118,18 +113,6 @@ function deleteSelectedUserGetTTable() {
         }
     });
 }
-
-function refreshTable() {
-    $.ajax({
-        type: 'GET',
-        url: '/api/Users',
-        dataType: 'json',
-        success: function (data) {
-            fillTable(data);
-        }
-    });
-}
-
 
 function sendSearch() {
     var request = {
