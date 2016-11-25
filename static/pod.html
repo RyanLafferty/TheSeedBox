@@ -130,11 +130,12 @@
         }
         function updateTable(name) {
             // change URL from Produce to Spreadsheets -> ss_name (ssname)
+            console.log(name);
             $.ajax({
                 type: 'GET',
                 url: 'https://seedbox.tk/api/SpreadSheet',
                 dataType: 'json',
-                data: {'q': '{"filters": [{"name": "ss_name", "val": ' + name + ', "op": "like"}]}'},
+                data: {'q': '{"filters": [{"name": "ss_name", "val": "' + name + '", "op": "like"}]}'},
                 success: function (data) {
                     var filteredData = data["objects"][0]["json_data"]; 
                     fillTable(JSON.stringify(filteredData));
