@@ -22,6 +22,7 @@ var settings = {
 
 
 $( document ).ready(function() {
+    console.log(settings);
     $.ajax({
         type: 'GET',
         url: '/api/Users',
