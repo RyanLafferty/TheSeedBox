@@ -24,7 +24,8 @@
          Import
          <input type="file" id="file-upload" accept=".csv" style="display: none;" onchange="uploadFile()" multiple>
       </label>
-      <input type="submit" class="btn btn-success" value="Export" style="margin-right: 10px;float: right">
+      <input type="submit" onclick="downloadFile()" class="btn btn-success" value="Export" style="margin-right: 10px;float: right">
+      <select id="down-files" style="margin-right: 10px;float: right"></select>
     </form>
 
     <center>
@@ -40,7 +41,6 @@
     Year: <input type="text" placeholder="Year">
     <input type="submit" value="History" class="btn btn-success">
     </div>
-    <div id="debug"></div>
     <script>
     function fillTable(data) {
         var tableData = data.objects;
@@ -89,6 +89,23 @@
         });
     </script>
     <script>
+        $.ajax({
+            type: 'GET',
+            url: 'tmpFiles',
+            dataType: 'json',
+            success: function (data) {
+                var names = data.files;
+                var dropDown = document.getElementById('down-files');
+                for (var i = 0; i < names.length; i++) {
+                    var newOption = document.createElement('option');
+                    newOption.value = names[i];
+                    newOption.appendChild(document.createTextNode(names[i]));
+                    dropDown.appendChild(newOption);
+                }
+            }
+        });
+    </script>
+    <script>
         function uploadFile() {
             var formData = new FormData();
             var files = document.getElementById('file-upload').files;
@@ -101,13 +118,16 @@
                 url: 'https://seedbox.tk/api/upload',
                 data: formData,
                 processData: false,
-                contentType: false,
-                success: function (data) {
-                    document.getElementById('debug').innerHTML = data;
-                },
-                error: function (data) {
-                    document.getElementById('debug').innerHTML = data;
-                }
+                contentType: false
+            });
+        }
+        function downloadFile() {
+            var dropdown = document.getElementById('down-files');
+            var filename = dropdown.options[dropdown.selectedIndex].value;
+            
+            $.ajax({
+                type: 'GET',
+                url: 'https://seedbox.tk/api/download/' + filename,
             });
         }
     </script>
