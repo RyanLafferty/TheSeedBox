@@ -113,7 +113,7 @@ $( document ).ready(function() {
 		if (e.keyCode == 13){
 			item = $('#gfb-search').val();
 			
-			newUrl = 'api/GFB'
+			newUrl = '/api/GFB'
 			$.ajax({
 				type: 'GET',
 				url: '/api/GFB',
