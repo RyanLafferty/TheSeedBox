@@ -166,10 +166,12 @@ def allowed_file(filename):
 
 @application.route("/api/run_scraper", methods=['POST'])
 def run_scraper():
+    print "asdkfjh"
     try:
         run_the_scrapers()#nofrills=request.nofrills,metro=request.metro);
     except:
         return jsonify(sys.exc_info()[0])
+    return "OK"
 
 
 @application.route("/api/upload", methods=['POST'])
