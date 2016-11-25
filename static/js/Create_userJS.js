@@ -29,12 +29,13 @@ function createUser() {
            "password": password.value,
            "email": email.value,
            "logintime": null
-       }
+       };
 
        $.ajax({
            type: 'POST',
+           contentType:"application/json",
            url: '/api/Users',
-           data: settings,
+           data: JSON.stringify(settings),
            dataType: 'json',
            success: function (data) {
                alert("Profile Added");
