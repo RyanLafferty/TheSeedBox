@@ -125,7 +125,7 @@ $('#gfb-search').keypress(function(e){
 		$.ajax({
 			type: 'GET',
 			url: '/api/GFB',
-			dataType: 'json'
+			dataType: 'json',
 			data: {
 				"val":item,
 				"op":"LIKE"
