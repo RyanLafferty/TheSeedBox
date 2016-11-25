@@ -76,17 +76,18 @@ function addDataToGFB(data) {
 function updateTotal(table) {
     var totalSavings = 0;
     var totalValue = 0;
+    var savingsCell = 0;
     var quantityValues = document.getElementsByTagName('select');
     /*document.getElementById('savingsTotal').value  = table.rows[0].cells[3].innerHTML; */
     /*console.log(tempHolder[0].value);*/
     for (var i = 0; i < table.rows.length; i++) {
-        table.rows[i].cells[4].innerHTML = (parseFloat(table.rows[i].cells[1].innerHTML) * parseFloat(quantityValues[i].value)).toFixed(2); /** parseFloat(quantityValues[i]);*/
+        table.rows[i].cells[4].innerHTML = (parseFloat(table.rows[i].cells[1].innerHTML) * parseFloat(quantityValues[i].value)).toFixed(2);
         /*table.rows[i].cells[4].innerHTML = parseFloat(table.rows[i].cells[1].innerHTML) * parseFloat(table.rows[i].cells[2].innerHTML);*/
         totalSavings = totalSavings + parseFloat(table.rows[i].cells[3].innerHTML);
         totalValue = totalValue + parseFloat(table.rows[i].cells[4].innerHTML);
     }
-    document.getElementById('savingsTotal').value = '$' + totalSavings;
-    document.getElementById('totalValue').value = '$' + totalValue;
+    document.getElementById('savingsTotal').value = '$' + totalSavings.toFixed(2);
+    document.getElementById('totalValue').value = '$' + totalValue.toFixed(2);
     
     /*var currentValue = element.options[element.selectedIndex].value;
     console.log(currentValue); */
