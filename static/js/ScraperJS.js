@@ -26,7 +26,7 @@ $.get("menu_admin.html", function(data){
 // change settings
 // FYI the day of week enum is: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] have monday be 0, etc
 function createJsonChangeSettings(data) {
-
+    console.log("begin");
     for (var i = 0; i < data["num_results"]; i++ ) {
         for ( var key in data.objects[i]) {
             if ( key == "dayofweek" ) {
