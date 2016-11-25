@@ -43,8 +43,10 @@ function addDataToGFB(data) {
                     selector.appendChild(option);
                 }
                 newCell.appendChild(selector);
-            } else {
+            } else if (key == 'item') {
                 newCell.innerHTML = data["objects"][i][key];
+            } else {
+                newCell.innerHTML = parseFloat(data["objects"][i][key]);
             }
             newRow.appendChild(newCell);
             if (key == 'price') {
