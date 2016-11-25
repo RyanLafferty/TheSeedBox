@@ -192,21 +192,10 @@ def get_files():
 def basic_authorize():
     print "hello"
 
-"""
-@application.route('/Test')
+@application.route('/api/all')
     def index():
         return jsonify({'Users': Users.query.all()})
-"""
 
-"""
-@application.route('/Test', methods = ['POST'])
-def Test():
-   if request.method == 'POST':
-      if not request.form['fname']:
-         flash('Please enter all the fields', 'error')
-      else:
-         return redirect('https://seedbox.tk/api/Users')
-"""
 
 
 # ==========================================================================================
