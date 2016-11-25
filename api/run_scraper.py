@@ -21,4 +21,4 @@ dow = list(calendar.day_abbr).index(time.strftime('%a'))
 
 jobs = ScraperSettings.query.filter_by(dayofweek=dow, time=timestamp)
 
-s = scraper.Scraper(['NoFrills', 'Metro'])
+s = scraper.Scraper(scrapers=['NoFrills', 'Metro'])

@@ -6,7 +6,7 @@ from scrapy.utils.project import get_project_settings
 class Scraper:
     spiderDefns = {}
 
-    def Scraper(self, scrapers=None):
+    def __init__(self, scrapers=None):
         if scrapers is null:
             self.spiderDefns = { 'Metro': MetroSpider, 'NoFrills': NoFrillsSpider }
 
