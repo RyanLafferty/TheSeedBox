@@ -91,10 +91,13 @@ function deleteUser(id){
 function deleteSelectedUser(data) {
     for (var i = 0; i < data["num_results"]; i++ ) {
         for ( var key in data.objects[i]) {
+            console.log(key);
             if ( key == "id" ) {
                 if ( $('#' + key).is(":checked") ) {
                     deleteUser(key);
                 } // else skip
+            } else {
+                console.log(skip);
             }
         }
 
