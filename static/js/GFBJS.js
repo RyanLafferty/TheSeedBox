@@ -118,7 +118,11 @@ $( document ).ready(function() {
         }
     });
 
-    $('#gfb-search').keypress(function(e){
+
+
+});
+
+$('#gfb-search').keypress(function(e){
         console.log( "begin" );
 		if (e.keyCode == 13){
 			$.ajax({
@@ -129,15 +133,15 @@ $( document ).ready(function() {
 				dataType: 'json',
 
 				success: function(data){
+                    console.log("success");
 					console.log(data)
 				},
 				error: function(data){
+                    console.log("error");
 					console.log(data)
 				}
 			});
 		}
 	});
-
-
-});
+    console.log("end");
 
