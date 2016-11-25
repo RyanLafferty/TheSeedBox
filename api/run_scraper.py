@@ -3,22 +3,27 @@ import time, calendar
 from flask import Flask
 import flask_sqlalchemy
 
-from seedbox import ScraperSettings
 
 from scraper import scraper
 
-# Set up application
-# ==========================================================================================
-application = Flask(__name__)
-application.config['SQLALCHEMY_TRACK_NOTIFICATIONS'] = True
-application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/TheSeedSA'
-#application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/TheSeed'
+def run_the_scrapers():
 
-db = flask_sqlalchemy.SQLAlchemy(application)
+    # Set up application
+    # ==========================================================================================
+    application = Flask(__name__)
+    application.config['SQLALCHEMY_TRACK_NOTIFICATIONS'] = True
+    application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/TheSeedSA'
+    #application.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/TheSeed'
 
-timestamp = time.strftime('%H:%M')
-dow = list(calendar.day_abbr).index(time.strftime('%a'))
+    db = flask_sqlalchemy.SQLAlchemy(application)
 
-jobs = ScraperSettings.query.filter_by(dayofweek=dow, time=timestamp)
+    timestamp = time.strftime('%H:%M')
+    dow = list(calendar.day_abbr).index(time.strftime('%a'))
 
-s = scraper.Scraper(scrapers=['NoFrills', 'Metro'])
+    jobs = ScraperSettings.query.filter_by(dayofweek=dow, time=timestamp)
+
+    s = scraper.Scraper(scrapers=['NoFrills', 'Metro'])
+
+if __name__ == "__main__":
+    from seedbox import ScraperSettings
+    run_the_scrapers()

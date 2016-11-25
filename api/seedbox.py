@@ -7,6 +7,7 @@ from flask import Flask, request, flash, url_for, redirect, render_template, jso
 import flask_sqlalchemy
 import flask_restless
 from sqldump import sql_dump
+import run_scraper
 
 import auth
 
@@ -153,6 +154,10 @@ def hello():
 def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+@application.route("/api/run_scraper")
+def run_scraper():
+    run_the_scrapers();
 
 @application.route("/api/upload", methods=['POST'])
 def upload_file():
