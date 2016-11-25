@@ -7,7 +7,7 @@ class Scraper:
     spiderDefns = {}
 
     def __init__(self, scrapers=None):
-        if scrapers is null:
+        if scrapers is None:
             self.spiderDefns = { 'Metro': MetroSpider, 'NoFrills': NoFrillsSpider }
 
         if "Metro" in scrapers:
