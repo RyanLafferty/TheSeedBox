@@ -74,7 +74,7 @@ function addDataToGFB(data) {
 }
 
 function updateTotal(element) {
-    var value = 1;
+    var value = parseInt(1);
     document.getElementById('savingsTotal').value += value;
 
 
