@@ -231,7 +231,7 @@ def get_authenticate():
         if db_user is None or db_user.password != request.form['password']:
             return '{"Authentication error"}'
 
-        resp = make_response(render_template('/home.html'))
+        resp = make_response("Logged in!")
         resp.set_cookie('SESSID', SESSION_TOKEN)
         return resp
 
