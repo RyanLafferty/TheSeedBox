@@ -38,9 +38,11 @@ $( document ).ready(function() {
             type: 'PUT',
             url: '/api/Users/1',
             data: settings,  // data passed to db
+            contentType:"application/json",
             dataType: 'json',
             success: function (getData) { // y is waht the get returns
                 alert("Profile Updated");
+                console.log("putsuccess");
             }
         });
         console.log(settings);
