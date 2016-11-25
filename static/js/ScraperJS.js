@@ -29,9 +29,7 @@ function createJsonChangeSettings(data) {
 
     for (var i = 0; i < data["num_results"]; i++ ) {
         for ( var key in data.objects[i]) {
-            console.log(key);
             if ( key == "dayofweek" ) {
-                console.log("dropdown");
                 if ( data["objects"][i][key] == 0 ) {
                     $('#day').val( 'Mon' );
                 } else if ( data["objects"][i][key] == 1 ) {
