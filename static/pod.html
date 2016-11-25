@@ -22,7 +22,7 @@
       </div>
       <label class="btn btn-success file-button" style="margin-right: 10px;float: right">
          Import
-         <input type="file" id="file-upload" accept=".csv" style="display: none;" onchange="uploadFile()" multiple>
+         <input type="file" id="file-upload" accept=".csv,.xls,.xlsx" style="display: none;" onchange="uploadFile()" multiple>
       </label>
       <input type="submit" onclick="downloadFile()" class="btn btn-success" value="Export" style="margin-right: 10px;float: right">
       <select id="down-files" style="margin-right: 10px;float: right" onchange="updateTable(this.value)"></select>
