@@ -48,7 +48,7 @@ function fillTable(data) {
     tableElement = document.getElementById('table-body');
     for (var nextRow in tableData) {
         newRow = document.createElement('tr');
-        newRow.id = 'user' + rownum;
+        newRow.id = 'user' + tableData[nextRow]["id"];
 
         newCell = document.createElement('td');
         newCell.width = '10px';
