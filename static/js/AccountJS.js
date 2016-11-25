@@ -3,10 +3,10 @@
  */
 var settings = {
                     "admin": true,
-                    "fname": $('#CurrentPassword').val(),
-                    "lname": $('#CurrentPassword').val(),
-                    "password": $('#CurrentPassword').val(),
-                    "email": $('#Email').val(),
+                    "fname": $('#fname').val(),
+                    "lname": $('#lname').val(),
+                    "password": $('#password').val(),
+                    "email": $('#email').val(),
                     "logintime": null,
                     "password": null
                 }
@@ -14,6 +14,7 @@ var settings = {
 var id = "1";
 
 $("#SaveButton").click(function(){
+    console.log("put);
     $.ajax({
         type: 'PUT',
         url: '/api/Users' + id,
@@ -39,12 +40,12 @@ $( document ).ready(function() {
 });
 
 function populateInputBoxes(data) {
-    console.log(data);
+
     for (var i = 0; i < data["num_results"]; i++ ) {
         // how to get value for key id data["objects"][i]["id"];
 
         //for ( var key in data.objects[i]) {
-        for ( var key in data.objects[1]) {
+        for ( var key in data.objects[0]) {
             if ( key == "fname" ) {
                 $('#fname').val(data["objects"][i][key]);
             } else if ( key == "lname" ) {
@@ -54,4 +55,5 @@ function populateInputBoxes(data) {
             }
         }
     }
+    console.log("get");
 }
