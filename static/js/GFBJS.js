@@ -83,7 +83,7 @@ function updateTotal(table) {
     for (var i = 0; i < table.rows.length; i++) {
         table.rows[i].cells[4].innerHTML = (parseFloat(table.rows[i].cells[1].innerHTML) * parseFloat(quantityValues[i].value)).toFixed(2);
         /*table.rows[i].cells[4].innerHTML = parseFloat(table.rows[i].cells[1].innerHTML) * parseFloat(table.rows[i].cells[2].innerHTML);*/
-        totalSavings = totalSavings + parseFloat(table.rows[i].cells[3].innerHTML);
+        totalSavings = totalSavings + parseFloat(table.rows[i].cells[3].innerHTML) * parseFloat(quantityValues[i].value);
         totalValue = totalValue + parseFloat(table.rows[i].cells[4].innerHTML);
     }
     document.getElementById('savingsTotal').value = '$' + totalSavings.toFixed(2);
@@ -138,7 +138,7 @@ $.get("menu_admin.html", function(data){
 function sendSearch() {
     var request = {
         "name": "item",
-        "val": "apple",
+        "val": document.getElementById('gfb-search').value,
         "op": "like"
     }
     return request;
@@ -160,7 +160,7 @@ $( document ).ready(function() {
     $('#gfb-search').keypress(function(e){
         console.log( "begin" );
 		if (e.keyCode == 13){
-            event.preventDefault();
+            e.preventDefault();
 			$.ajax({
 				type: 'GET',
                 contentType:"application/json",
