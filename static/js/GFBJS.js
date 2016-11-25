@@ -82,6 +82,7 @@ function updateTotal(table) {
         totalSavings = totalSavings + parseInt(table.rows[i].cells[3].innerHTML);
         totalValue = totalValue + parseInt(table.rows[i].cells[4].innerHTML);
     }
+    console.log(totalSavings);
     document.getElementById('savingsTotal').value = '$' + totalSavings;
     document.getElementById('totalValue').value = '$' + totalValue;
     
