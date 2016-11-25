@@ -119,7 +119,7 @@ $('#gfb-search').on("keypress", function(e){
 			type: 'GET',
 			url: 'api/GFB/Search/' + item,
 			dataType: 'json',
-			success: function (getData) {
+			error: function (getData) {
 				alert("Test");
 			}
 		});
