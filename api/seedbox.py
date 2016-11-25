@@ -142,7 +142,7 @@ manager.create_api(Produce, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(GFB, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(Scraper, methods=['GET', 'POST', 'DELETE', 'PUT'])
 manager.create_api(ScraperSettings, methods=['GET', 'POST', 'DELETE', 'PUT'])
-manager.create_api(SpreadSheets, methods['GET', 'POST', 'DELETE', 'PUT'])
+manager.create_api(SpreadSheets, methods=['GET', 'POST', 'DELETE', 'PUT'])
 
 # Misc. routes
 # ==========================================================================================
