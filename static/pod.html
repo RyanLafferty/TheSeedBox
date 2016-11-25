@@ -6,6 +6,11 @@
       <script src="js/jquery.min.js"></script>
       <script src="js/bootstrap.min.js"></script>
       <link rel="stylesheet" type="text/css" href="css/style.css">
+      <script>
+        $.get("menu_admin.html", function(data){
+            $("#menu-placeholder").replaceWith(data);
+        });
+      </script>
   </head>
   <body>
     <div id="menu-placeholder"></div>
@@ -43,6 +48,8 @@
     </div>
     <script>
     function fillTable(data) {
+        console.log(data);
+        console.log(data.objects);
         var tableData = data.objects;
         var numRows = data.num_results;
         
@@ -78,9 +85,6 @@
     }
     </script>
     <script>
-        $.get("menu_admin.html", function(data){
-            $("#menu-placeholder").replaceWith(data);
-        });
         
         $.ajax({
             type: 'GET',
@@ -145,9 +149,46 @@
                 success: function (data) {
                     var filteredData = $.parseJSON(data["objects"][0]["json_data"]); 
                     console.log(filteredData);
-                    fillTable(filteredData);
+                    fillNewTable(filteredData);
                 }
             });
+        }
+        function fillNewTable(data) {
+            console.log(data);
+            console.log(data.objects);
+            var tableData = data.Columns;
+            var tableData2 = data.Data;
+            var numRows = data.Data.length;
+        
+            var tableElement = document.getElementById("table-header");
+            var newRow = document.createElement('tr');
+       
+            $("#contents tr").remove();
+ 
+            //Create Header
+            for (var title in tableData) {
+                newCell = document.createElement('th');
+                var info = document.createTextNode(title);
+                newCell.appendChild(info);
+                newRow.appendChild(newCell);
+            }
+            tableElement.appendChild(newRow);
+        
+            //Create Body
+            tableElement = document.getElementById('table-body');
+            for (var nextRow in tableData2) {
+                newRow = document.createElement('tr');
+            
+                for (var key in tableData2[nextRow]) {
+                    var value = tableData2[nextRow][key];
+                
+                    newCell = document.createElement('td');
+                    var info = document.createTextNode(value);
+                    newCell.appendChild(info);
+                    newRow.appendChild(newCell);
+                }
+                tableElement.appendChild(newRow);
+            } 
         }
     </script>
     </div>
