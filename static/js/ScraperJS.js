@@ -121,15 +121,10 @@ function changeScrapaerSettings() {
         "dayofweek": dayToIntDropdown(),
         "metro_enabled": isCheckedMetro(),
         "nofrills_enabled": isCheckedNoFrills(),
-        "time": "18:00",
+        "time": getTimeInput(),
         "user_id": 0
     }
-
-    console.log( dayToIntDropdown());
-    console.log( isCheckedMetro());
-    console.log( isCheckedNoFrills());
-    console.log( getTimeInput());
-    console.log( 0);
+    
     return settings;
 }
 
