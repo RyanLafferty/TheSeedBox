@@ -6,6 +6,7 @@ from flask import Flask, request, flash, url_for, redirect, render_template, jso
 import flask_sqlalchemy
 import flask_restless
 
+import auth
 
 #Set up upload folder
 UPLOAD_FOLDER = '/uploads'
@@ -187,6 +188,14 @@ def get_files():
         fileList.append(str(file))
     return jsonify(files=fileList)
 
+@application.route('/api/authenticate/<email>/<password>', methods=['GET'])
+def get_authenticate(email, password):
+    db_user = Users.query.filter_by(email=email).first()
+
+    if db_user is None:
+        return '{"Authentication error"}'
+
+    return db_user.password
 
 @application.before_request
 def basic_authorize():
