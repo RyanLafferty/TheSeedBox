@@ -41,9 +41,9 @@ function addDataToGFB(data) {
                     option.innerHTML = k;
                     option.value = k;
                     selector.appendChild(option);
-                    selector.addEventListener('change', updateTotal(option), false);
 
                 }
+                    selector.addEventListener('change', updateTotal(), false);
                 newCell.appendChild(selector);
             } else if (key == 'item') {
                 newCell.innerHTML = data["objects"][i][key];
@@ -72,7 +72,7 @@ function addDataToGFB(data) {
     // }
 }
 
-function updateTotal(element) {
+function updateTotal() {
     document.getElementById('savingsTotal').value += element.value;
 
 
