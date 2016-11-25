@@ -120,7 +120,10 @@ $( document ).ready(function() {
     				dataType: 'json',
 
     				success: function (getData) {
-    					highlightRow(getData);
+    					alert("success");
+    				}
+    				error: function(){
+    					alert("failed");
     				}
     			});
     		}
