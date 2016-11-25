@@ -1,6 +1,9 @@
 /**
  * Created by slawomir on 25/11/16.
  */
+$.get("menu_admin.html", function(data){
+    $("#menu-placeholder").replaceWith(data);
+});
 
 var rownum = 0;
 var headerAlreadyExists = false;
@@ -123,10 +126,6 @@ function sendSearch() {
 
 $( document ).ready(function() {
 
-    $.get("menu_admin.html", function(data){
-        $("#menu-placeholder").replaceWith(data);
-    });
-    
     $.ajax({
         type: 'GET',
         url: '/api/Users',
