@@ -23,9 +23,11 @@
 <body>
     <div id="menu-placeholder"></div>
 
+
+
     <!-- current settings  -->
-    <div id="NW" class="div-placing">
-        <form class="lead">
+    <div class="bigger-div">
+    <div id="top-menu" style="float: right; border-left: 1px solid; padding: 2px; height: 100vh">
             <p> current settings </p>
             <div class="form-group">
                 <label for="day">Day of The Week: </label>
@@ -33,42 +35,15 @@
             </div>
             <div class="form-group">
                 <label for="time">Time: </label>
-                <input type="text" value="10pm" class="field left"  name="type" id="time"  autofocus="" required="" minlength="1" maxlength="255" id="time" class="form-control" readonly>
+                <input type="text" value="10pm" class="field left"  name="type" id="time"  autofocus="" required="" minlength="1" maxlength="255" id="time" class="form-control" readonly style="margin-left: 80px">
             </div>
             <div class="form-group">
                 <label for="stores">Stores: </label>
-                <input type="text" value="NoFrills, Metro" class="field left"  name="stores" id="type"  autofocus="" required="" minlength="1" maxlength="255" id="stores" class="form-control" readonly>
+                <input type="text" value="NoFrills, Metro" class="field left"  name="stores" id="type"  autofocus="" required="" minlength="1" maxlength="255" id="stores" class="form-control" readonly style="margin-left: 70px">
             </div>
-        </form>
-    </div>
-    <!-- manual scrape  -->
-    <div id="NE" class="div-placing">
-        <form class="lead">
-            <p> manual scrape </p>
-            <div class="form-group">
-                <label for="stores">Stores: </label><br>
-                <form action="">
-                    <input id="NoFrillsManualScrape" type="checkbox" name="store" value="NoFrills"> NoFrills<br>
-                    <input id="MetroManualScrape" type="checkbox" name="store" value="Metro"> Metro
-                </form>
-            </div>
-            <div class="form-group">
-                <button onClick="location.href = 'home.html'" class="btn btn-success" style="width: 110px;" id="ManualScrapeButton"> Manual Scrape </button>
-            </div>
-        </form>
-    </div>
-    <!-- execute button-->
-    <div id="SE" class="div-placing">
-            <br>
-            <p> SP execute button </p>
-            <div class="form-group">
-                <button onclick="location.href = 'pricing.html'" class="btn btn-success" style="width: 110px;" id="Execute"> Execute </button>
-            </div>
-    </div>​
-    <!-- cahnge settings  -->
-    <div id="SW" class="div-placing">
-        <form class="lead">
-            <br>
+        </div>
+        <center>
+        <div class="big-div" style="margin-left: 100px">
             <p> change settings </p>
             <div class="form-group">
                 <label for="day">Day of The Week: </label>
@@ -84,20 +59,56 @@
             </div>
             <div class="form-group">
                 <label for="time">Time: </label>
-                <input type="text" value="10" class="field left"  name="type" id="time"  autofocus="" required="" minlength="1" maxlength="255" id="time" class="form-control">
+                <input type="time" value="10" class="field left"  name="type" id="time"  autofocus="" required="" minlength="1" maxlength="255" id="time" class="form-control">
             </div>
             <div class="form-group">
                 <label for="stores">Stores: </label><br>
+            </div>
                 <form action="">
                     <input id="NoFrills" type="checkbox" name="store" value="NoFrills"> NoFrills<br>
                     <input id="Metro" type="checkbox" name="store" value="Metro"> Metro
                 </form>
+            <div class="form-group" style="">
+                <button onClick="location.href = 'home.html'" class="btn btn-success" style="width: 95px;">Save</button>
+
+                </div>
+                <hr>
+
+
+            
+        <div class="man-scrape" style="padding:  10px">
+         <p> manual scrape </p>
+            <div class="form-group">
+                <label for="stores">Stores: </label><br>
+                <form action="">
+                    <input id="NoFrillsManualScrape" type="checkbox" name="store" value="NoFrills"> NoFrills<br>
+                    <input id="MetroManualScrape" type="checkbox" name="store" value="Metro"> Metro
+                </form>
             </div>
             <div class="form-group">
-                <button onClick="location.href = 'home.html'" class="btn btn-success" style="width: 95px;">Save</button>
+                <button onClick="location.href = 'home.html'" class="btn btn-success" style="width: auto;" id="ManualScrapeButton">Manual Scrape </button>
             </div>
-        </form>
-    </div>
-
+            </div>
+                </div>
+    <!-- cahnge settings  -->
+            <br> 
+            </center>
+        </div>
+    <!-- manual scrape  -->
+    
+            
+            
+            <hr>
+            <center>
+            <div class="bottom-scraper" style="margin-left: 100px">
+            <p> SP execute button </p>
+            <div class="form-group">
+                <button onclick="location.href = 'pricing.html'" class="btn btn-success" style="width: 110px;" id="Execute"> Execute </button>
+            </div>
+    <!-- execute button-->
+            <br>
+            </center>
+           
+            
 </body>
 </html>
