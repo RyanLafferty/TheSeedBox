@@ -130,6 +130,7 @@
         }
         function updateTable(name) {
             // change URL from Produce to Spreadsheets -> ss_name (ssname)
+            console.log(name);
             $.ajax({
                 type: 'GET',
                 url: 'https://seedbox.tk/api/SpreadSheet',
