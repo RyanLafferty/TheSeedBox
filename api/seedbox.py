@@ -164,9 +164,9 @@ def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-@application.route("/api/run_scraper")
+@application.route("/api/run_scraper", methods=['POST'])
 def run_scraper():
-    run_the_scrapers();
+    run_the_scrapers(nofrills=request.nofrills,metro=request.metro);
 
 @application.route("/api/upload", methods=['POST'])
 def upload_file():
