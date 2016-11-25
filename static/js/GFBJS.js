@@ -76,7 +76,7 @@ function addDataToGFB(data) {
 function updateTotal(table) {
     var totalSavings = 0;
     var totalValue = 0;
-    var tempHolder = document.getElementByTagName('select');
+    var tempHolder = document.getElementsByTagName('select');
     /*document.getElementById('savingsTotal').value  = table.rows[0].cells[3].innerHTML; */
     console.log(tempHolder[0].value);
     for (var i = 0; i < table.rows.length; i++) {
