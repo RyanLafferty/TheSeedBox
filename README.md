@@ -132,3 +132,37 @@ See Example 1
 
 
 ## Routes
+
+
+###Upload
+URL: https://website/api/upload
+
+Type: POST
+
+Parameters: file
+
+Return: JSON
+
+"Success"
+
+###List Tables
+URL: https://website/api/tables
+
+Type: GET
+
+Return: JSON
+
+{
+  "tablenames": [
+    "ScraperSettings",
+    "Users",
+    "PodOrderForms",
+    "Scraper",
+    "GardenFreshBoxes",
+    "Produce",
+    "Products",
+    "GFB",
+    "Retailers",
+    "Test"
+  ]
+}
