@@ -65,7 +65,7 @@ function createJsonChangeSettings(data) {
         // add retialers to current savings
         for ( var j = 0; j < storeNameList.length; j++ ) {
             storeString += storeNameList[j];
-            if ( i <  ( storeNameList.length - 1 ) ) {
+            if ( j <  ( storeNameList.length - 1 ) ) {
                 storeString += ", ";
             }
         }
