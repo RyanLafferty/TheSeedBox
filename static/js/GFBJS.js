@@ -74,13 +74,13 @@ function addDataToGFB(data) {
 }
 
 function updateTotal(element) {
-    var currentValue = element.options[element.selectedIndex].value;
+    /*var currentValue = element.options[element.selectedIndex].value;
     console.log(currentValue);
-    /*temp.value = parseInt(temp.value,10);*/
 
-    document.getElementById('savingsTotal').value += currentValue;
+    document.getElementById('savingsTotal').value += currentValue;*/
 
     /*var oldValue = +(temp.value) || 0;
+    temp.value = parseInt(temp.value,10);
     temp.value = oldValue;
     var value = parseInt(1);
     temp.value += value;*/
