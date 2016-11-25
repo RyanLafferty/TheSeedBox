@@ -96,7 +96,9 @@ $.get("menu_admin.html", function(data){
 //            });
 
 
-
+function highlightRow(rowList){
+	alert("ok");
+}
 $( document ).ready(function() {
     $.ajax({
         type: 'GET',
@@ -109,5 +111,21 @@ $( document ).ready(function() {
         }
     });
 
+    $("#gfb-search").live("keypress", function(e){
+    		if (e.keyCode == 13){
+    			value = $("#gfb-search").val();
+    			$.ajax({
+    				type: 'GET',
+    				url: '/api/GFB/Search/' + value,
+    				dataType: 'json',
+
+    				success: function (getData) {
+    				
+    				}
+    			});
+    		}
+    });
+
 
 });
+
