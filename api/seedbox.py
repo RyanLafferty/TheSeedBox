@@ -170,7 +170,7 @@ def run_scraper():
     try:
         run_the_scrapers()#nofrills=request.nofrills,metro=request.metro);
     except:
-        return jsonify(sys.exc_info()[0])
+        return jsonify(str(sys.exc_info()[0]))
     return "OK"
 
 

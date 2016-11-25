@@ -174,7 +174,7 @@ $( document ).ready(function() {
             data: JSON.stringify(obj),  // data passed to db
             dataType: 'json',
             success: function (getData) { // y is waht the get returns
-                alert("Scrapers run");
+                alert("Scrapers ran OK");
             }
         });
     });
