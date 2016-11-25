@@ -22,7 +22,7 @@ function createGFBTableHeader(data) {
 
 function addDataToGFB(data) {
     var tableBodyElement = document.getElementById('table-body');
-
+    var totalSaved = 5;
     for (var i = 0; i < data["num_results"]; i++ ) {
         var newRow = document.createElement('tr');
         newRow.id = data["objects"][i]["id"];
@@ -48,8 +48,13 @@ function addDataToGFB(data) {
             }
             newRow.appendChild(newCell);
         }
+        if (key == "price") {
+            totalSaved += data["objects"][i][key];
+        }
         tableBodyElement.appendChild(newRow);
     }
+    totalSaved = 5;
+    document.getElementById('totalValue').value = totalSaved;
 
     // // create empty rows in table
     // for ( var i = parseInt(data["num_results"]); i < 20; i++ ) {
