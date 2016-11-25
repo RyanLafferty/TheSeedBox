@@ -29,5 +29,5 @@ def sql_dump():
     #mysqldump_cmd = "mysqldump -u " + db_User_Name + " --password='" + DB_User_Password + "' -h mysql.server --databases '" + DB_Name + "' > " + datetimeBackupDir + "/" + DB_Name + ".sql"
     mysqldump_cmd = "mysqldump -u " + db_User_Name + " --password='" + DB_User_Password + "' --all-databases > " + backupDir + "/" + DB_Name + ".sql"
 
-    #subprocess.call((mysqldump_cmd, shell=True)
+    subprocess.call(mysqldump_cmd)
     #os.system(mysqldump_cmd)
