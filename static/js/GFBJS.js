@@ -41,7 +41,7 @@ function addDataToGFB(data) {
                     option.innerHTML = k;
                     option.value = k;
                     selector.appendChild(option);
-                    selector.addEventListener("change", updateTotal(option));
+                    selector.addEventListener('change', updateTotal(option), false);
 
                 }
                 newCell.appendChild(selector);
@@ -73,7 +73,7 @@ function addDataToGFB(data) {
 }
 
 function updateTotal(element) {
-    document.getElementById('savingsTotal').value += 100;
+    document.getElementById('savingsTotal').value += element.value;
 
 
 }
