@@ -61,15 +61,13 @@ function createJsonChangeSettings(data) {
             }
 
         }
-        console.log(storeNameList);
-        storeString = storeNameList[0];
-        storeString += ", ";
-        storeString += storeNameList[1];
-        console.log(storeString);
+
         // add retialers to current savings
         for ( var j = 0; j < storeNameList.length; j++ ) {
-            console.log(j);
             storeString += storeNameList[j];
+            if ( i <  ( storeNameList.length - 1 ) ) {
+                storeString += ", ";
+            }
         }
         $('#stores').val( storeString );
 
