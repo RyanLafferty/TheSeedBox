@@ -15,7 +15,7 @@ class Scraper:
             self.spiderDefns['Metro'] = MetroSpider
 
         if "NoFrills" in scrapers:
-            self.spiderDefns['Metro'] = NoFrillsSpider
+            self.spiderDefns['NoFrills'] = NoFrillsSpider
 
     def execute(self, spiders):
         process = CrawlerProcess(get_project_settings())
