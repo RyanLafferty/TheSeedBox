@@ -64,7 +64,7 @@ function createJsonChangeSettings(data) {
 $( document ).ready(function() {
     $.ajax({
         type: 'GET',
-        url: '/api/Users',
+        url: '/api/ScraperSettings',
         // data: x,  data passed to db
         dataType: 'json',
         success: function (getData) { // y is waht the get returns
