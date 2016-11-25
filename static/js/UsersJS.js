@@ -30,7 +30,7 @@ function fillTable(data) {
         var newCell = document.createElement('th');
         newCell.width = '10px';
         var checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';.val()
+        checkbox.type = 'checkbox';
         checkbox.id = 'master_cb';
         checkbox.onchange = checkAll;
         newCell.appendChild(checkbox);
