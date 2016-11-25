@@ -22,13 +22,13 @@ $( document ).ready(function() {
             console.log(getData);
         }
     });
-
+    console.log(settings);
     $('#SaveButton').click(function(){
         $.ajax({
             type: 'PUT',
             url: '/api/Users/1',
             data: settings,  // data passed to db
-            dataType: 'application/json',
+            dataType: 'json',
             success: function (getData) { // y is waht the get returns
                 alert("Profile Updated");
             }
