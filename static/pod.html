@@ -133,7 +133,7 @@
             console.log(name);
             $.ajax({
                 type: 'GET',
-                url: 'https://seedbox.tk/api/SpreadSheet',
+                url: 'https://seedbox.tk/api/SpreadSheets',
                 dataType: 'json',
                 data: {'q': '{"filters": [{"name": "ss_name", "val": "' + name + '", "op": "eq"}]}'},
                 success: function (data) {
