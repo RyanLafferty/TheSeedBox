@@ -129,7 +129,7 @@
             window.open('https://seedbox.tk/api/download/' + filename);
         }
         function updateTable(ssname) {
-            // change URL from Produce to Spreadsheets -> spreadsheet-name (str)
+            // change URL from Produce to Spreadsheets -> ss_name (ssname)
             $.ajax({
                 type: 'GET',
                 url: 'https://seedbox.tk/api/SpreadSheets',
