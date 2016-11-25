@@ -124,7 +124,7 @@ function changeScrapaerSettings() {
     console.log( dayToIntDropdown());
     console.log( isCheckedMetro());
     console.log( isCheckedNoFrills());
-    console.log( $('#time').val()());
+    console.log( $('#time').val());
     console.log( 0);
     return settings;
 }
