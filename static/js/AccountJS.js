@@ -14,7 +14,6 @@ var settings = {
 var id = "1";
 
 $("#SaveButton").click(function(){
-    console.log("put);
     $.ajax({
         type: 'PUT',
         url: '/api/Users' + id,
@@ -24,6 +23,7 @@ $("#SaveButton").click(function(){
             alert("Profile Updated");
         }
     });
+    console.log("put");
 });
 
 $( document ).ready(function() {
