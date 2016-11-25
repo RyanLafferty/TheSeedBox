@@ -30,7 +30,6 @@ $( document ).ready(function() {
         dataType: 'json',
         success: function (getData) { // y is waht the get returns
             populateInputBoxes(getData);
-            console.log(getData);
         }
     });
     console.log(settings);
@@ -44,6 +43,7 @@ $( document ).ready(function() {
                 alert("Profile Updated");
             }
         });
+        console.log(settings);
         console.log("put");
     });
 });
@@ -55,7 +55,6 @@ function populateInputBoxes(data) {
 
         //for ( var key in data.objects[i]) {
         for ( var key in data.objects[1]) {
-            console.log(key);
             if ( key == "fname" ) {
                 $('#fname').val(data["objects"][1][key]);
             } else if ( key == "lname" ) {
