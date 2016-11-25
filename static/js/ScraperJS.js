@@ -121,6 +121,11 @@ function changeScrapaerSettings() {
         "user_id": 0
     }
 
+    console.log( dayToIntDropdown());
+    console.log( isCheckedMetro());
+    console.log( isCheckedNoFrills());
+    console.log( $('#time').val()());
+    console.log( 0);
     return settings;
 }
 
@@ -138,7 +143,6 @@ $( document ).ready(function() {
     });
 
     $('#changeSettingsButton').click(function(){
-    callSettings();
     $.ajax({
         type: 'PUT',
         contentType:"application/json",
