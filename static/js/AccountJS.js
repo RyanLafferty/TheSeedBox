@@ -11,13 +11,25 @@
 //                     "password": null
 //                 }
 
+
+// wroks
+// var settings = {
+//   "admin": true,
+//   "email": "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.com",
+//   "fname": "robbbb",
+//   "lname": "ssstttttttttsss",
+//   "logintime": null,
+//   "password": "1234"
+// }
+
+
 var settings = {
   "admin": true,
-  "email": "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT.com",
-  "fname": "robbbb",
-  "lname": "ssstttttttttsss",
+  "email": $('#fname').val(),
+  "fname": $('#fname').val(),
+  "lname": $('#fname').val(),
   "logintime": null,
-  "password": "1234"
+  "password": $('#fname').val()
 }
 
 
